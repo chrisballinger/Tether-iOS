@@ -4,3 +4,6 @@
 [submodule "Submodules/libplist"]
 	path = Submodules/libplist
 	url = git@github.com:libimobiledevice/libplist.git
+[submodule "Submodules/CocoaAsyncSocket"]
+	path = Submodules/CocoaAsyncSocket
+	url = git@github.com:robbiehanson/CocoaAsyncSocket.git

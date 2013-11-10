@@ -14,7 +14,7 @@
 @end
 
 @implementation CBDeviceWindowController
-@synthesize devices, deviceTableView;
+@synthesize devices, deviceTableView, socket;
 
 
 - (void) device:(USBMuxDevice *)device statusDidChange:(USBDeviceStatus)deviceStatus {
@@ -92,6 +92,13 @@
     [USBMuxClient connectDevice:device port:port completionCallback:^(BOOL success, NSError *error) {
         NSLog(@"connecting %@ on port %lu", device.udid, (unsigned long)port);
     }];
+    self.socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+    NSError *error = nil;
+    uint16_t portNumber = 8000;
+    [socket acceptOnPort:portNumber error:&error];
+    if (error) {
+        NSLog(@"Error listening on port %d", portNumber);
+    }
 }
 
 - (IBAction)refreshButtonPressed:(id)sender {

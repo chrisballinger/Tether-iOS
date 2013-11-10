@@ -35,6 +35,8 @@
 		D90E32DF182F663A00A6F642 /* node_iterator.c in Sources */ = {isa = PBXBuildFile; fileRef = D90E32DA182F663A00A6F642 /* node_iterator.c */; };
 		D90E32E0182F663A00A6F642 /* node_list.c in Sources */ = {isa = PBXBuildFile; fileRef = D90E32DB182F663A00A6F642 /* node_list.c */; };
 		D90E32E1182F663A00A6F642 /* node.c in Sources */ = {isa = PBXBuildFile; fileRef = D90E32DC182F663A00A6F642 /* node.c */; };
+		D931A60D1830126D00593FF9 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D931A60C1830126D00593FF9 /* GCDAsyncSocket.m */; };
+		D931A611183012D600593FF9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D931A610183012D600593FF9 /* Security.framework */; };
 		D9D810FD182F6794003DCCBB /* collection.c in Sources */ = {isa = PBXBuildFile; fileRef = D9D810F8182F6794003DCCBB /* collection.c */; };
 		D9D810FE182F6794003DCCBB /* collection.h in Headers */ = {isa = PBXBuildFile; fileRef = D9D810F9182F6794003DCCBB /* collection.h */; };
 		D9D810FF182F6794003DCCBB /* libusbmuxd.c in Sources */ = {isa = PBXBuildFile; fileRef = D9D810FA182F6794003DCCBB /* libusbmuxd.c */; };
@@ -112,6 +114,9 @@
 		D90E32DA182F663A00A6F642 /* node_iterator.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = node_iterator.c; path = Submodules/libplist/libcnary/node_iterator.c; sourceTree = "<group>"; };
 		D90E32DB182F663A00A6F642 /* node_list.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = node_list.c; path = Submodules/libplist/libcnary/node_list.c; sourceTree = "<group>"; };
 		D90E32DC182F663A00A6F642 /* node.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = node.c; path = Submodules/libplist/libcnary/node.c; sourceTree = "<group>"; };
+		D931A60B1830126D00593FF9 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDAsyncSocket.h; path = Submodules/CocoaAsyncSocket/GCD/GCDAsyncSocket.h; sourceTree = "<group>"; };
+		D931A60C1830126D00593FF9 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncSocket.m; path = Submodules/CocoaAsyncSocket/GCD/GCDAsyncSocket.m; sourceTree = "<group>"; };
+		D931A610183012D600593FF9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D9D810F8182F6794003DCCBB /* collection.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = collection.c; path = Submodules/libusbmuxd/src/collection.c; sourceTree = "<group>"; };
 		D9D810F9182F6794003DCCBB /* collection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = collection.h; path = Submodules/libusbmuxd/src/collection.h; sourceTree = "<group>"; };
 		D9D810FA182F6794003DCCBB /* libusbmuxd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = libusbmuxd.c; path = Submodules/libusbmuxd/src/libusbmuxd.c; sourceTree = "<group>"; };
@@ -128,6 +133,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D931A611183012D600593FF9 /* Security.framework in Frameworks */,
 				D9D81107182F83DD003DCCBB /* libxml2.dylib in Frameworks */,
 				D9D81106182F83D2003DCCBB /* liblibplist.a in Frameworks */,
 				D9D81105182F83CF003DCCBB /* liblibcnary.a in Frameworks */,
@@ -164,8 +170,7 @@
 		D90E324C182F07DC00A6F642 = {
 			isa = PBXGroup;
 			children = (
-				D90E32E4182F676200A6F642 /* libusbmuxd */,
-				D90E32CC182F638D00A6F642 /* libplist */,
+				D931A60F1830128000593FF9 /* Submodules */,
 				D90E325E182F07DC00A6F642 /* Tether */,
 				D90E3257182F07DC00A6F642 /* Frameworks */,
 				D90E3256182F07DC00A6F642 /* Products */,
@@ -186,6 +191,7 @@
 		D90E3257182F07DC00A6F642 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D931A610183012D600593FF9 /* Security.framework */,
 				D90E32CD182F653300A6F642 /* libxml2.dylib */,
 				D90E3258182F07DC00A6F642 /* Cocoa.framework */,
 				D90E3277182F07DC00A6F642 /* XCTest.framework */,
@@ -278,6 +284,25 @@
 				D9D810FC182F6794003DCCBB /* sock_stuff.h */,
 			);
 			name = libusbmuxd;
+			sourceTree = "<group>";
+		};
+		D931A60E1830127400593FF9 /* CocoaAsyncSocket */ = {
+			isa = PBXGroup;
+			children = (
+				D931A60B1830126D00593FF9 /* GCDAsyncSocket.h */,
+				D931A60C1830126D00593FF9 /* GCDAsyncSocket.m */,
+			);
+			name = CocoaAsyncSocket;
+			sourceTree = "<group>";
+		};
+		D931A60F1830128000593FF9 /* Submodules */ = {
+			isa = PBXGroup;
+			children = (
+				D931A60E1830127400593FF9 /* CocoaAsyncSocket */,
+				D90E32E4182F676200A6F642 /* libusbmuxd */,
+				D90E32CC182F638D00A6F642 /* libplist */,
+			);
+			name = Submodules;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -438,6 +463,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D90E3265182F07DC00A6F642 /* main.m in Sources */,
+				D931A60D1830126D00593FF9 /* GCDAsyncSocket.m in Sources */,
 				D90E326C182F07DC00A6F642 /* CBAppDelegate.m in Sources */,
 				D90E3297182F18CC00A6F642 /* CBDeviceWindowController.m in Sources */,
 				D9D8110A182F8B80003DCCBB /* USBMuxClient.m in Sources */,
@@ -607,6 +633,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/Submodules/libusbmuxd/include",
+					"$(SRCROOT)/Submodules/CocoaAsyncSocket/GCD",
 				);
 				INFOPLIST_FILE = "Tether/Tether-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -625,6 +652,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/Submodules/libusbmuxd/include",
+					"$(SRCROOT)/Submodules/CocoaAsyncSocket/GCD",
 				);
 				INFOPLIST_FILE = "Tether/Tether-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
