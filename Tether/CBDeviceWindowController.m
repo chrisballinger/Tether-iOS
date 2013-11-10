@@ -20,9 +20,9 @@
 - (void) device:(USBMuxDevice *)device statusDidChange:(USBDeviceStatus)deviceStatus {
     NSLog(@"device: %@", device.udid);
     if (deviceStatus == kUSBMuxDeviceStatusAdded) {
-        [devices setObject:device forKey:device.udid];
+        [devices addObject:device];
     } else if (deviceStatus == kUSBMuxDeviceStatusRemoved) {
-        [devices removeObjectForKey:device.udid];
+        [devices removeObject:device];
     }
     [deviceTableView reloadData];
 }
@@ -36,7 +36,7 @@
 {
     self = [super initWithWindow:window];
     if (self) {
-        self.devices = [NSMutableDictionary dictionary];
+        self.devices = [NSMutableOrderedSet orderedSetWithCapacity:1];
     }
     return self;
 }
@@ -60,7 +60,7 @@
 // This method is optional if you use bindings to provide the data
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     // Group our "model" object, which is a dictionary
-    USBMuxDevice *device = [[devices allValues] objectAtIndex:row];
+    USBMuxDevice *device = [devices objectAtIndex:row];
     
     // In IB the tableColumn has the identifier set to the same string as the keys in our dictionary
     NSString *identifier = [tableColumn identifier];
@@ -78,6 +78,18 @@
         return nil;
     }
     return cellView;
+}
+
+- (IBAction)connectButtonPressed:(id)sender {
+    NSUInteger selectedRow = self.deviceTableView.selectedRow;
+    if (selectedRow >= devices.count) {
+        return;
+    }
+    USBMuxDevice *device = [devices objectAtIndex:self.deviceTableView.selectedRow];
+    NSUInteger port = 8123;
+    [USBMuxClient connectDevice:device port:port completionCallback:^(BOOL success, NSError *error) {
+        NSLog(@"connecting %@ on port %lu", device.udid, (unsigned long)port);
+    }];
 }
 
 @end

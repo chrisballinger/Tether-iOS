@@ -12,6 +12,8 @@
 @interface CBDeviceWindowController : NSWindowController <NSTableViewDataSource, NSTableViewDelegate, USBMuxClientDelegate>
 
 @property (strong) IBOutlet NSTableView *deviceTableView;
-@property (nonatomic, strong) NSMutableDictionary *devices;
+@property (nonatomic, strong) NSMutableOrderedSet *devices;
+@property (strong) IBOutlet NSButton *connectButton;
+- (IBAction)connectButtonPressed:(id)sender;
 
 @end

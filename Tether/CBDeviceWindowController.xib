@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="CBDeviceWindowController">
             <connections>
+                <outlet property="connectButton" destination="OsL-u8-g7s" id="Ujg-kf-iwt"/>
                 <outlet property="deviceTableView" destination="2UG-KQ-Ahb" id="bCD-gD-HP9"/>
                 <outlet property="window" destination="1" id="3"/>
             </connections>
@@ -22,14 +23,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cej-YJ-dtF">
-                        <rect key="frame" x="-1" y="50" width="515" height="240"/>
+                        <rect key="frame" x="-1" y="41" width="515" height="249"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <clipView key="contentView" id="fnM-fe-MaB">
-                            <rect key="frame" x="1" y="17" width="513" height="222"/>
+                            <rect key="frame" x="1" y="17" width="513" height="231"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="R7b-KU-fqG" viewBased="YES" id="2UG-KQ-Ahb">
-                                    <rect key="frame" x="0.0" y="0.0" width="513" height="222"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="513" height="231"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -110,7 +111,7 @@
                             <rect key="frame" x="1" y="1" width="0.0" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="37" horizontal="NO" id="3fR-Ow-IfJ">
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="3fR-Ow-IfJ">
                             <rect key="frame" x="-15" y="17" width="16" height="0.0"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -119,11 +120,24 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OsL-u8-g7s">
+                        <rect key="frame" x="4" y="3" width="92" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Connect" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="71s-Z2-XgI">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="connectButtonPressed:" target="-2" id="zg9-Xz-oie"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="Cej-YJ-dtF" secondAttribute="bottom" constant="50" id="7LT-8r-zGi"/>
+                    <constraint firstItem="OsL-u8-g7s" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="10" id="Gbg-dv-Vqa"/>
+                    <constraint firstAttribute="bottom" secondItem="OsL-u8-g7s" secondAttribute="bottom" constant="10" id="Ulh-c1-6xT"/>
                     <constraint firstItem="Cej-YJ-dtF" firstAttribute="top" secondItem="2" secondAttribute="top" constant="-1" id="jGF-P8-91b"/>
                     <constraint firstAttribute="trailing" secondItem="Cej-YJ-dtF" secondAttribute="trailing" constant="-1" id="jwC-6k-K9y"/>
+                    <constraint firstItem="OsL-u8-g7s" firstAttribute="top" secondItem="Cej-YJ-dtF" secondAttribute="bottom" constant="10" id="nQV-9a-icg"/>
                     <constraint firstItem="Cej-YJ-dtF" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="-1" id="oRX-2N-lMc"/>
                 </constraints>
             </view>
