@@ -17,7 +17,7 @@ static NSString * const kUSBMuxDeviceErrorDomain = @"kUSBMuxDeviceErrorDomain";
 @end
 
 @implementation USBMuxDevice
-@synthesize udid, productID, handle, socketFileDescriptor;
+@synthesize udid, productID, handle, socketFileDescriptor, isVisible;
 
 - (id) init {
     if (self = [super init]) {
@@ -28,27 +28,23 @@ static NSString * const kUSBMuxDeviceErrorDomain = @"kUSBMuxDeviceErrorDomain";
 
 @end
 
+@interface USBMuxClient(Private)
+@property (nonatomic, strong) NSMutableDictionary *devices;
++ (USBMuxDevice*) nativeDeviceForDevice:(usbmuxd_device_info_t)device;
+@end
+
 static void usbmuxdEventCallback(const usbmuxd_event_t *event, void *user_data) {
     usbmuxd_device_info_t device = event->device;
-    
-    NSMutableDictionary *devices = (NSMutableDictionary*)[USBMuxClient sharedClient].devices;
-    NSString *udid = [NSString stringWithUTF8String:device.udid];
-    
-    USBMuxDevice *nativeDevice = [devices objectForKey:udid];
-    if (!nativeDevice) {
-        nativeDevice = [[USBMuxDevice alloc] init];
-        nativeDevice.udid = [NSString stringWithUTF8String:device.udid];
-        nativeDevice.productID = device.product_id;
-    }
-    nativeDevice.handle = device.handle;
+        
+    USBMuxDevice *nativeDevice = [USBMuxClient nativeDeviceForDevice:device];
     
     USBDeviceStatus deviceStatus = -1;
     if (event->event == UE_DEVICE_ADD) {
-        [devices setObject:nativeDevice forKey:nativeDevice.udid];
         deviceStatus = kUSBMuxDeviceStatusAdded;
+        nativeDevice.isVisible = YES;
     } else if (event->event == UE_DEVICE_REMOVE) {
-        [devices removeObjectForKey:nativeDevice.udid];
         deviceStatus = kUSBMuxDeviceStatusRemoved;
+        nativeDevice.isVisible = NO;
     }
     
     id<USBMuxClientDelegate> delegate = [USBMuxClient sharedClient].delegate;
@@ -58,10 +54,6 @@ static void usbmuxdEventCallback(const usbmuxd_event_t *event, void *user_data) 
         });
     }
 }
-
-@interface USBMuxClient(Private)
-@property (nonatomic, strong) NSMutableDictionary *devices;
-@end
 
 @implementation USBMuxClient
 @synthesize delegate, callbackQueue, networkQueue, devices;
@@ -84,40 +76,89 @@ static void usbmuxdEventCallback(const usbmuxd_event_t *event, void *user_data) 
     return [NSError errorWithDomain:kUSBMuxDeviceErrorDomain code:code userInfo:@{NSLocalizedDescriptionKey:description}];
 }
 
++ (USBMuxDevice*) nativeDeviceForDevice:(usbmuxd_device_info_t)device {
+    NSMutableDictionary *devices = (NSMutableDictionary*)[USBMuxClient sharedClient].devices;
+    NSString *udid = [NSString stringWithUTF8String:device.udid];
+    USBMuxDevice *nativeDevice = [devices objectForKey:udid];
+    if (!nativeDevice) {
+        nativeDevice = [[USBMuxDevice alloc] init];
+        nativeDevice.udid = [NSString stringWithUTF8String:device.udid];
+        nativeDevice.productID = device.product_id;
+        [devices setObject:nativeDevice forKey:nativeDevice.udid];
+    }
+    nativeDevice.handle = device.handle;
+    return nativeDevice;
+}
+
++ (void) getDeviceListWithCompletion:(USBMuxDeviceDeviceListBlock)completionBlock {
+    dispatch_async([USBMuxClient sharedClient].networkQueue, ^{
+        usbmuxd_device_info_t *deviceList = NULL;
+        int deviceListCount = usbmuxd_get_device_list(&deviceList);
+        if (deviceListCount < 0 || !deviceList) {
+            if (completionBlock) {
+                dispatch_async([USBMuxClient sharedClient].callbackQueue, ^{
+                    completionBlock(nil, [self errorWithDescription:@"Couldn't get device list." code:102]);
+                });
+            }
+            return;
+        }
+        NSMutableArray *devices = [NSMutableArray arrayWithCapacity:deviceListCount];
+        for (int i = 0; i < deviceListCount; i++) {
+            usbmuxd_device_info_t device = deviceList[i];
+            USBMuxDevice *nativeDevice = [USBMuxClient nativeDeviceForDevice:device];
+            nativeDevice.isVisible = YES;
+            [devices addObject:nativeDevice];
+        }
+        
+        if (completionBlock) {
+            dispatch_async([USBMuxClient sharedClient].callbackQueue, ^{
+                completionBlock(devices, nil);
+            });
+        }
+        free(deviceList);
+    });
+}
+
 
 + (void) connectDevice:(USBMuxDevice *)device port:(unsigned short)port completionCallback:(USBMuxDeviceCompletionBlock)completionCallback {
     dispatch_async([USBMuxClient sharedClient].networkQueue, ^{
         int socketFileDescriptor = usbmuxd_connect(device.handle, port);
-        if (socketFileDescriptor == -1 && completionCallback) {
-            dispatch_async([USBMuxClient sharedClient].callbackQueue, ^{
-                completionCallback(NO, [self errorWithDescription:@"Couldn't connect device." code:100]);
-            });
-            
+        if (socketFileDescriptor == -1) {
+            if (completionCallback) {
+                dispatch_async([USBMuxClient sharedClient].callbackQueue, ^{
+                    completionCallback(NO, [self errorWithDescription:@"Couldn't connect device." code:100]);
+                });
+            }
             return;
         }
         device.socketFileDescriptor = socketFileDescriptor;
         device.isConnected = YES;
-        dispatch_async([USBMuxClient sharedClient].callbackQueue, ^{
-            completionCallback(YES, nil);
-        });
+        if (completionCallback) {
+            dispatch_async([USBMuxClient sharedClient].callbackQueue, ^{
+                completionCallback(YES, nil);
+            });
+        }
     });
 }
 
 + (void) disconnectDevice:(USBMuxDevice *)device completionCallback:(USBMuxDeviceCompletionBlock)completionCallback {
     dispatch_async([USBMuxClient sharedClient].networkQueue, ^{
         int disconnectValue = usbmuxd_disconnect(device.socketFileDescriptor);
-        if (disconnectValue == -1 && completionCallback) {
-            dispatch_async([USBMuxClient sharedClient].callbackQueue, ^{
-                completionCallback(NO, [self errorWithDescription:@"Couldn't disconnect device." code:101]);
-            });
-            
+        if (disconnectValue == -1) {
+            if (completionCallback) {
+                dispatch_async([USBMuxClient sharedClient].callbackQueue, ^{
+                    completionCallback(NO, [self errorWithDescription:@"Couldn't disconnect device." code:101]);
+                });
+            }
             return;
         }
         device.socketFileDescriptor = 0;
         device.isConnected = NO;
-        dispatch_async([USBMuxClient sharedClient].callbackQueue, ^{
-            completionCallback(YES, nil);
-        });
+        if (completionCallback) {
+            dispatch_async([USBMuxClient sharedClient].callbackQueue, ^{
+                completionCallback(YES, nil);
+            });
+        }
     });
 }
 

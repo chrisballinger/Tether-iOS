@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(int16_t, USBDeviceStatus) {
-    kUSBMuxDeviceStatusAdded = 1,
-    kUSBMuxDeviceStatusRemoved = 2,
+    kUSBMuxDeviceStatusRemoved = 0,
+    kUSBMuxDeviceStatusAdded = 1
 };
 
 typedef void(^USBMuxDeviceCompletionBlock)(BOOL success, NSError *error);
+typedef void(^USBMuxDeviceDeviceListBlock)(NSArray *deviceList, NSError *error);
+
 
 @interface USBMuxDevice : NSObject
 
@@ -21,6 +23,7 @@ typedef void(^USBMuxDeviceCompletionBlock)(BOOL success, NSError *error);
 @property (nonatomic) int productID;
 @property (nonatomic) uint32_t handle;
 @property (nonatomic) BOOL isConnected;
+@property (nonatomic) BOOL isVisible;
 
 @end
 
@@ -48,6 +51,7 @@ typedef void(^USBMuxDeviceCompletionBlock)(BOOL success, NSError *error);
 
 + (void) connectDevice:(USBMuxDevice*)device port:(unsigned short)port completionCallback:(USBMuxDeviceCompletionBlock)completionCallback;
 + (void) disconnectDevice:(USBMuxDevice*)device completionCallback:(USBMuxDeviceCompletionBlock)completionCallback;
++ (void) getDeviceListWithCompletion:(USBMuxDeviceDeviceListBlock)completionBlock;
 
 + (USBMuxClient*) sharedClient;
 

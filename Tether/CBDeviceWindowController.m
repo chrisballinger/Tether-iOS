@@ -18,11 +18,9 @@
 
 
 - (void) device:(USBMuxDevice *)device statusDidChange:(USBDeviceStatus)deviceStatus {
-    NSLog(@"device: %@", device.udid);
+    NSLog(@"device: %@ status: %d", device.udid, deviceStatus);
     if (deviceStatus == kUSBMuxDeviceStatusAdded) {
         [devices addObject:device];
-    } else if (deviceStatus == kUSBMuxDeviceStatusRemoved) {
-        [devices removeObject:device];
     }
     [deviceTableView reloadData];
 }
@@ -65,7 +63,11 @@
     // In IB the tableColumn has the identifier set to the same string as the keys in our dictionary
     NSString *identifier = [tableColumn identifier];
     NSTableCellView *cellView = [tableView makeViewWithIdentifier:identifier owner:self];
-
+    NSColor *textColor = [NSColor textColor];
+    if (!device.isVisible) {
+        textColor = [NSColor lightGrayColor];
+    }
+    cellView.textField.textColor = textColor;
     if ([identifier isEqualToString:@"ProductIDCell"]) {
         // We pass us as the owner so we can setup target/actions into this main controller object
         // Then setup properties on the cellView based on the column
@@ -92,4 +94,16 @@
     }];
 }
 
+- (IBAction)refreshButtonPressed:(id)sender {
+    [USBMuxClient getDeviceListWithCompletion:^(NSArray *deviceList, NSError *error) {
+        if (error) {
+            NSLog(@"Error getting device list: %@", error.userInfo);
+            return;
+        }
+        for (USBMuxDevice *device in deviceList) {
+            [devices addObject:device];
+        }
+        [deviceTableView reloadData];
+    }];
+}
 @end

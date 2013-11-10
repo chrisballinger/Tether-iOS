@@ -14,6 +14,9 @@
 @property (strong) IBOutlet NSTableView *deviceTableView;
 @property (nonatomic, strong) NSMutableOrderedSet *devices;
 @property (strong) IBOutlet NSButton *connectButton;
+@property (strong) IBOutlet NSButton *refreshButton;
+
 - (IBAction)connectButtonPressed:(id)sender;
+- (IBAction)refreshButtonPressed:(id)sender;
 
 @end

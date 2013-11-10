@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="connectButton" destination="OsL-u8-g7s" id="Ujg-kf-iwt"/>
                 <outlet property="deviceTableView" destination="2UG-KQ-Ahb" id="bCD-gD-HP9"/>
+                <outlet property="refreshButton" destination="sue-YU-LfJ" id="AEc-DC-phG"/>
                 <outlet property="window" destination="1" id="3"/>
             </connections>
         </customObject>
@@ -131,9 +132,22 @@
                             <action selector="connectButtonPressed:" target="-2" id="zg9-Xz-oie"/>
                         </connections>
                     </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sue-YU-LfJ">
+                        <rect key="frame" x="422" y="3" width="87" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Refresh" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3FU-29-kNz">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="refreshButtonPressed:" target="-2" id="nIX-fL-R1u"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="sue-YU-LfJ" secondAttribute="trailing" constant="10" id="81p-rh-BfH"/>
                     <constraint firstItem="OsL-u8-g7s" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="10" id="Gbg-dv-Vqa"/>
+                    <constraint firstItem="sue-YU-LfJ" firstAttribute="baseline" secondItem="OsL-u8-g7s" secondAttribute="baseline" id="Ins-WT-elu"/>
                     <constraint firstAttribute="bottom" secondItem="OsL-u8-g7s" secondAttribute="bottom" constant="10" id="Ulh-c1-6xT"/>
                     <constraint firstItem="Cej-YJ-dtF" firstAttribute="top" secondItem="2" secondAttribute="top" constant="-1" id="jGF-P8-91b"/>
                     <constraint firstAttribute="trailing" secondItem="Cej-YJ-dtF" secondAttribute="trailing" constant="-1" id="jwC-6k-K9y"/>
