@@ -9,12 +9,15 @@
 #import "CBDeviceWindowController.h"
 #import "USBMuxClient.h"
 
+const static uint16_t kDefaultLocalPortNumber = 8000;
+const static uint16_t kDefaultRemotePortNumber = 8123;
+
 @interface CBDeviceWindowController ()
 
 @end
 
 @implementation CBDeviceWindowController
-@synthesize devices, deviceTableView, socket;
+@synthesize devices, deviceTableView, socket, remotePortField, localPortField;
 
 
 - (void) device:(USBMuxDevice *)device statusDidChange:(USBDeviceStatus)deviceStatus {
@@ -47,6 +50,7 @@
     self.deviceTableView.delegate = self;
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     [USBMuxClient sharedClient].delegate = self;
+    [self performSelector:@selector(refreshButtonPressed:) withObject:nil afterDelay:0.1]; // for whatever reason 
 }
 
 
@@ -88,16 +92,29 @@
         return;
     }
     USBMuxDevice *device = [devices objectAtIndex:self.deviceTableView.selectedRow];
-    NSUInteger port = 8123;
-    [USBMuxClient connectDevice:device port:port completionCallback:^(BOOL success, NSError *error) {
-        NSLog(@"connecting %@ on port %lu", device.udid, (unsigned long)port);
+    uint16_t remotePort = kDefaultRemotePortNumber;
+    uint16_t remotePortFieldValue = (uint16_t)remotePortField.integerValue;
+    if (remotePortFieldValue > 0) {
+        remotePort = remotePortFieldValue;
+    }
+    
+    [USBMuxClient connectDevice:device port:remotePort completionCallback:^(BOOL success, NSError *error) {
+        if (success) {
+            NSLog(@"connected %@ on remote port %d", device.udid, remotePort);
+        } else {
+            NSLog(@"error connecting to remote port %d", remotePort);
+        }
     }];
     self.socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
     NSError *error = nil;
-    uint16_t portNumber = 8000;
-    [socket acceptOnPort:portNumber error:&error];
+    uint16_t localPort = kDefaultLocalPortNumber;
+    uint16_t localPortFieldValue = (uint16_t)localPortField.integerValue;
+    if (localPortFieldValue > 0) {
+        localPort = localPortFieldValue;
+    }
+    [socket acceptOnPort:localPort error:&error];
     if (error) {
-        NSLog(@"Error listening on port %d", portNumber);
+        NSLog(@"Error listening on port %d", localPort);
     }
 }
 

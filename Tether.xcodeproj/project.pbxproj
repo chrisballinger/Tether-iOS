@@ -42,9 +42,9 @@
 		D9D810FF182F6794003DCCBB /* libusbmuxd.c in Sources */ = {isa = PBXBuildFile; fileRef = D9D810FA182F6794003DCCBB /* libusbmuxd.c */; };
 		D9D81100182F6794003DCCBB /* sock_stuff.c in Sources */ = {isa = PBXBuildFile; fileRef = D9D810FB182F6794003DCCBB /* sock_stuff.c */; };
 		D9D81101182F6794003DCCBB /* sock_stuff.h in Headers */ = {isa = PBXBuildFile; fileRef = D9D810FC182F6794003DCCBB /* sock_stuff.h */; };
-		D9D81104182F8303003DCCBB /* liblibusbmuxd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D90E32AA182F629600A6F642 /* liblibusbmuxd.a */; };
-		D9D81105182F83CF003DCCBB /* liblibcnary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D90E32D3182F655600A6F642 /* liblibcnary.a */; };
-		D9D81106182F83D2003DCCBB /* liblibplist.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D90E32A0182F626000A6F642 /* liblibplist.a */; };
+		D9D81104182F8303003DCCBB /* libusbmuxd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D90E32AA182F629600A6F642 /* libusbmuxd.a */; };
+		D9D81105182F83CF003DCCBB /* libcnary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D90E32D3182F655600A6F642 /* libcnary.a */; };
+		D9D81106182F83D2003DCCBB /* libplist.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D90E32A0182F626000A6F642 /* libplist.a */; };
 		D9D81107182F83DD003DCCBB /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D90E32CD182F653300A6F642 /* libxml2.dylib */; };
 		D9D8110A182F8B80003DCCBB /* USBMuxClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D81109182F8B80003DCCBB /* USBMuxClient.m */; };
 /* End PBXBuildFile section */
@@ -92,8 +92,8 @@
 		D90E3294182F18CC00A6F642 /* CBDeviceWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDeviceWindowController.h; sourceTree = "<group>"; };
 		D90E3295182F18CC00A6F642 /* CBDeviceWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDeviceWindowController.m; sourceTree = "<group>"; };
 		D90E3296182F18CC00A6F642 /* CBDeviceWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBDeviceWindowController.xib; sourceTree = "<group>"; };
-		D90E32A0182F626000A6F642 /* liblibplist.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibplist.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D90E32AA182F629600A6F642 /* liblibusbmuxd.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibusbmuxd.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D90E32A0182F626000A6F642 /* libplist.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libplist.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D90E32AA182F629600A6F642 /* libusbmuxd.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libusbmuxd.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D90E32B2182F638800A6F642 /* base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = base64.c; path = Submodules/libplist/src/base64.c; sourceTree = "<group>"; };
 		D90E32B3182F638800A6F642 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = base64.h; path = Submodules/libplist/src/base64.h; sourceTree = "<group>"; };
 		D90E32B4182F638800A6F642 /* bplist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bplist.c; path = Submodules/libplist/src/bplist.c; sourceTree = "<group>"; };
@@ -108,7 +108,7 @@
 		D90E32BD182F638800A6F642 /* ptrarray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ptrarray.h; path = Submodules/libplist/src/ptrarray.h; sourceTree = "<group>"; };
 		D90E32BE182F638800A6F642 /* xplist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = xplist.c; path = Submodules/libplist/src/xplist.c; sourceTree = "<group>"; };
 		D90E32CD182F653300A6F642 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		D90E32D3182F655600A6F642 /* liblibcnary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibcnary.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D90E32D3182F655600A6F642 /* libcnary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libcnary.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D90E32D8182F663A00A6F642 /* iterator.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = iterator.c; path = Submodules/libplist/libcnary/iterator.c; sourceTree = "<group>"; };
 		D90E32D9182F663A00A6F642 /* list.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = list.c; path = Submodules/libplist/libcnary/list.c; sourceTree = "<group>"; };
 		D90E32DA182F663A00A6F642 /* node_iterator.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = node_iterator.c; path = Submodules/libplist/libcnary/node_iterator.c; sourceTree = "<group>"; };
@@ -135,9 +135,9 @@
 			files = (
 				D931A611183012D600593FF9 /* Security.framework in Frameworks */,
 				D9D81107182F83DD003DCCBB /* libxml2.dylib in Frameworks */,
-				D9D81106182F83D2003DCCBB /* liblibplist.a in Frameworks */,
-				D9D81105182F83CF003DCCBB /* liblibcnary.a in Frameworks */,
-				D9D81104182F8303003DCCBB /* liblibusbmuxd.a in Frameworks */,
+				D9D81106182F83D2003DCCBB /* libplist.a in Frameworks */,
+				D9D81105182F83CF003DCCBB /* libcnary.a in Frameworks */,
+				D9D81104182F8303003DCCBB /* libusbmuxd.a in Frameworks */,
 				D90E3259182F07DC00A6F642 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -181,9 +181,9 @@
 			isa = PBXGroup;
 			children = (
 				D90E3255182F07DC00A6F642 /* Tether.app */,
-				D90E32A0182F626000A6F642 /* liblibplist.a */,
-				D90E32AA182F629600A6F642 /* liblibusbmuxd.a */,
-				D90E32D3182F655600A6F642 /* liblibcnary.a */,
+				D90E32A0182F626000A6F642 /* libplist.a */,
+				D90E32AA182F629600A6F642 /* libusbmuxd.a */,
+				D90E32D3182F655600A6F642 /* libcnary.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -373,7 +373,7 @@
 			);
 			name = libplist;
 			productName = libplist;
-			productReference = D90E32A0182F626000A6F642 /* liblibplist.a */;
+			productReference = D90E32A0182F626000A6F642 /* libplist.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		D90E32A9182F629600A6F642 /* libusbmuxd */ = {
@@ -391,7 +391,7 @@
 			);
 			name = libusbmuxd;
 			productName = libusbmuxd;
-			productReference = D90E32AA182F629600A6F642 /* liblibusbmuxd.a */;
+			productReference = D90E32AA182F629600A6F642 /* libusbmuxd.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		D90E32D2182F655500A6F642 /* libcnary */ = {
@@ -408,7 +408,7 @@
 			);
 			name = libcnary;
 			productName = libcnary;
-			productReference = D90E32D3182F655600A6F642 /* liblibcnary.a */;
+			productReference = D90E32D3182F655600A6F642 /* libcnary.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -663,7 +663,7 @@
 		D90E32A2182F626000A6F642 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_PREFIX = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -682,7 +682,7 @@
 		D90E32A3182F626000A6F642 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_PREFIX = "";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -697,7 +697,7 @@
 		D90E32AC182F629600A6F642 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_PREFIX = "";
 				GCC_PREPROCESSOR_DEFINITIONS = HAVE_PLIST;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -712,7 +712,7 @@
 		D90E32AD182F629600A6F642 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_PREFIX = "";
 				GCC_PREPROCESSOR_DEFINITIONS = HAVE_PLIST;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -727,7 +727,7 @@
 		D90E32D5182F655600A6F642 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_PREFIX = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -744,7 +744,7 @@
 		D90E32D6182F655600A6F642 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_PREFIX = "";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
