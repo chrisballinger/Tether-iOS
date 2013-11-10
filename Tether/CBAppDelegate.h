@@ -7,9 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "CBDeviceWindowController.h"
 
 @interface CBAppDelegate : NSObject <NSApplicationDelegate>
 
-@property (assign) IBOutlet NSWindow *window;
+@property (nonatomic, strong) CBDeviceWindowController *deviceWindowController;
 
 @end

@@ -7,12 +7,17 @@
 //
 
 #import "CBAppDelegate.h"
+#import "CBDeviceWindowController.h"
+
+
 
 @implementation CBAppDelegate
+@synthesize deviceWindowController;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
+    self.deviceWindowController = [[CBDeviceWindowController alloc] init];
+    [self.deviceWindowController.window makeKeyAndOrderFront:self];
 }
 
 @end

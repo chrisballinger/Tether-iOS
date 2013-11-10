@@ -1,0 +1,6 @@
+[submodule "Submodules/libusbmuxd"]
+	path = Submodules/libusbmuxd
+	url = git@github.com:libimobiledevice/libusbmuxd.git
+[submodule "Submodules/libplist"]
+	path = Submodules/libplist
+	url = git@github.com:libimobiledevice/libplist.git
