@@ -37,6 +37,7 @@
 		D90E32E1182F663A00A6F642 /* node.c in Sources */ = {isa = PBXBuildFile; fileRef = D90E32DC182F663A00A6F642 /* node.c */; };
 		D931A60D1830126D00593FF9 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D931A60C1830126D00593FF9 /* GCDAsyncSocket.m */; };
 		D931A611183012D600593FF9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D931A610183012D600593FF9 /* Security.framework */; };
+		D931A61418304D1200593FF9 /* CBDeviceConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D931A61318304D1200593FF9 /* CBDeviceConnection.m */; };
 		D9D810FD182F6794003DCCBB /* collection.c in Sources */ = {isa = PBXBuildFile; fileRef = D9D810F8182F6794003DCCBB /* collection.c */; };
 		D9D810FE182F6794003DCCBB /* collection.h in Headers */ = {isa = PBXBuildFile; fileRef = D9D810F9182F6794003DCCBB /* collection.h */; };
 		D9D810FF182F6794003DCCBB /* libusbmuxd.c in Sources */ = {isa = PBXBuildFile; fileRef = D9D810FA182F6794003DCCBB /* libusbmuxd.c */; };
@@ -117,6 +118,8 @@
 		D931A60B1830126D00593FF9 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDAsyncSocket.h; path = Submodules/CocoaAsyncSocket/GCD/GCDAsyncSocket.h; sourceTree = "<group>"; };
 		D931A60C1830126D00593FF9 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncSocket.m; path = Submodules/CocoaAsyncSocket/GCD/GCDAsyncSocket.m; sourceTree = "<group>"; };
 		D931A610183012D600593FF9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		D931A61218304D1200593FF9 /* CBDeviceConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDeviceConnection.h; sourceTree = "<group>"; };
+		D931A61318304D1200593FF9 /* CBDeviceConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDeviceConnection.m; sourceTree = "<group>"; };
 		D9D810F8182F6794003DCCBB /* collection.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = collection.c; path = Submodules/libusbmuxd/src/collection.c; sourceTree = "<group>"; };
 		D9D810F9182F6794003DCCBB /* collection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = collection.h; path = Submodules/libusbmuxd/src/collection.h; sourceTree = "<group>"; };
 		D9D810FA182F6794003DCCBB /* libusbmuxd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = libusbmuxd.c; path = Submodules/libusbmuxd/src/libusbmuxd.c; sourceTree = "<group>"; };
@@ -217,6 +220,8 @@
 				D9D81109182F8B80003DCCBB /* USBMuxClient.m */,
 				D90E326A182F07DC00A6F642 /* CBAppDelegate.h */,
 				D90E326B182F07DC00A6F642 /* CBAppDelegate.m */,
+				D931A61218304D1200593FF9 /* CBDeviceConnection.h */,
+				D931A61318304D1200593FF9 /* CBDeviceConnection.m */,
 				D90E3294182F18CC00A6F642 /* CBDeviceWindowController.h */,
 				D90E3295182F18CC00A6F642 /* CBDeviceWindowController.m */,
 				D90E3296182F18CC00A6F642 /* CBDeviceWindowController.xib */,
@@ -466,6 +471,7 @@
 				D931A60D1830126D00593FF9 /* GCDAsyncSocket.m in Sources */,
 				D90E326C182F07DC00A6F642 /* CBAppDelegate.m in Sources */,
 				D90E3297182F18CC00A6F642 /* CBDeviceWindowController.m in Sources */,
+				D931A61418304D1200593FF9 /* CBDeviceConnection.m in Sources */,
 				D9D8110A182F8B80003DCCBB /* USBMuxClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

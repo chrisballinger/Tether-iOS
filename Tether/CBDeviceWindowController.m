@@ -8,6 +8,7 @@
 
 #import "CBDeviceWindowController.h"
 #import "USBMuxClient.h"
+#import "CBDeviceConnection.h"
 
 const static uint16_t kDefaultLocalPortNumber = 8000;
 const static uint16_t kDefaultRemotePortNumber = 8123;
@@ -17,8 +18,7 @@ const static uint16_t kDefaultRemotePortNumber = 8123;
 @end
 
 @implementation CBDeviceWindowController
-@synthesize devices, deviceTableView, socket, remotePortField, localPortField;
-
+@synthesize devices, deviceTableView, listeningSocket, remotePortField, localPortField, deviceConnections;
 
 - (void) device:(USBMuxDevice *)device statusDidChange:(USBDeviceStatus)deviceStatus {
     NSLog(@"device: %@ status: %d", device.udid, deviceStatus);
@@ -38,6 +38,7 @@ const static uint16_t kDefaultRemotePortNumber = 8123;
     self = [super initWithWindow:window];
     if (self) {
         self.devices = [NSMutableOrderedSet orderedSetWithCapacity:1];
+        self.deviceConnections = [NSMutableSet set];
     }
     return self;
 }
@@ -92,6 +93,7 @@ const static uint16_t kDefaultRemotePortNumber = 8123;
         return;
     }
     USBMuxDevice *device = [devices objectAtIndex:self.deviceTableView.selectedRow];
+    self.selectedDevice = device;
     uint16_t remotePort = kDefaultRemotePortNumber;
     uint16_t remotePortFieldValue = (uint16_t)remotePortField.integerValue;
     if (remotePortFieldValue > 0) {
@@ -105,14 +107,14 @@ const static uint16_t kDefaultRemotePortNumber = 8123;
             NSLog(@"error connecting to remote port %d", remotePort);
         }
     }];
-    self.socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+    self.listeningSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
     NSError *error = nil;
     uint16_t localPort = kDefaultLocalPortNumber;
     uint16_t localPortFieldValue = (uint16_t)localPortField.integerValue;
     if (localPortFieldValue > 0) {
         localPort = localPortFieldValue;
     }
-    [socket acceptOnPort:localPort error:&error];
+    [listeningSocket acceptOnPort:localPort error:&error];
     if (error) {
         NSLog(@"Error listening on port %d", localPort);
     }
@@ -129,5 +131,13 @@ const static uint16_t kDefaultRemotePortNumber = 8123;
         }
         [deviceTableView reloadData];
     }];
+}
+
+- (void) socket:(GCDAsyncSocket *)sock didAcceptNewSocket:(GCDAsyncSocket *)newSocket {
+    NSLog(@"new socket accepted");
+    CBDeviceConnection *deviceConnection = [[CBDeviceConnection alloc] init];
+    deviceConnection.device = self.selectedDevice;
+    deviceConnection.socket = newSocket;
+    [deviceConnections addObject:deviceConnection];
 }
 @end

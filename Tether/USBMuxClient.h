@@ -16,6 +16,11 @@ typedef NS_ENUM(int16_t, USBDeviceStatus) {
 typedef void(^USBMuxDeviceCompletionBlock)(BOOL success, NSError *error);
 typedef void(^USBMuxDeviceDeviceListBlock)(NSArray *deviceList, NSError *error);
 
+@class USBMuxDevice;
+
+@protocol USBMuxDeviceDelegate <NSObject>
+- (void) device:(USBMuxDevice*)device didReceiveData:(NSData*)data;
+@end
 
 @interface USBMuxDevice : NSObject
 
@@ -24,6 +29,11 @@ typedef void(^USBMuxDeviceDeviceListBlock)(NSArray *deviceList, NSError *error);
 @property (nonatomic) uint32_t handle;
 @property (nonatomic) BOOL isConnected;
 @property (nonatomic) BOOL isVisible;
+@property (nonatomic, weak) id<USBMuxDeviceDelegate> delegate;
+@property (nonatomic) dispatch_queue_t networkQueue;
+@property (nonatomic) dispatch_queue_t callbackQueue;
+
+- (void) sendData:(NSData*)data;
 
 @end
 

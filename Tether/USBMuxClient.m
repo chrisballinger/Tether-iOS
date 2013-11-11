@@ -14,17 +14,61 @@ static NSString * const kUSBMuxDeviceErrorDomain = @"kUSBMuxDeviceErrorDomain";
 
 @interface USBMuxDevice()
 @property (nonatomic) int socketFileDescriptor;
+@property (nonatomic, strong) NSFileHandle *fileHandle;
 @end
 
 @implementation USBMuxDevice
-@synthesize udid, productID, handle, socketFileDescriptor, isVisible;
+@synthesize udid, productID, handle, socketFileDescriptor, isVisible, delegate, fileHandle;
+
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (id) init {
     if (self = [super init]) {
         self.socketFileDescriptor = 0;
+        self.networkQueue = dispatch_queue_create("USBMuxDevice Network Queue", 0);
+        self.callbackQueue = dispatch_queue_create("USBMuxDevice Callback Queue", 0);
     }
     return self;
 }
+
+- (void) sendData:(NSData *)data {
+    if (!fileHandle) {
+        return;
+    }
+    dispatch_async(self.networkQueue, ^{
+        [fileHandle writeData:data];
+    });
+}
+
+- (void) setSocketFileDescriptor:(int)newSocketFileDescriptor {
+    socketFileDescriptor = newSocketFileDescriptor;
+    self.fileHandle = [[NSFileHandle alloc] initWithFileDescriptor:socketFileDescriptor closeOnDealloc:NO];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [fileHandle waitForDataInBackgroundAndNotify];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataAvailableNotification:) name:NSFileHandleDataAvailableNotification object:fileHandle];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(readCompleteNotification:) name:NSFileHandleReadCompletionNotification object:fileHandle];
+}
+
+- (void) readCompleteNotification:(NSNotification*)notification {
+    NSData *data = [notification.userInfo objectForKey:NSFileHandleNotificationDataItem];
+    NSError *error = [notification.userInfo objectForKey:@"NSFileHandleError"];
+    if (error) {
+        NSLog(@"Error reading data from socket: %@", error.userInfo);
+        return;
+    }
+    if (self.delegate && [self.delegate respondsToSelector:@selector(device:didReceiveData:)]) {
+        dispatch_async(self.callbackQueue, ^{
+            [self.delegate device:self didReceiveData:data];
+        });
+    }
+}
+
+- (void) dataAvailableNotification:(NSNotification*)notification {
+    [self.fileHandle readInBackgroundAndNotify];
+}
+
 
 @end
 

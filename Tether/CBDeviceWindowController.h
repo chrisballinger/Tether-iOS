@@ -16,9 +16,11 @@
 @property (nonatomic, strong) NSMutableOrderedSet *devices;
 @property (strong) IBOutlet NSButton *connectButton;
 @property (strong) IBOutlet NSButton *refreshButton;
-@property (nonatomic, strong) GCDAsyncSocket *socket;
+@property (nonatomic, strong) GCDAsyncSocket *listeningSocket;
+@property (nonatomic, strong) NSMutableSet *deviceConnections;
 @property (strong) IBOutlet NSTextField *remotePortField;
 @property (strong) IBOutlet NSTextField *localPortField;
+@property (nonatomic, strong) USBMuxDevice *selectedDevice;
 
 - (IBAction)connectButtonPressed:(id)sender;
 - (IBAction)refreshButtonPressed:(id)sender;
