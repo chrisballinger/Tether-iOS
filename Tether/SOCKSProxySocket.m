@@ -50,7 +50,7 @@
 }
 
 - (void) socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
-    NSLog(@"didReadData with tag %ld: %@", tag, data);
+    //NSLog(@"didReadData with tag %ld: %@", tag, data);
     if (tag == SOCKS_OPEN) {
         //      +-----+--------+
         // NAME | VER | METHOD |
@@ -184,7 +184,7 @@
 }
 
 - (void) socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
-    NSLog(@"wrote data with tag: %ld", tag);
+    //NSLog(@"wrote data with tag: %ld", tag);
 }
 
 @end
