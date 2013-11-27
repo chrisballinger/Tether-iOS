@@ -23,8 +23,11 @@
 }
 
 - (void) socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
-    NSLog(@"did read data: %@ tag: %ld", data, tag);
+    NSString *dataString = [[NSString alloc] initWithData:data
+                                                 encoding:NSUTF8StringEncoding];
+    NSLog(@"did read data: %@ tag: %ld", dataString, tag);
     [device sendData:data];
+    [sock readDataWithTimeout:-1 tag:0];
 }
 
 - (void) socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
@@ -32,6 +35,10 @@
 }
 
 - (void) device:(USBMuxDevice *)device didReceiveData:(NSData *)data {
+    NSString *dataString = [[NSString alloc] initWithData:data
+                                                 encoding:NSUTF8StringEncoding];
+
+    NSLog(@"did receive data: %@", dataString);
     [socket writeData:data withTimeout:5 tag:0];
 }
 

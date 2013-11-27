@@ -48,6 +48,8 @@
 		D9D81106182F83D2003DCCBB /* libplist.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D90E32A0182F626000A6F642 /* libplist.a */; };
 		D9D81107182F83DD003DCCBB /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D90E32CD182F653300A6F642 /* libxml2.dylib */; };
 		D9D8110A182F8B80003DCCBB /* USBMuxClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D81109182F8B80003DCCBB /* USBMuxClient.m */; };
+		D9F958B91845C7BB0007F466 /* SOCKSProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F958B81845C7BB0007F466 /* SOCKSProxy.m */; };
+		D9F958BC1845CA1F0007F466 /* SOCKSProxySocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F958BB1845CA1F0007F466 /* SOCKSProxySocket.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +122,7 @@
 		D931A610183012D600593FF9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D931A61218304D1200593FF9 /* CBDeviceConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDeviceConnection.h; sourceTree = "<group>"; };
 		D931A61318304D1200593FF9 /* CBDeviceConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDeviceConnection.m; sourceTree = "<group>"; };
+		D931A61518307B2900593FF9 /* iproxy.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = iproxy.c; path = Submodules/libusbmuxd/tools/iproxy.c; sourceTree = "<group>"; };
 		D9D810F8182F6794003DCCBB /* collection.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = collection.c; path = Submodules/libusbmuxd/src/collection.c; sourceTree = "<group>"; };
 		D9D810F9182F6794003DCCBB /* collection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = collection.h; path = Submodules/libusbmuxd/src/collection.h; sourceTree = "<group>"; };
 		D9D810FA182F6794003DCCBB /* libusbmuxd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = libusbmuxd.c; path = Submodules/libusbmuxd/src/libusbmuxd.c; sourceTree = "<group>"; };
@@ -129,6 +132,10 @@
 		D9D81103182F8044003DCCBB /* usbmuxd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = usbmuxd.h; path = Submodules/libusbmuxd/include/usbmuxd.h; sourceTree = "<group>"; };
 		D9D81108182F8B80003DCCBB /* USBMuxClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USBMuxClient.h; sourceTree = "<group>"; };
 		D9D81109182F8B80003DCCBB /* USBMuxClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USBMuxClient.m; sourceTree = "<group>"; };
+		D9F958B71845C7BB0007F466 /* SOCKSProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOCKSProxy.h; sourceTree = "<group>"; };
+		D9F958B81845C7BB0007F466 /* SOCKSProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOCKSProxy.m; sourceTree = "<group>"; };
+		D9F958BA1845CA1F0007F466 /* SOCKSProxySocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOCKSProxySocket.h; sourceTree = "<group>"; };
+		D9F958BB1845CA1F0007F466 /* SOCKSProxySocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOCKSProxySocket.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +223,10 @@
 		D90E325E182F07DC00A6F642 /* Tether */ = {
 			isa = PBXGroup;
 			children = (
+				D9F958BA1845CA1F0007F466 /* SOCKSProxySocket.h */,
+				D9F958BB1845CA1F0007F466 /* SOCKSProxySocket.m */,
+				D9F958B71845C7BB0007F466 /* SOCKSProxy.h */,
+				D9F958B81845C7BB0007F466 /* SOCKSProxy.m */,
 				D9D81108182F8B80003DCCBB /* USBMuxClient.h */,
 				D9D81109182F8B80003DCCBB /* USBMuxClient.m */,
 				D90E326A182F07DC00A6F642 /* CBAppDelegate.h */,
@@ -280,6 +291,7 @@
 		D90E32E4182F676200A6F642 /* libusbmuxd */ = {
 			isa = PBXGroup;
 			children = (
+				D931A61518307B2900593FF9 /* iproxy.c */,
 				D9D81102182F8044003DCCBB /* usbmuxd-proto.h */,
 				D9D81103182F8044003DCCBB /* usbmuxd.h */,
 				D9D810F8182F6794003DCCBB /* collection.c */,
@@ -470,8 +482,10 @@
 				D90E3265182F07DC00A6F642 /* main.m in Sources */,
 				D931A60D1830126D00593FF9 /* GCDAsyncSocket.m in Sources */,
 				D90E326C182F07DC00A6F642 /* CBAppDelegate.m in Sources */,
+				D9F958BC1845CA1F0007F466 /* SOCKSProxySocket.m in Sources */,
 				D90E3297182F18CC00A6F642 /* CBDeviceWindowController.m in Sources */,
 				D931A61418304D1200593FF9 /* CBDeviceConnection.m in Sources */,
+				D9F958B91845C7BB0007F466 /* SOCKSProxy.m in Sources */,
 				D9D8110A182F8B80003DCCBB /* USBMuxClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

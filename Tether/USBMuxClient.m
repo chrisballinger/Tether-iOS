@@ -42,16 +42,25 @@ static NSString * const kUSBMuxDeviceErrorDomain = @"kUSBMuxDeviceErrorDomain";
     });
 }
 
+
+
 - (void) setSocketFileDescriptor:(int)newSocketFileDescriptor {
     socketFileDescriptor = newSocketFileDescriptor;
-    self.fileHandle = [[NSFileHandle alloc] initWithFileDescriptor:socketFileDescriptor closeOnDealloc:NO];
+    CFReadStreamRef readStreamRef = NULL;
+    CFWriteStreamRef writeStreamRef = NULL;
+    CFStreamCreatePairWithSocket(kCFAllocatorDefault, socketFileDescriptor, &readStreamRef, &writeStreamRef);
+    NSInputStream *inputStream = objc_unretainedObject(readStreamRef);
+    NSOutputStream *outputStream = objc_unretainedObject(writeStreamRef);
+    /*self.fileHandle = [[NSFileHandle alloc] initWithFileDescriptor:socketFileDescriptor closeOnDealloc:NO];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [fileHandle waitForDataInBackgroundAndNotify];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataAvailableNotification:) name:NSFileHandleDataAvailableNotification object:fileHandle];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(readCompleteNotification:) name:NSFileHandleReadCompletionNotification object:fileHandle];
+     */
 }
 
 - (void) readCompleteNotification:(NSNotification*)notification {
+    NSLog(@"read complete notification: %@", notification.userInfo);
     NSData *data = [notification.userInfo objectForKey:NSFileHandleNotificationDataItem];
     NSError *error = [notification.userInfo objectForKey:@"NSFileHandleError"];
     if (error) {
@@ -66,6 +75,7 @@ static NSString * const kUSBMuxDeviceErrorDomain = @"kUSBMuxDeviceErrorDomain";
 }
 
 - (void) dataAvailableNotification:(NSNotification*)notification {
+    NSLog(@"Received data available notification: %@", notification.userInfo);
     [self.fileHandle readInBackgroundAndNotify];
 }
 

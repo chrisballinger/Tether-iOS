@@ -9,12 +9,13 @@
 #import "CBDeviceWindowController.h"
 #import "USBMuxClient.h"
 #import "CBDeviceConnection.h"
+#import "SOCKSProxy.h"
 
 const static uint16_t kDefaultLocalPortNumber = 8000;
 const static uint16_t kDefaultRemotePortNumber = 8123;
 
 @interface CBDeviceWindowController ()
-
+@property (nonatomic, strong) SOCKSProxy *proxyServer;
 @end
 
 @implementation CBDeviceWindowController
@@ -51,7 +52,9 @@ const static uint16_t kDefaultRemotePortNumber = 8123;
     self.deviceTableView.delegate = self;
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     [USBMuxClient sharedClient].delegate = self;
-    [self performSelector:@selector(refreshButtonPressed:) withObject:nil afterDelay:0.1]; // for whatever reason 
+    [self performSelector:@selector(refreshButtonPressed:) withObject:nil afterDelay:0.1]; // for whatever reason
+    self.proxyServer = [[SOCKSProxy alloc] init];
+    [self.proxyServer startProxyOnPort:9050];
 }
 
 
@@ -135,9 +138,7 @@ const static uint16_t kDefaultRemotePortNumber = 8123;
 
 - (void) socket:(GCDAsyncSocket *)sock didAcceptNewSocket:(GCDAsyncSocket *)newSocket {
     NSLog(@"new socket accepted");
-    CBDeviceConnection *deviceConnection = [[CBDeviceConnection alloc] init];
-    deviceConnection.device = self.selectedDevice;
-    deviceConnection.socket = newSocket;
+    CBDeviceConnection *deviceConnection = [[CBDeviceConnection alloc] initWithDevice:self.selectedDevice socket:newSocket];
     [deviceConnections addObject:deviceConnection];
 }
 @end
