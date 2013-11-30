@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "USBMuxClient.h"
+#import "USBMuxDeviceConnection.h"
 #import "GCDAsyncSocket.h"
 
-@interface CBDeviceConnection : NSObject <GCDAsyncSocketDelegate, USBMuxDeviceDelegate>
+@interface CBDeviceConnection : NSObject <GCDAsyncSocketDelegate, USBMuxDeviceConnectionDelegate>
 
-@property (nonatomic, strong) USBMuxDevice *device;
+@property (nonatomic, strong) USBMuxDeviceConnection *deviceConnection;
 @property (nonatomic, strong) GCDAsyncSocket *socket;
 
-- (id) initWithDevice:(USBMuxDevice*)device socket:(GCDAsyncSocket*)socket;
+- (id) initWithDeviceConnection:(USBMuxDeviceConnection*)connection socket:(GCDAsyncSocket*)socket;
 
 @end

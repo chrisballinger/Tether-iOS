@@ -8,38 +8,36 @@
 
 #import "CBDeviceConnection.h"
 
-@implementation CBDeviceConnection
-@synthesize device, socket;
+#define DEVICE_CONNECTION_RECEIVE_TAG 100
+#define LOCAL_SOCKET_READ_TAG 200
+#define LOCAL_SOCKET_WRITE_TAG 201
 
-- (id) initWithDevice:(USBMuxDevice *)newDevice socket:(GCDAsyncSocket *)newSocket {
+@implementation CBDeviceConnection
+
+- (id) initWithDeviceConnection:(USBMuxDeviceConnection*)connection socket:(GCDAsyncSocket*)socket {
     if (self = [super init]) {
-        self.device = newDevice;
-        self.device.delegate = self;
-        self.socket = newSocket;
-        self.socket.delegate = self;
-        [self.socket readDataWithTimeout:-1 tag:0];
+        _deviceConnection = connection;
+        _deviceConnection.delegate = self;
+        _socket = socket;
+        _socket.delegate = self;
+        [_socket readDataWithTimeout:-1 tag:0];
     }
     return self;
 }
 
 - (void) socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
-    NSString *dataString = [[NSString alloc] initWithData:data
-                                                 encoding:NSUTF8StringEncoding];
-    NSLog(@"did read data: %@ tag: %ld", dataString, tag);
-    [device sendData:data];
-    [sock readDataWithTimeout:-1 tag:0];
+    NSLog(@"local socket %@ did read %ld data: %@", sock, tag, data);
+    [_deviceConnection sendData:data];
+    [sock readDataWithTimeout:-1 tag:LOCAL_SOCKET_READ_TAG];
 }
 
 - (void) socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
-    NSLog(@"did write data with tag: %ld", tag);
+    NSLog(@"local socket %@ did write data with tag: %ld", sock, tag);
+    [_socket readDataWithTimeout:-1 tag:LOCAL_SOCKET_WRITE_TAG];
 }
 
-- (void) device:(USBMuxDevice *)device didReceiveData:(NSData *)data {
-    NSString *dataString = [[NSString alloc] initWithData:data
-                                                 encoding:NSUTF8StringEncoding];
-
-    NSLog(@"did receive data: %@", dataString);
-    [socket writeData:data withTimeout:5 tag:0];
+- (void) connection:(USBMuxDeviceConnection *)connection didReceiveData:(NSData *)data {     NSLog(@"connection %@ did receive data: %@", connection, data);
+    [_socket writeData:data withTimeout:-1 tag:LOCAL_SOCKET_WRITE_TAG];
 }
 
 @end

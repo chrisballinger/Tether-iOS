@@ -57,6 +57,8 @@
 		D9B767D0184A8AC9000566D6 /* SOCKSProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F958B81845C7BB0007F466 /* SOCKSProxy.m */; };
 		D9B767D2184A8B32000566D6 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B767D1184A8B32000566D6 /* MobileCoreServices.framework */; };
 		D9B767D3184A8C22000566D6 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D931A60C1830126D00593FF9 /* GCDAsyncSocket.m */; };
+		D9B767D6184A9432000566D6 /* USBMuxDeviceConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B767D5184A9432000566D6 /* USBMuxDeviceConnection.m */; };
+		D9B767D9184A978A000566D6 /* USBMuxDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B767D8184A978A000566D6 /* USBMuxDevice.m */; };
 		D9D810FD182F6794003DCCBB /* collection.c in Sources */ = {isa = PBXBuildFile; fileRef = D9D810F8182F6794003DCCBB /* collection.c */; };
 		D9D810FE182F6794003DCCBB /* collection.h in Headers */ = {isa = PBXBuildFile; fileRef = D9D810F9182F6794003DCCBB /* collection.h */; };
 		D9D810FF182F6794003DCCBB /* libusbmuxd.c in Sources */ = {isa = PBXBuildFile; fileRef = D9D810FA182F6794003DCCBB /* libusbmuxd.c */; };
@@ -166,6 +168,10 @@
 		D9B767CA184A8991000566D6 /* CBRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBRootViewController.h; sourceTree = "<group>"; };
 		D9B767CB184A8991000566D6 /* CBRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBRootViewController.m; sourceTree = "<group>"; };
 		D9B767D1184A8B32000566D6 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		D9B767D4184A9432000566D6 /* USBMuxDeviceConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USBMuxDeviceConnection.h; sourceTree = "<group>"; };
+		D9B767D5184A9432000566D6 /* USBMuxDeviceConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USBMuxDeviceConnection.m; sourceTree = "<group>"; };
+		D9B767D7184A978A000566D6 /* USBMuxDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USBMuxDevice.h; sourceTree = "<group>"; };
+		D9B767D8184A978A000566D6 /* USBMuxDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USBMuxDevice.m; sourceTree = "<group>"; };
 		D9D810F8182F6794003DCCBB /* collection.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = collection.c; path = Submodules/libusbmuxd/src/collection.c; sourceTree = "<group>"; };
 		D9D810F9182F6794003DCCBB /* collection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = collection.h; path = Submodules/libusbmuxd/src/collection.h; sourceTree = "<group>"; };
 		D9D810FA182F6794003DCCBB /* libusbmuxd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = libusbmuxd.c; path = Submodules/libusbmuxd/src/libusbmuxd.c; sourceTree = "<group>"; };
@@ -449,6 +455,10 @@
 		D9B767C7184A877A000566D6 /* USBMuxClient */ = {
 			isa = PBXGroup;
 			children = (
+				D9B767D7184A978A000566D6 /* USBMuxDevice.h */,
+				D9B767D8184A978A000566D6 /* USBMuxDevice.m */,
+				D9B767D4184A9432000566D6 /* USBMuxDeviceConnection.h */,
+				D9B767D5184A9432000566D6 /* USBMuxDeviceConnection.m */,
 				D9D81108182F8B80003DCCBB /* USBMuxClient.h */,
 				D9D81109182F8B80003DCCBB /* USBMuxClient.m */,
 			);
@@ -673,7 +683,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D931A60D1830126D00593FF9 /* GCDAsyncSocket.m in Sources */,
+				D9B767D6184A9432000566D6 /* USBMuxDeviceConnection.m in Sources */,
 				D9B767C9184A88BA000566D6 /* main-mac.m in Sources */,
+				D9B767D9184A978A000566D6 /* USBMuxDevice.m in Sources */,
 				D90E326C182F07DC00A6F642 /* CBMacAppDelegate.m in Sources */,
 				D90E3297182F18CC00A6F642 /* CBDeviceWindowController.m in Sources */,
 				D9B767D0184A8AC9000566D6 /* SOCKSProxy.m in Sources */,

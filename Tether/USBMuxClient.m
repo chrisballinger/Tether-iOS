@@ -7,79 +7,12 @@
 //
 
 #import "USBMuxClient.h"
+#import "USBMuxDevice.h"
+#import "USBMuxDeviceConnection.h"
 #import <usbmuxd.h>
 
 static NSString * const kUSBMuxDeviceErrorDomain = @"kUSBMuxDeviceErrorDomain";
 
-
-@interface USBMuxDevice()
-@property (nonatomic) int socketFileDescriptor;
-@property (nonatomic, strong) NSFileHandle *fileHandle;
-@end
-
-@implementation USBMuxDevice
-@synthesize udid, productID, handle, socketFileDescriptor, isVisible, delegate, fileHandle;
-
-- (void) dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (id) init {
-    if (self = [super init]) {
-        self.socketFileDescriptor = 0;
-        self.networkQueue = dispatch_queue_create("USBMuxDevice Network Queue", 0);
-        self.callbackQueue = dispatch_queue_create("USBMuxDevice Callback Queue", 0);
-    }
-    return self;
-}
-
-- (void) sendData:(NSData *)data {
-    if (!fileHandle) {
-        return;
-    }
-    dispatch_async(self.networkQueue, ^{
-        [fileHandle writeData:data];
-    });
-}
-
-
-
-- (void) setSocketFileDescriptor:(int)newSocketFileDescriptor {
-    socketFileDescriptor = newSocketFileDescriptor;
-    //CFReadStreamRef readStreamRef = NULL;
-    //CFWriteStreamRef writeStreamRef = NULL;
-    //CFStreamCreatePairWithSocket(kCFAllocatorDefault, socketFileDescriptor, &readStreamRef, &writeStreamRef);
-    //NSInputStream *inputStream = objc_unretainedObject(readStreamRef);
-    //NSOutputStream *outputStream = objc_unretainedObject(writeStreamRef);
-    self.fileHandle = [[NSFileHandle alloc] initWithFileDescriptor:socketFileDescriptor closeOnDealloc:NO];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataAvailableNotification:) name:NSFileHandleDataAvailableNotification object:fileHandle];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(readCompleteNotification:) name:NSFileHandleReadCompletionNotification object:fileHandle];
-    [fileHandle waitForDataInBackgroundAndNotify];
-}
-
-- (void) readCompleteNotification:(NSNotification*)notification {
-    NSLog(@"read complete notification: %@", notification.userInfo);
-    NSData *data = [notification.userInfo objectForKey:NSFileHandleNotificationDataItem];
-    NSError *error = [notification.userInfo objectForKey:@"NSFileHandleError"];
-    if (error) {
-        NSLog(@"Error reading data from socket: %@", error.userInfo);
-        return;
-    }
-    if (self.delegate && [self.delegate respondsToSelector:@selector(device:didReceiveData:)]) {
-        dispatch_async(self.callbackQueue, ^{
-            [self.delegate device:self didReceiveData:data];
-        });
-    }
-}
-
-- (void) dataAvailableNotification:(NSNotification*)notification {
-    NSLog(@"Received data available notification: %@", notification.userInfo);
-    [self.fileHandle readInBackgroundAndNotify];
-}
-
-
-@end
 
 @interface USBMuxClient(Private)
 @property (nonatomic, strong) NSMutableDictionary *devices;
@@ -173,22 +106,22 @@ static void usbmuxdEventCallback(const usbmuxd_event_t *event, void *user_data) 
 }
 
 
-+ (void) connectDevice:(USBMuxDevice *)device port:(unsigned short)port completionCallback:(USBMuxDeviceCompletionBlock)completionCallback {
++ (void) connectDevice:(USBMuxDevice *)device port:(uint16_t)port completionCallback:(USBMuxDeviceConnectionBlock)completionCallback {
     dispatch_async([USBMuxClient sharedClient].networkQueue, ^{
         int socketFileDescriptor = usbmuxd_connect(device.handle, port);
         if (socketFileDescriptor == -1) {
             if (completionCallback) {
-                dispatch_async([USBMuxClient sharedClient].callbackQueue, ^{
-                    completionCallback(NO, [self errorWithDescription:@"Couldn't connect device." code:100]);
-                });
+                completionCallback(nil, [self errorWithDescription:@"Couldn't connect device." code:100]);
             }
             return;
         }
-        device.socketFileDescriptor = socketFileDescriptor;
-        device.isConnected = YES;
+        USBMuxDeviceConnection *connection = [[USBMuxDeviceConnection alloc] init];
+        connection.device = device;
+        connection.socketFileDescriptor = socketFileDescriptor;
+        [device.connections addObject:connection];
         if (completionCallback) {
             dispatch_async([USBMuxClient sharedClient].callbackQueue, ^{
-                completionCallback(YES, nil);
+                completionCallback(connection, nil);
             });
         }
     });
@@ -196,17 +129,16 @@ static void usbmuxdEventCallback(const usbmuxd_event_t *event, void *user_data) 
 
 + (void) disconnectDevice:(USBMuxDevice *)device completionCallback:(USBMuxDeviceCompletionBlock)completionCallback {
     dispatch_async([USBMuxClient sharedClient].networkQueue, ^{
-        int disconnectValue = usbmuxd_disconnect(device.socketFileDescriptor);
-        if (disconnectValue == -1) {
-            if (completionCallback) {
-                dispatch_async([USBMuxClient sharedClient].callbackQueue, ^{
-                    completionCallback(NO, [self errorWithDescription:@"Couldn't disconnect device." code:101]);
-                });
+        for (USBMuxDeviceConnection *connection in device.connections) {
+            int disconnectValue = usbmuxd_disconnect(connection.socketFileDescriptor);
+            if (disconnectValue == -1) {
+                if (completionCallback) {
+                    dispatch_async([USBMuxClient sharedClient].callbackQueue, ^{
+                        completionCallback(NO, [self errorWithDescription:@"Couldn't disconnect device connection." code:101]);
+                    });
+                }
             }
-            return;
         }
-        device.socketFileDescriptor = 0;
-        device.isConnected = NO;
         if (completionCallback) {
             dispatch_async([USBMuxClient sharedClient].callbackQueue, ^{
                 completionCallback(YES, nil);

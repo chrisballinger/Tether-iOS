@@ -13,29 +13,12 @@ typedef NS_ENUM(int16_t, USBDeviceStatus) {
     kUSBMuxDeviceStatusAdded = 1
 };
 
+@class USBMuxDevice, USBMuxDeviceConnection;
+
+typedef void(^USBMuxDeviceConnectionBlock)(USBMuxDeviceConnection *connection, NSError *error);
 typedef void(^USBMuxDeviceCompletionBlock)(BOOL success, NSError *error);
 typedef void(^USBMuxDeviceDeviceListBlock)(NSArray *deviceList, NSError *error);
 
-@class USBMuxDevice;
-
-@protocol USBMuxDeviceDelegate <NSObject>
-- (void) device:(USBMuxDevice*)device didReceiveData:(NSData*)data;
-@end
-
-@interface USBMuxDevice : NSObject
-
-@property (nonatomic) NSString *udid;
-@property (nonatomic) int productID;
-@property (nonatomic) uint32_t handle;
-@property (nonatomic) BOOL isConnected;
-@property (nonatomic) BOOL isVisible;
-@property (nonatomic, weak) id<USBMuxDeviceDelegate> delegate;
-@property (nonatomic) dispatch_queue_t networkQueue;
-@property (nonatomic) dispatch_queue_t callbackQueue;
-
-- (void) sendData:(NSData*)data;
-
-@end
 
 @protocol USBMuxClientDelegate <NSObject>
 @optional
@@ -59,7 +42,7 @@ typedef void(^USBMuxDeviceDeviceListBlock)(NSArray *deviceList, NSError *error);
 
 @property (nonatomic, weak) id<USBMuxClientDelegate> delegate;
 
-+ (void) connectDevice:(USBMuxDevice*)device port:(unsigned short)port completionCallback:(USBMuxDeviceCompletionBlock)completionCallback;
++ (void) connectDevice:(USBMuxDevice*)device port:(uint16_t)port completionCallback:(USBMuxDeviceConnectionBlock)completionCallback;
 + (void) disconnectDevice:(USBMuxDevice*)device completionCallback:(USBMuxDeviceCompletionBlock)completionCallback;
 + (void) getDeviceListWithCompletion:(USBMuxDeviceDeviceListBlock)completionBlock;
 

@@ -8,6 +8,7 @@
 
 #import "CBDeviceWindowController.h"
 #import "USBMuxClient.h"
+#import "USBMuxDevice.h"
 #import "CBDeviceConnection.h"
 
 const static uint16_t kDefaultLocalPortNumber = 8000;
@@ -93,19 +94,7 @@ const static uint16_t kDefaultRemotePortNumber = 8123;
     }
     USBMuxDevice *device = [devices objectAtIndex:self.deviceTableView.selectedRow];
     self.selectedDevice = device;
-    uint16_t remotePort = kDefaultRemotePortNumber;
-    uint16_t remotePortFieldValue = (uint16_t)remotePortField.integerValue;
-    if (remotePortFieldValue > 0) {
-        remotePort = remotePortFieldValue;
-    }
     
-    [USBMuxClient connectDevice:device port:remotePort completionCallback:^(BOOL success, NSError *error) {
-        if (success) {
-            NSLog(@"connected %@ on remote port %d", device.udid, remotePort);
-        } else {
-            NSLog(@"error connecting to remote port %d", remotePort);
-        }
-    }];
     self.listeningSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
     NSError *error = nil;
     uint16_t localPort = kDefaultLocalPortNumber;
@@ -134,7 +123,19 @@ const static uint16_t kDefaultRemotePortNumber = 8123;
 
 - (void) socket:(GCDAsyncSocket *)sock didAcceptNewSocket:(GCDAsyncSocket *)newSocket {
     NSLog(@"new socket accepted");
-    CBDeviceConnection *deviceConnection = [[CBDeviceConnection alloc] initWithDevice:self.selectedDevice socket:newSocket];
-    [deviceConnections addObject:deviceConnection];
+    uint16_t remotePort = kDefaultRemotePortNumber;
+    uint16_t remotePortFieldValue = (uint16_t)remotePortField.integerValue;
+    if (remotePortFieldValue > 0) {
+        remotePort = remotePortFieldValue;
+    }
+    [USBMuxClient connectDevice:self.selectedDevice port:remotePort completionCallback:^(USBMuxDeviceConnection *connection, NSError *error) {
+        if (connection) {
+            CBDeviceConnection *deviceConnection = [[CBDeviceConnection alloc] initWithDeviceConnection:connection socket:sock];
+            [deviceConnections addObject:deviceConnection];
+        } else {
+            NSLog(@"Error connecting to device: %@", error);
+        }
+    }];
+
 }
 @end
