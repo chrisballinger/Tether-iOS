@@ -2,15 +2,17 @@
 //  CBAppDelegate.h
 //  Tether
 //
-//  Created by Christopher Ballinger on 11/9/13.
+//  Created by Christopher Ballinger on 11/30/13.
 //  Copyright (c) 2013 Christopher Ballinger. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
-#import "CBDeviceWindowController.h"
+#import <UIKit/UIKit.h>
 
-@interface CBAppDelegate : NSObject <NSApplicationDelegate>
+@class SOCKSProxy;
 
-@property (nonatomic, strong) CBDeviceWindowController *deviceWindowController;
+@interface CBAppDelegate : UIResponder <UIApplicationDelegate>
+
+@property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, strong) SOCKSProxy *socksProxy;
 
 @end

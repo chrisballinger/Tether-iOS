@@ -120,7 +120,7 @@
     } else if (tag == SOCKS_CONNECT_PORT) {
         uint16_t rawPort;
         memcpy(&rawPort, [data bytes], 2);
-        _destinationPort = EndianU16_BtoN(rawPort);
+        _destinationPort = NSSwapBigShortToHost(rawPort);
         NSError *error = nil;
         NSLog(@"connecting to %@:%d", self.destinationHost, self.destinationPort);
         [self.outgoingSocket connectToHost:self.destinationHost onPort:self.destinationPort error:&error];
@@ -175,7 +175,7 @@
     responseBytes[3] = 3;
     responseBytes[4] = (uint8_t)host.length;
     memcpy(responseBytes+5, [host UTF8String], host.length);
-    uint16_t bigEndianPort = EndianU16_NtoB(port);
+    uint16_t bigEndianPort = NSSwapHostShortToBig(port);
     NSUInteger portLength = 2;
 	memcpy(responseBytes+5+host.length, &bigEndianPort, portLength);
     NSData *responseData = [NSData dataWithBytesNoCopy:responseBytes length:responseLength freeWhenDone:YES];

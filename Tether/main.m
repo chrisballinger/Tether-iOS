@@ -2,13 +2,17 @@
 //  main.m
 //  Tether
 //
-//  Created by Christopher Ballinger on 11/9/13.
+//  Created by Christopher Ballinger on 11/30/13.
 //  Copyright (c) 2013 Christopher Ballinger. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <UIKit/UIKit.h>
 
-int main(int argc, const char * argv[])
+#import "CBAppDelegate.h"
+
+int main(int argc, char * argv[])
 {
-    return NSApplicationMain(argc, argv);
+    @autoreleasepool {
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([CBAppDelegate class]));
+    }
 }
