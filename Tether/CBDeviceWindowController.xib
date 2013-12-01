@@ -6,7 +6,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="CBDeviceWindowController">
             <connections>
-                <outlet property="connectButton" destination="OsL-u8-g7s" id="Ujg-kf-iwt"/>
                 <outlet property="deviceTableView" destination="2UG-KQ-Ahb" id="bCD-gD-HP9"/>
                 <outlet property="localPortField" destination="ZXH-Mq-bEb" id="q8X-lI-cMy"/>
                 <outlet property="refreshButton" destination="sue-YU-LfJ" id="AEc-DC-phG"/>
@@ -123,22 +122,8 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OsL-u8-g7s">
-                        <rect key="frame" x="4" y="3" width="92" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="80" id="WTd-dC-wwi"/>
-                        </constraints>
-                        <buttonCell key="cell" type="push" title="Connect" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="71s-Z2-XgI">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="connectButtonPressed:" target="-2" id="zg9-Xz-oie"/>
-                        </connections>
-                    </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sue-YU-LfJ">
-                        <rect key="frame" x="504" y="3" width="87" height="32"/>
+                        <rect key="frame" x="504" y="2" width="87" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Refresh" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3FU-29-kNz">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -149,7 +134,7 @@
                         </connections>
                     </button>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZXH-Mq-bEb">
-                        <rect key="frame" x="172" y="9" width="70" height="22"/>
+                        <rect key="frame" x="94" y="9" width="70" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="70" id="GnF-iE-gb3"/>
@@ -169,7 +154,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oUG-u6-zx0">
-                        <rect key="frame" x="340" y="9" width="86" height="22"/>
+                        <rect key="frame" x="262" y="9" width="86" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="86" id="Qmd-z4-BKC"/>
@@ -189,7 +174,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pdZ-J3-sBb">
-                        <rect key="frame" x="96" y="12" width="70" height="17"/>
+                        <rect key="frame" x="18" y="12" width="70" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Local Port:" id="r3D-Xw-u8p">
                             <font key="font" metaFont="system"/>
@@ -198,7 +183,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dgl-Rc-5Df">
-                        <rect key="frame" x="248" y="12" width="86" height="17"/>
+                        <rect key="frame" x="170" y="12" width="86" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Remote Port:" id="dHi-sF-BnW">
                             <font key="font" metaFont="system"/>
@@ -208,23 +193,21 @@
                     </textField>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="ZXH-Mq-bEb" secondAttribute="bottom" constant="9" id="54G-9p-uZj"/>
                     <constraint firstItem="pdZ-J3-sBb" firstAttribute="baseline" secondItem="dgl-Rc-5Df" secondAttribute="baseline" id="6cQ-4r-SWd"/>
                     <constraint firstAttribute="trailing" secondItem="sue-YU-LfJ" secondAttribute="trailing" constant="10" id="81p-rh-BfH"/>
                     <constraint firstItem="ZXH-Mq-bEb" firstAttribute="centerY" secondItem="pdZ-J3-sBb" secondAttribute="centerY" id="F2e-10-dsS"/>
                     <constraint firstItem="oUG-u6-zx0" firstAttribute="leading" secondItem="dgl-Rc-5Df" secondAttribute="trailing" constant="8" symbolic="YES" id="FIq-lF-1zY"/>
-                    <constraint firstItem="OsL-u8-g7s" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="10" id="Gbg-dv-Vqa"/>
-                    <constraint firstItem="sue-YU-LfJ" firstAttribute="baseline" secondItem="OsL-u8-g7s" secondAttribute="baseline" id="Ins-WT-elu"/>
                     <constraint firstItem="dgl-Rc-5Df" firstAttribute="leading" secondItem="ZXH-Mq-bEb" secondAttribute="trailing" constant="8" symbolic="YES" id="N6b-0m-Dld"/>
-                    <constraint firstItem="pdZ-J3-sBb" firstAttribute="leading" secondItem="OsL-u8-g7s" secondAttribute="trailing" constant="8" symbolic="YES" id="UD2-nc-xMS"/>
-                    <constraint firstAttribute="bottom" secondItem="OsL-u8-g7s" secondAttribute="bottom" constant="10" id="Ulh-c1-6xT"/>
+                    <constraint firstItem="pdZ-J3-sBb" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="20" symbolic="YES" id="f7p-Hj-7ex"/>
+                    <constraint firstItem="dgl-Rc-5Df" firstAttribute="baseline" secondItem="sue-YU-LfJ" secondAttribute="baseline" id="giE-QP-tNb"/>
                     <constraint firstItem="Cej-YJ-dtF" firstAttribute="top" secondItem="2" secondAttribute="top" constant="-1" id="jGF-P8-91b"/>
                     <constraint firstAttribute="trailing" secondItem="Cej-YJ-dtF" secondAttribute="trailing" constant="-1" id="jwC-6k-K9y"/>
-                    <constraint firstItem="OsL-u8-g7s" firstAttribute="top" secondItem="Cej-YJ-dtF" secondAttribute="bottom" constant="10" id="nQV-9a-icg"/>
                     <constraint firstItem="Cej-YJ-dtF" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="-1" id="oRX-2N-lMc"/>
                     <constraint firstItem="sue-YU-LfJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oUG-u6-zx0" secondAttribute="trailing" constant="84" id="r3e-gY-HTf"/>
                     <constraint firstItem="ZXH-Mq-bEb" firstAttribute="leading" secondItem="pdZ-J3-sBb" secondAttribute="trailing" constant="8" symbolic="YES" id="t6I-r6-z3Q"/>
-                    <constraint firstItem="ZXH-Mq-bEb" firstAttribute="top" secondItem="OsL-u8-g7s" secondAttribute="top" id="tvZ-2h-FkZ"/>
                     <constraint firstItem="ZXH-Mq-bEb" firstAttribute="baseline" secondItem="oUG-u6-zx0" secondAttribute="baseline" id="yQk-Sm-mI6"/>
+                    <constraint firstItem="ZXH-Mq-bEb" firstAttribute="top" secondItem="Cej-YJ-dtF" secondAttribute="bottom" constant="10" id="zCc-Fp-Lq2"/>
                 </constraints>
             </view>
             <connections>

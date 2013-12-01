@@ -24,8 +24,43 @@ const static uint16_t kDefaultRemotePortNumber = 8123;
     NSLog(@"device: %@ status: %d", device.udid, deviceStatus);
     if (deviceStatus == kUSBMuxDeviceStatusAdded) {
         [devices addObject:device];
+    } else if (deviceStatus == kUSBMuxDeviceStatusRemoved) {
+        [self setConnections:nil forDevice:device];
     }
+    [self refreshSelectedDevice];
+}
+
+- (NSMutableSet*) connectionsForDevice:(USBMuxDevice*)device {
+    NSString *udid = [device.udid copy];
+    NSMutableSet *connections = [deviceConnections objectForKey:udid];
+    if (!connections) {
+        connections = [NSMutableSet set];
+        [deviceConnections setObject:connections forKey:udid];
+    }
+    return [deviceConnections objectForKey:device.udid];
+}
+
+- (void) setConnections:(NSMutableSet*)connections forDevice:(USBMuxDevice*)device {
+    if (!connections) {
+        [self.deviceConnections removeObjectForKey:device.udid];
+    }
+    [self.deviceConnections setObject:connections forKey:device.udid];
+}
+
+- (void) disconnectConnectionsForDevice:(USBMuxDevice*)device {
+    [self setConnections:nil forDevice:device];
+}
+
+- (void) refreshSelectedDevice {
     [deviceTableView reloadData];
+    if (self.deviceTableView.numberOfSelectedRows == 0 && self.devices.count > 0) {
+        self.selectedDevice = devices[0];
+    }
+    if (self.selectedDevice) {
+        NSUInteger selectedIndex = [devices indexOfObject:self.selectedDevice];
+        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:selectedIndex];
+        [deviceTableView selectRowIndexes:indexSet byExtendingSelection:NO];
+    }
 }
 
 
@@ -38,7 +73,7 @@ const static uint16_t kDefaultRemotePortNumber = 8123;
     self = [super initWithWindow:window];
     if (self) {
         self.devices = [NSMutableOrderedSet orderedSetWithCapacity:1];
-        self.deviceConnections = [NSMutableSet set];
+        self.deviceConnections = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -87,53 +122,75 @@ const static uint16_t kDefaultRemotePortNumber = 8123;
     return cellView;
 }
 
-- (IBAction)connectButtonPressed:(id)sender {
-    NSUInteger selectedRow = self.deviceTableView.selectedRow;
-    if (selectedRow >= devices.count) {
-        return;
+- (IBAction)refreshButtonPressed:(id)sender {
+    if (self.listeningSocket) {
+        NSLog(@"Disconnecting local socket");
+        [self.listeningSocket disconnect];
+        self.listeningSocket.delegate = nil;
+        self.listeningSocket = nil;
     }
-    USBMuxDevice *device = [devices objectAtIndex:self.deviceTableView.selectedRow];
-    self.selectedDevice = device;
-    
-    self.listeningSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
-    NSError *error = nil;
+    [USBMuxClient getDeviceListWithCompletion:^(NSArray *deviceList, NSError *error) {
+        if (error) {
+            NSLog(@"Error getting device list: %@", error.userInfo);
+        }
+        for (USBMuxDevice *device in deviceList) {
+            [devices addObject:device];
+        }
+        [self refreshSelectedDevice];
+
+        USBMuxDevice *device = self.selectedDevice;
+        if (!device) {
+            NSLog(@"No devices selected, aborting the start of local socket");
+            return;
+        }
+        
+        self.listeningSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+        error = nil;
+        uint16_t localPort = [self customOrDefaultLocalPort];
+        [listeningSocket acceptOnPort:localPort error:&error];
+        if (error) {
+            NSLog(@"Error listening on port %d", localPort);
+        }
+        NSLog(@"Listening on local port %d for new connections", localPort);
+    }];
+}
+
+- (uint16_t) customOrDefaultLocalPort {
     uint16_t localPort = kDefaultLocalPortNumber;
     uint16_t localPortFieldValue = (uint16_t)localPortField.integerValue;
     if (localPortFieldValue > 0) {
         localPort = localPortFieldValue;
     }
-    [listeningSocket acceptOnPort:localPort error:&error];
-    if (error) {
-        NSLog(@"Error listening on port %d", localPort);
-    }
+    return localPort;
 }
 
-- (IBAction)refreshButtonPressed:(id)sender {
-    [USBMuxClient getDeviceListWithCompletion:^(NSArray *deviceList, NSError *error) {
-        if (error) {
-            NSLog(@"Error getting device list: %@", error.userInfo);
-            return;
-        }
-        for (USBMuxDevice *device in deviceList) {
-            [devices addObject:device];
-        }
-        [deviceTableView reloadData];
-    }];
-}
-
-- (void) socket:(GCDAsyncSocket *)sock didAcceptNewSocket:(GCDAsyncSocket *)newSocket {
-    NSLog(@"new socket accepted");
+- (uint16_t) customOrDefaultRemotePort {
     uint16_t remotePort = kDefaultRemotePortNumber;
     uint16_t remotePortFieldValue = (uint16_t)remotePortField.integerValue;
     if (remotePortFieldValue > 0) {
         remotePort = remotePortFieldValue;
     }
+    return remotePort;
+}
+
+- (void) socket:(GCDAsyncSocket *)sock didAcceptNewSocket:(GCDAsyncSocket *)newSocket {
+    if (!self.selectedDevice.isVisible) {
+        NSLog(@"selected device no longer visible, aborting connection");
+        [sock disconnect];
+        return;
+    }
+    NSLog(@"new local connection accepted on %@:%d", [sock localHost], [sock localPort]);
+    uint16_t remotePort = [self customOrDefaultRemotePort];
+    NSString *deviceUUID = [self.selectedDevice.udid copy];
+
     [USBMuxClient connectDevice:self.selectedDevice port:remotePort completionCallback:^(USBMuxDeviceConnection *connection, NSError *error) {
         if (connection) {
+            NSLog(@"New device connection to %@ on port %d", deviceUUID, remotePort);
             CBDeviceConnection *deviceConnection = [[CBDeviceConnection alloc] initWithDeviceConnection:connection socket:sock];
-            [deviceConnections addObject:deviceConnection];
+            NSMutableSet *connections = [self connectionsForDevice:connection.device];
+            [connections addObject:deviceConnection];
         } else {
-            NSLog(@"Error connecting to device: %@", error);
+            NSLog(@"Error connecting to device %@ on port %d: %@", deviceUUID, remotePort, error);
         }
     }];
 

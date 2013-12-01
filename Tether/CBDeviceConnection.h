@@ -18,4 +18,6 @@
 
 - (id) initWithDeviceConnection:(USBMuxDeviceConnection*)connection socket:(GCDAsyncSocket*)socket;
 
+- (void) disconnect;
+
 @end

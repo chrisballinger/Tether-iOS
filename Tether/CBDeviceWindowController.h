@@ -17,12 +17,11 @@
 @property (strong) IBOutlet NSButton *connectButton;
 @property (strong) IBOutlet NSButton *refreshButton;
 @property (nonatomic, strong) GCDAsyncSocket *listeningSocket;
-@property (nonatomic, strong) NSMutableSet *deviceConnections;
+@property (nonatomic, strong) NSMutableDictionary *deviceConnections;
 @property (strong) IBOutlet NSTextField *remotePortField;
 @property (strong) IBOutlet NSTextField *localPortField;
 @property (nonatomic, strong) USBMuxDevice *selectedDevice;
 
-- (IBAction)connectButtonPressed:(id)sender;
 - (IBAction)refreshButtonPressed:(id)sender;
 
 @end

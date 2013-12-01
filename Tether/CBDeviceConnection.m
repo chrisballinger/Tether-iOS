@@ -14,13 +14,17 @@
 
 @implementation CBDeviceConnection
 
+- (void) dealloc {
+    [self disconnect];
+}
+
 - (id) initWithDeviceConnection:(USBMuxDeviceConnection*)connection socket:(GCDAsyncSocket*)socket {
     if (self = [super init]) {
         _deviceConnection = connection;
         _deviceConnection.delegate = self;
         _socket = socket;
         _socket.delegate = self;
-        [_socket readDataWithTimeout:-1 tag:0];
+        [_socket readDataWithTimeout:-1 tag:LOCAL_SOCKET_READ_TAG];
     }
     return self;
 }
@@ -38,6 +42,19 @@
 
 - (void) connection:(USBMuxDeviceConnection *)connection didReceiveData:(NSData *)data {     NSLog(@"connection %@ did receive data: %@", connection, data);
     [_socket writeData:data withTimeout:-1 tag:LOCAL_SOCKET_WRITE_TAG];
+}
+
+- (void) disconnect {
+    if (self.deviceConnection) {
+        [self.deviceConnection disconnect];
+        self.deviceConnection.delegate = nil;
+        self.deviceConnection = nil;
+    }
+    if (self.socket) {
+        [self.socket disconnect];
+        self.socket.delegate = nil;
+        self.socket = nil;
+    }
 }
 
 @end
