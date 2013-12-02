@@ -202,12 +202,12 @@ const static uint16_t kDefaultRemotePortNumber = 8123;
 
 - (void) connection:(CBDeviceConnection *)connection didReadData:(NSData *)data {
     _totalBytesRead += data.length;
-    NSLog(@"total bytes read: %lu", (unsigned long)_totalBytesRead);
+    //NSLog(@"total bytes read: %lu", (unsigned long)_totalBytesRead);
 }
 
 - (void) connection:(CBDeviceConnection *)connection didWriteDataToLength:(NSUInteger)length {
     _totalBytesWritten += length;
-    NSLog(@"total bytes written: %lu", (unsigned long)_totalBytesWritten);
+    //NSLog(@"total bytes written: %lu", (unsigned long)_totalBytesWritten);
 }
 
 @end
