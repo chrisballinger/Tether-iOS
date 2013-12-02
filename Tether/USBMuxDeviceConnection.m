@@ -65,7 +65,7 @@
         } else {
             readValue = usbmuxd_recv_timeout(_socketFileDescriptor, (char*)buffer, bytesAvailable, &totalBytesReceived, (int)(timeout * 1000));
         }
-        if (readValue != 0) {
+        if (readValue != 0 || totalBytesReceived == 0) {
             NSLog(@"Error reading on socket %d: %d", _socketFileDescriptor, readValue);
             free(buffer);
             return;
@@ -76,6 +76,7 @@
                 [_delegate connection:self didReceiveData:receivedData];
             });
         }
+        
         [self readDataFromDeviceWithTimeout:timeout];
     });
 }
