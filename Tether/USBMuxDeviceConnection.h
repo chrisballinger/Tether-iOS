@@ -20,7 +20,8 @@
 @property (nonatomic) int socketFileDescriptor;
 @property (nonatomic, strong) NSFileHandle *fileHandle;
 @property (nonatomic, weak) id<USBMuxDeviceConnectionDelegate> delegate;
-@property (nonatomic) dispatch_queue_t networkQueue;
+@property (nonatomic) dispatch_queue_t networkReadQueue;
+@property (nonatomic) dispatch_queue_t networkWriteQueue;
 @property (nonatomic) dispatch_queue_t callbackQueue;
 @property (nonatomic) uint16_t port;
 

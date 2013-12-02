@@ -177,16 +177,17 @@ const static uint16_t kDefaultRemotePortNumber = 8123;
     if (!self.selectedDevice.isVisible) {
         NSLog(@"selected device no longer visible, aborting connection");
         [sock disconnect];
+        [newSocket disconnect];
         return;
     }
-    NSLog(@"new local connection accepted on %@:%d", [sock localHost], [sock localPort]);
+    NSLog(@"new local connection accepted on %@:%d", [newSocket localHost], [newSocket localPort]);
     uint16_t remotePort = [self customOrDefaultRemotePort];
     NSString *deviceUUID = [self.selectedDevice.udid copy];
 
     [USBMuxClient connectDevice:self.selectedDevice port:remotePort completionCallback:^(USBMuxDeviceConnection *connection, NSError *error) {
         if (connection) {
             NSLog(@"New device connection to %@ on port %d", deviceUUID, remotePort);
-            CBDeviceConnection *deviceConnection = [[CBDeviceConnection alloc] initWithDeviceConnection:connection socket:sock];
+            CBDeviceConnection *deviceConnection = [[CBDeviceConnection alloc] initWithDeviceConnection:connection socket:newSocket];
             NSMutableSet *connections = [self connectionsForDevice:connection.device];
             [connections addObject:deviceConnection];
         } else {
