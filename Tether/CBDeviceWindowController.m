@@ -43,6 +43,7 @@ const static uint16_t kDefaultRemotePortNumber = 8123;
 - (void) setConnections:(NSMutableSet*)connections forDevice:(USBMuxDevice*)device {
     if (!connections) {
         [self.deviceConnections removeObjectForKey:device.udid];
+        return;
     }
     [self.deviceConnections setObject:connections forKey:device.udid];
 }
