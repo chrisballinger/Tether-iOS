@@ -31,19 +31,19 @@
 }
 
 - (void) socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
-    NSLog(@"local socket %@ did read %ld data: %@", sock, tag, data);
+    //NSLog(@"local socket %@ did read %ld data: %@", sock, tag, data);
     [_deviceConnection writeData:data tag:tag];
     [_deviceConnection readDataWithTimeout:-1 tag:tag];
     [sock readDataWithTimeout:-1 tag:LOCAL_SOCKET_READ_TAG];
 }
 
 - (void) socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
-    NSLog(@"local socket %@ did write data with tag: %ld", sock, tag);
+    //NSLog(@"local socket %@ did write data with tag: %ld", sock, tag);
     [_socket readDataWithTimeout:-1 tag:LOCAL_SOCKET_WRITE_TAG];
 }
 
 - (void) connection:(USBMuxDeviceConnection*)connection didReadData:(NSData *)data tag:(long)tag {
-    NSLog(@"connection %@ did receive data %ld: %@", connection, tag, data);
+    //NSLog(@"connection %@ did receive data %ld: %@", connection, tag, data);
     [_socket writeData:data withTimeout:-1 tag:LOCAL_SOCKET_WRITE_TAG];
     [connection readDataWithTimeout:-1 tag:tag];
     if (_delegate && [_delegate respondsToSelector:@selector(connection:didReadData:)]) {
@@ -52,7 +52,7 @@
 }
 
 - (void) connection:(USBMuxDeviceConnection*)connection didWriteDataToLength:(NSUInteger)length tag:(long)tag {
-    NSLog(@"connection %@ did write data %ld to length: %lu", connection, tag, (unsigned long)length);
+    //NSLog(@"connection %@ did write data %ld to length: %lu", connection, tag, (unsigned long)length);
     if (_delegate && [_delegate respondsToSelector:@selector(connection:didWriteDataToLength:)]) {
         [_delegate connection:self didWriteDataToLength:length];
     }

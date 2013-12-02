@@ -31,14 +31,14 @@
 
 - (void) writeData:(NSData*)data tag:(long)tag {
     dispatch_async(_networkWriteQueue, ^{
-        NSLog(@"Writing data to device socket %d: %@", _socketFileDescriptor, data);
+        //NSLog(@"Writing data to device socket %d: %@", _socketFileDescriptor, data);
         uint32_t sentBytes = 0;
         uint32_t totalBytes = (uint32_t)data.length;
         int sendValue = usbmuxd_send(_socketFileDescriptor, [data bytes], totalBytes, &sentBytes);
         if (sendValue == 0) {
-            NSLog(@"Wrote %d / %d of %@", sentBytes, totalBytes, data);
+            //NSLog(@"Wrote %d / %d of %@", sentBytes, totalBytes, data);
         } else {
-            NSLog(@"Error %d occurred while writing %d / %d of %@", sendValue, sentBytes, totalBytes, data);
+            //NSLog(@"Error %d occurred while writing %d / %d of %@", sendValue, sentBytes, totalBytes, data);
         }
         if (_delegate && [_delegate respondsToSelector:@selector(connection:didWriteDataToLength:tag:)]) {
             dispatch_async(_delegateQueue, ^{
@@ -50,7 +50,7 @@
 
 - (void) readDataWithTimeout:(NSTimeInterval)timeout tag:(long)tag {
     if (_socketFileDescriptor == 0) {
-        NSLog(@"read canceled, socket is 0");
+        //NSLog(@"read canceled, socket is 0");
         return;
     }
     dispatch_async(_networkReadQueue, ^{
@@ -58,7 +58,7 @@
         uint32_t totalBytesReceived = 0;
         ioctl(_socketFileDescriptor, FIONREAD, &bytesAvailable);
         if (bytesAvailable == 0) {
-            NSLog(@"no bytes available for read");
+            //NSLog(@"no bytes available for read");
             bytesAvailable = 4096;
         }
         uint8_t *buffer = malloc(bytesAvailable * sizeof(uint8_t));
@@ -69,7 +69,7 @@
             readValue = usbmuxd_recv_timeout(_socketFileDescriptor, (char*)buffer, bytesAvailable, &totalBytesReceived, (int)(timeout * 1000));
         }
         if (readValue != 0 || totalBytesReceived == 0) {
-            NSLog(@"Error reading on socket %d: %d", _socketFileDescriptor, readValue);
+            //NSLog(@"Error reading on socket %d: %d", _socketFileDescriptor, readValue);
             free(buffer);
             return;
         }
