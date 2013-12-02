@@ -21,6 +21,16 @@
     if (self = [super init]) {
         self.listeningQueue = dispatch_queue_create("SOCKS delegate queue", 0);
         self.listeningSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:self.listeningQueue];
+#ifdef TARGET_OS_IPHONE
+        [_listeningSocket performBlock:^{
+            BOOL enableBackground = [_listeningSocket enableBackgroundingOnSocket];
+            if (!enableBackground) {
+                NSLog(@"Error enabling background listening socket");
+            } else {
+                NSLog(@"Background listening socket enabled");
+            }
+        }];
+#endif
         self.activeSockets = [NSMutableSet set];
     }
     return self;
@@ -42,6 +52,16 @@
 
 - (void) socket:(GCDAsyncSocket *)sock didAcceptNewSocket:(GCDAsyncSocket *)newSocket {
     NSLog(@"Accepted new socket: %@", newSocket);
+#ifdef TARGET_OS_IPHONE
+    [newSocket performBlock:^{
+        BOOL enableBackground = [newSocket enableBackgroundingOnSocket];
+        if (!enableBackground) {
+            NSLog(@"Error enabling background on new socket %@", newSocket);
+        } else {
+            NSLog(@"Backgrounding enabled for new socket: %@", newSocket);
+        }
+    }];
+#endif
     SOCKSProxySocket *proxySocket = [[SOCKSProxySocket alloc] initWithSocket:newSocket delegate:self];
     [self.activeSockets addObject:proxySocket];
 }

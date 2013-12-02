@@ -115,9 +115,8 @@ static void usbmuxdEventCallback(const usbmuxd_event_t *event, void *user_data) 
             }
             return;
         }
-        USBMuxDeviceConnection *connection = [[USBMuxDeviceConnection alloc] init];
-        connection.device = device;
-        connection.socketFileDescriptor = socketFileDescriptor;
+        USBMuxDeviceConnection *connection = [[USBMuxDeviceConnection alloc] initWithDevice:device socketFileDescriptor:socketFileDescriptor];
+        connection.port = port;
         [device.connections addObject:connection];
         if (completionCallback) {
             dispatch_async([USBMuxClient sharedClient].callbackQueue, ^{

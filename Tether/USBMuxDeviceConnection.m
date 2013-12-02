@@ -12,25 +12,24 @@
 
 @implementation USBMuxDeviceConnection
 
-- (void) dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 - (id) init {
     if (self = [super init]) {
-        _socketFileDescriptor = 0;
         _networkReadQueue = dispatch_queue_create("USBMuxDevice Network Read Queue", 0);
         _networkWriteQueue = dispatch_queue_create("USBMuxDevice Network Write Queue", 0);
-        _callbackQueue = dispatch_queue_create("USBMuxDevice Callback Queue", 0);
+        _delegateQueue = dispatch_get_main_queue();
     }
     return self;
 }
 
-- (void) sendData:(NSData *)data {
-    if (!_fileHandle) {
-        NSLog(@"file handle is nil!");
-        return;
+- (id) initWithDevice:(USBMuxDevice*)device socketFileDescriptor:(int)socketFileDescriptor {
+    if (self = [self init]) {
+        _device = device;
+        _socketFileDescriptor = socketFileDescriptor;
     }
+    return self;
+}
+
+- (void) writeData:(NSData*)data tag:(long)tag {
     dispatch_async(_networkWriteQueue, ^{
         NSLog(@"Writing data to device socket %d: %@", _socketFileDescriptor, data);
         uint32_t sentBytes = 0;
@@ -41,11 +40,15 @@
         } else {
             NSLog(@"Error %d occurred while writing %d / %d of %@", sendValue, sentBytes, totalBytes, data);
         }
-        [self readDataFromDeviceWithTimeout:-1];
+        if (_delegate && [_delegate respondsToSelector:@selector(connection:didWriteDataToLength:tag:)]) {
+            dispatch_async(_delegateQueue, ^{
+                [_delegate connection:self didWriteDataToLength:sentBytes tag:tag];
+            });
+        }
     });
 }
 
-- (void) readDataFromDeviceWithTimeout:(NSTimeInterval)timeout {
+- (void) readDataWithTimeout:(NSTimeInterval)timeout tag:(long)tag {
     if (_socketFileDescriptor == 0) {
         NSLog(@"read canceled, socket is 0");
         return;
@@ -71,49 +74,15 @@
             return;
         }
         NSData *receivedData = [[NSData alloc] initWithBytesNoCopy:buffer length:totalBytesReceived freeWhenDone:YES];
-        if (_delegate) {
-            dispatch_async(_callbackQueue, ^{
-                [_delegate connection:self didReceiveData:receivedData];
+        if (_delegate && [_delegate respondsToSelector:@selector(connection:didReadData:tag:)]) {
+            dispatch_async(_delegateQueue, ^{
+                [_delegate connection:self didReadData:receivedData tag:tag];
             });
         }
-        
-        [self readDataFromDeviceWithTimeout:timeout];
     });
 }
 
-- (void) setSocketFileDescriptor:(int)newSocketFileDescriptor {
-    _socketFileDescriptor = newSocketFileDescriptor;
-
-    self.fileHandle = [[NSFileHandle alloc] initWithFileDescriptor:_socketFileDescriptor closeOnDealloc:NO];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataAvailableNotification:) name:NSFileHandleDataAvailableNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(readCompleteNotification:) name:NSFileHandleReadCompletionNotification object:nil];
-    [_fileHandle waitForDataInBackgroundAndNotify];
-}
-
-- (void) readCompleteNotification:(NSNotification*)notification {
-    NSLog(@"read complete notification: %@", notification.userInfo);
-    NSData *data = [notification.userInfo objectForKey:NSFileHandleNotificationDataItem];
-    NSError *error = [notification.userInfo objectForKey:@"NSFileHandleError"];
-    if (error) {
-        NSLog(@"Error reading data from socket: %@", error.userInfo);
-        return;
-    }
-    if (_delegate) {
-        dispatch_async(_callbackQueue, ^{
-            [_delegate connection:self didReceiveData:data];
-        });
-    }
-}
-
-- (void) dataAvailableNotification:(NSNotification*)notification {
-    NSLog(@"Received data available notification: %@", notification.userInfo);
-    [_fileHandle readInBackgroundAndNotify];
-}
-
-
 - (void) disconnect {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
     self.device = nil;
     self.delegate = nil;
     _socketFileDescriptor = 0;

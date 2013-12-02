@@ -53,8 +53,6 @@
 		D9B767CC184A8991000566D6 /* CBRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B767CB184A8991000566D6 /* CBRootViewController.m */; };
 		D9B767CD184A8ABB000566D6 /* SOCKSProxySocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F958BB1845CA1F0007F466 /* SOCKSProxySocket.m */; };
 		D9B767CE184A8AC0000566D6 /* SOCKSProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F958B81845C7BB0007F466 /* SOCKSProxy.m */; };
-		D9B767CF184A8AC6000566D6 /* SOCKSProxySocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F958BB1845CA1F0007F466 /* SOCKSProxySocket.m */; };
-		D9B767D0184A8AC9000566D6 /* SOCKSProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F958B81845C7BB0007F466 /* SOCKSProxy.m */; };
 		D9B767D2184A8B32000566D6 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B767D1184A8B32000566D6 /* MobileCoreServices.framework */; };
 		D9B767D3184A8C22000566D6 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D931A60C1830126D00593FF9 /* GCDAsyncSocket.m */; };
 		D9B767D6184A9432000566D6 /* USBMuxDeviceConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B767D5184A9432000566D6 /* USBMuxDeviceConnection.m */; };
@@ -617,6 +615,13 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Christopher Ballinger";
 				TargetAttributes = {
+					D9B76798184A8734000566D6 = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
 					D9B767B1184A8734000566D6 = {
 						TestTargetID = D90E3254182F07DC00A6F642;
 					};
@@ -688,8 +693,6 @@
 				D9B767D9184A978A000566D6 /* USBMuxDevice.m in Sources */,
 				D90E326C182F07DC00A6F642 /* CBMacAppDelegate.m in Sources */,
 				D90E3297182F18CC00A6F642 /* CBDeviceWindowController.m in Sources */,
-				D9B767D0184A8AC9000566D6 /* SOCKSProxy.m in Sources */,
-				D9B767CF184A8AC6000566D6 /* SOCKSProxySocket.m in Sources */,
 				D931A61418304D1200593FF9 /* CBDeviceConnection.m in Sources */,
 				D9D8110A182F8B80003DCCBB /* USBMuxClient.m in Sources */,
 			);
@@ -1176,6 +1179,7 @@
 				D9B767C2184A8735000566D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D9B767C3184A8735000566D6 /* Build configuration list for PBXNativeTarget "TetherTests" */ = {
 			isa = XCConfigurationList;
@@ -1184,6 +1188,7 @@
 				D9B767C5184A8735000566D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

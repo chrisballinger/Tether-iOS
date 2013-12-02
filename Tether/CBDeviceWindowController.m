@@ -75,6 +75,8 @@ const static uint16_t kDefaultRemotePortNumber = 8123;
     if (self) {
         self.devices = [NSMutableOrderedSet orderedSetWithCapacity:1];
         self.deviceConnections = [NSMutableDictionary dictionary];
+        self.totalBytesRead = 0;
+        self.totalBytesWritten = 0;
     }
     return self;
 }
@@ -189,12 +191,23 @@ const static uint16_t kDefaultRemotePortNumber = 8123;
         if (connection) {
             NSLog(@"New device connection to %@ on port %d", deviceUUID, remotePort);
             CBDeviceConnection *deviceConnection = [[CBDeviceConnection alloc] initWithDeviceConnection:connection socket:newSocket];
+            deviceConnection.delegate = self;
             NSMutableSet *connections = [self connectionsForDevice:connection.device];
             [connections addObject:deviceConnection];
         } else {
             NSLog(@"Error connecting to device %@ on port %d: %@", deviceUUID, remotePort, error);
         }
     }];
-
 }
+
+- (void) connection:(CBDeviceConnection *)connection didReadData:(NSData *)data {
+    _totalBytesRead += data.length;
+    NSLog(@"total bytes read: %lu", (unsigned long)_totalBytesRead);
+}
+
+- (void) connection:(CBDeviceConnection *)connection didWriteDataToLength:(NSUInteger)length {
+    _totalBytesWritten += length;
+    NSLog(@"total bytes written: %lu", (unsigned long)_totalBytesWritten);
+}
+
 @end
