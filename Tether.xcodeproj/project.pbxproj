@@ -37,6 +37,8 @@
 		D931A60D1830126D00593FF9 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D931A60C1830126D00593FF9 /* GCDAsyncSocket.m */; };
 		D931A611183012D600593FF9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D931A610183012D600593FF9 /* Security.framework */; };
 		D931A61418304D1200593FF9 /* CBDeviceConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D931A61318304D1200593FF9 /* CBDeviceConnection.m */; };
+		D98FA7F7184CA00D006D9AC1 /* SOCKSProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = D98FA7F4184CA00D006D9AC1 /* SOCKSProxy.m */; };
+		D98FA7F8184CA00D006D9AC1 /* SOCKSProxySocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D98FA7F6184CA00D006D9AC1 /* SOCKSProxySocket.m */; };
 		D9B7679B184A8734000566D6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B7679A184A8734000566D6 /* Foundation.framework */; };
 		D9B7679D184A8734000566D6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B7679C184A8734000566D6 /* CoreGraphics.framework */; };
 		D9B7679F184A8734000566D6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B7679E184A8734000566D6 /* UIKit.framework */; };
@@ -51,8 +53,6 @@
 		D9B767BF184A8735000566D6 /* TetherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B767BE184A8735000566D6 /* TetherTests.m */; };
 		D9B767C9184A88BA000566D6 /* main-mac.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B767C8184A88BA000566D6 /* main-mac.m */; };
 		D9B767CC184A8991000566D6 /* CBRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B767CB184A8991000566D6 /* CBRootViewController.m */; };
-		D9B767CD184A8ABB000566D6 /* SOCKSProxySocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F958BB1845CA1F0007F466 /* SOCKSProxySocket.m */; };
-		D9B767CE184A8AC0000566D6 /* SOCKSProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F958B81845C7BB0007F466 /* SOCKSProxy.m */; };
 		D9B767D2184A8B32000566D6 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B767D1184A8B32000566D6 /* MobileCoreServices.framework */; };
 		D9B767D3184A8C22000566D6 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D931A60C1830126D00593FF9 /* GCDAsyncSocket.m */; };
 		D9B767D6184A9432000566D6 /* USBMuxDeviceConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B767D5184A9432000566D6 /* USBMuxDeviceConnection.m */; };
@@ -147,6 +147,10 @@
 		D931A61218304D1200593FF9 /* CBDeviceConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDeviceConnection.h; sourceTree = "<group>"; };
 		D931A61318304D1200593FF9 /* CBDeviceConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDeviceConnection.m; sourceTree = "<group>"; };
 		D931A61518307B2900593FF9 /* iproxy.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = iproxy.c; path = Submodules/libusbmuxd/tools/iproxy.c; sourceTree = "<group>"; };
+		D98FA7F3184CA00D006D9AC1 /* SOCKSProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOCKSProxy.h; path = Submodules/ProxyKit/ProxyKit/SOCKSProxy.h; sourceTree = SOURCE_ROOT; };
+		D98FA7F4184CA00D006D9AC1 /* SOCKSProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOCKSProxy.m; path = Submodules/ProxyKit/ProxyKit/SOCKSProxy.m; sourceTree = SOURCE_ROOT; };
+		D98FA7F5184CA00D006D9AC1 /* SOCKSProxySocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOCKSProxySocket.h; path = Submodules/ProxyKit/ProxyKit/SOCKSProxySocket.h; sourceTree = SOURCE_ROOT; };
+		D98FA7F6184CA00D006D9AC1 /* SOCKSProxySocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOCKSProxySocket.m; path = Submodules/ProxyKit/ProxyKit/SOCKSProxySocket.m; sourceTree = SOURCE_ROOT; };
 		D9B76799184A8734000566D6 /* Tether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9B7679A184A8734000566D6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D9B7679C184A8734000566D6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -179,10 +183,6 @@
 		D9D81103182F8044003DCCBB /* usbmuxd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = usbmuxd.h; path = Submodules/libusbmuxd/include/usbmuxd.h; sourceTree = "<group>"; };
 		D9D81108182F8B80003DCCBB /* USBMuxClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USBMuxClient.h; sourceTree = "<group>"; };
 		D9D81109182F8B80003DCCBB /* USBMuxClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USBMuxClient.m; sourceTree = "<group>"; };
-		D9F958B71845C7BB0007F466 /* SOCKSProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOCKSProxy.h; sourceTree = "<group>"; };
-		D9F958B81845C7BB0007F466 /* SOCKSProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOCKSProxy.m; sourceTree = "<group>"; };
-		D9F958BA1845CA1F0007F466 /* SOCKSProxySocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOCKSProxySocket.h; sourceTree = "<group>"; };
-		D9F958BB1845CA1F0007F466 /* SOCKSProxySocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOCKSProxySocket.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,7 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				D9B767C7184A877A000566D6 /* USBMuxClient */,
-				D9B767C6184A8763000566D6 /* SOCKSProxy */,
+				D9B767C6184A8763000566D6 /* ProxyKit */,
 				D931A60F1830128000593FF9 /* Submodules */,
 				D90E325E182F07DC00A6F642 /* TetherMac */,
 				D9B767A0184A8734000566D6 /* Tether */,
@@ -438,15 +438,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D9B767C6184A8763000566D6 /* SOCKSProxy */ = {
+		D9B767C6184A8763000566D6 /* ProxyKit */ = {
 			isa = PBXGroup;
 			children = (
-				D9F958BA1845CA1F0007F466 /* SOCKSProxySocket.h */,
-				D9F958BB1845CA1F0007F466 /* SOCKSProxySocket.m */,
-				D9F958B71845C7BB0007F466 /* SOCKSProxy.h */,
-				D9F958B81845C7BB0007F466 /* SOCKSProxy.m */,
+				D98FA7F3184CA00D006D9AC1 /* SOCKSProxy.h */,
+				D98FA7F4184CA00D006D9AC1 /* SOCKSProxy.m */,
+				D98FA7F5184CA00D006D9AC1 /* SOCKSProxySocket.h */,
+				D98FA7F6184CA00D006D9AC1 /* SOCKSProxySocket.m */,
 			);
-			name = SOCKSProxy;
+			name = ProxyKit;
 			path = Tether;
 			sourceTree = "<group>";
 		};
@@ -739,11 +739,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9B767D3184A8C22000566D6 /* GCDAsyncSocket.m in Sources */,
+				D98FA7F8184CA00D006D9AC1 /* SOCKSProxySocket.m in Sources */,
 				D9B767A7184A8734000566D6 /* main.m in Sources */,
 				D9B767AB184A8734000566D6 /* CBAppDelegate.m in Sources */,
 				D9B767CC184A8991000566D6 /* CBRootViewController.m in Sources */,
-				D9B767CD184A8ABB000566D6 /* SOCKSProxySocket.m in Sources */,
-				D9B767CE184A8AC0000566D6 /* SOCKSProxy.m in Sources */,
+				D98FA7F7184CA00D006D9AC1 /* SOCKSProxy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

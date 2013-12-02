@@ -10,3 +10,6 @@
 [submodule "Submodules/CocoaLumberjack"]
 	path = Submodules/CocoaLumberjack
 	url = git@github.com:robbiehanson/CocoaLumberjack.git
+[submodule "Submodules/ProxyKit"]
+	path = Submodules/ProxyKit
+	url = git@github.com:chrisballinger/ProxyKit.git
