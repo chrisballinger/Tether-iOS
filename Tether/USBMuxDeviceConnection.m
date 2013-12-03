@@ -75,7 +75,7 @@
     }
 }
 
-- (void) disconnect {
+- (void) disconnectWithError:(NSError*)error {
     _device = nil;
     _delegate = nil;
     _isConnected = NO;
@@ -84,10 +84,14 @@
     if (disconnectValue == -1) {
         [self didDisconnectWithError:[self errorWithDescription:@"Couldn't disconnect device connection." code:101]];
     } else if (disconnectValue == 0) {
-        [self didDisconnectWithError:nil];
+        [self didDisconnectWithError:error];
     } else {
-        [self didDisconnectWithError:[self errorWithDescription:@"Unknown error while disconnecting device connection." code:101]];
+        [self didDisconnectWithError:[self errorWithDescription:@"Unknown error while disconnecting device connection." code:102]];
     }
+}
+
+- (void) disconnect {
+    [self disconnectWithError:nil];
 }
 
 
@@ -101,14 +105,13 @@
         uint32_t totalBytes = (uint32_t)data.length;
         int sendValue = usbmuxd_send(_socketFileDescriptor, [data bytes], totalBytes, &sentBytes);
         if (sendValue == 0) {
-            //NSLog(@"Wrote %d / %d of %@", sentBytes, totalBytes, data);
+            if (_delegate && [_delegate respondsToSelector:@selector(connection:didWriteDataToLength:tag:)]) {
+                dispatch_async(_callbackQueue, ^{
+                    [_delegate connection:self didWriteDataToLength:sentBytes tag:tag];
+                });
+            }
         } else {
-            //NSLog(@"Error %d occurred while writing %d / %d of %@", sendValue, sentBytes, totalBytes, data);
-        }
-        if (_delegate && [_delegate respondsToSelector:@selector(connection:didWriteDataToLength:tag:)]) {
-            dispatch_async(_callbackQueue, ^{
-                [_delegate connection:self didWriteDataToLength:sentBytes tag:tag];
-            });
+            [self disconnectWithError:[self errorWithDescription:@"Error writing to socket" code:103]];
         }
     });
 }

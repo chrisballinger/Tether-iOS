@@ -31,6 +31,7 @@ static void usbmuxdEventCallback(const usbmuxd_event_t *event, void *user_data) 
     } else if (event->event == UE_DEVICE_REMOVE) {
         deviceStatus = kUSBMuxDeviceStatusRemoved;
         nativeDevice.isVisible = NO;
+        [nativeDevice disconnect];
     }
     
     id<USBMuxClientDelegate> delegate = [USBMuxClient sharedClient].delegate;
