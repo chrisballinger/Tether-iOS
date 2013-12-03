@@ -105,47 +105,6 @@ static void usbmuxdEventCallback(const usbmuxd_event_t *event, void *user_data) 
     });
 }
 
-
-+ (void) connectDevice:(USBMuxDevice *)device port:(uint16_t)port completionCallback:(USBMuxDeviceConnectionBlock)completionCallback {
-    dispatch_async([USBMuxClient sharedClient].networkQueue, ^{
-        int socketFileDescriptor = usbmuxd_connect(device.handle, port);
-        if (socketFileDescriptor == -1) {
-            if (completionCallback) {
-                completionCallback(nil, [self errorWithDescription:@"Couldn't connect device." code:100]);
-            }
-            return;
-        }
-        USBMuxDeviceConnection *connection = [[USBMuxDeviceConnection alloc] initWithDevice:device socketFileDescriptor:socketFileDescriptor];
-        connection.port = port;
-        [device.connections addObject:connection];
-        if (completionCallback) {
-            dispatch_async([USBMuxClient sharedClient].callbackQueue, ^{
-                completionCallback(connection, nil);
-            });
-        }
-    });
-}
-
-+ (void) disconnectDevice:(USBMuxDevice *)device completionCallback:(USBMuxDeviceCompletionBlock)completionCallback {
-    dispatch_async([USBMuxClient sharedClient].networkQueue, ^{
-        for (USBMuxDeviceConnection *connection in device.connections) {
-            int disconnectValue = usbmuxd_disconnect(connection.socketFileDescriptor);
-            if (disconnectValue == -1) {
-                if (completionCallback) {
-                    dispatch_async([USBMuxClient sharedClient].callbackQueue, ^{
-                        completionCallback(NO, [self errorWithDescription:@"Couldn't disconnect device connection." code:101]);
-                    });
-                }
-            }
-        }
-        if (completionCallback) {
-            dispatch_async([USBMuxClient sharedClient].callbackQueue, ^{
-                completionCallback(YES, nil);
-            });
-        }
-    });
-}
-
 + (USBMuxClient*) sharedClient {
     static dispatch_once_t onceToken;
     static USBMuxClient *_sharedClient = nil;

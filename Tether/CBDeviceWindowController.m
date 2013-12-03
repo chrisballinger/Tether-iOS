@@ -186,8 +186,8 @@ const static uint16_t kDefaultRemotePortNumber = 8123;
     NSLog(@"new local connection accepted on %@:%d", [newSocket localHost], [newSocket localPort]);
     uint16_t remotePort = [self customOrDefaultRemotePort];
     NSString *deviceUUID = [self.selectedDevice.udid copy];
-
-    [USBMuxClient connectDevice:self.selectedDevice port:remotePort completionCallback:^(USBMuxDeviceConnection *connection, NSError *error) {
+    
+    [_selectedDevice connectToPort:remotePort completionBlock:^(USBMuxDeviceConnection *connection, NSError *error) {
         if (connection) {
             NSLog(@"New device connection to %@ on port %d", deviceUUID, remotePort);
             CBDeviceConnection *deviceConnection = [[CBDeviceConnection alloc] initWithDeviceConnection:connection socket:newSocket];
