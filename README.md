@@ -54,7 +54,7 @@ Now go to `about:config` in the address bar and change `network.proxy.socks_remo
 
 [Chris Ballinger](https://github.com/chrisballinger)
 
-[![bitcoin](https://coinbase.com/assets/buttons/donation_large-6ec72b1a9eec516944e50a22aca7db35.png)](https://coinbase.com/checkouts/1cf35f00d722205726f50b940786c413) [![donation](https://chatsecure.org/static/images/paypal_donate.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XRBHJ9AX5VWNA) 
+[![bitcoin](https://coinbase.com/assets/buttons/donation_large-6ec72b1a9eec516944e50a22aca7db35.png)](https://coinbase.com/checkouts/1f694173d39984b5c245ae888669ade4) [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YMUV96X4TPRNW) 
 
 ## License
 
