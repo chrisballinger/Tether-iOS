@@ -10,6 +10,7 @@
 #import "USBMuxClient.h"
 #import "USBMuxDevice.h"
 #import "CBDeviceConnection.h"
+#import "CBTunDevice.h"
 
 const static uint16_t kDefaultLocalPortNumber = 8000;
 const static uint16_t kDefaultRemotePortNumber = 8123;
@@ -130,6 +131,9 @@ const static uint16_t kDefaultRemotePortNumber = 8123;
 }
 
 - (IBAction)refreshButtonPressed:(id)sender {
+    CBTunDevice *tunDevice = [[CBTunDevice alloc] init];
+    [tunDevice openTun];
+    
     if (self.listeningSocket) {
         NSLog(@"Disconnecting local socket");
         [self.listeningSocket disconnect];

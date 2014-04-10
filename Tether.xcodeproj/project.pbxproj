@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD0BD7B13E2B4492A294840F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDD1E9FE263401C93089B68 /* libPods.a */; };
 		D90E3259182F07DC00A6F642 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90E3258182F07DC00A6F642 /* Cocoa.framework */; };
 		D90E3263182F07DC00A6F642 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D90E3261182F07DC00A6F642 /* InfoPlist.strings */; };
 		D90E3269182F07DC00A6F642 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D90E3267182F07DC00A6F642 /* Credits.rtf */; };
@@ -15,28 +16,10 @@
 		D90E3271182F07DC00A6F642 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D90E3270182F07DC00A6F642 /* Images.xcassets */; };
 		D90E3297182F18CC00A6F642 /* CBDeviceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D90E3295182F18CC00A6F642 /* CBDeviceWindowController.m */; };
 		D90E3298182F18CC00A6F642 /* CBDeviceWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D90E3296182F18CC00A6F642 /* CBDeviceWindowController.xib */; };
-		D90E32BF182F638800A6F642 /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = D90E32B2182F638800A6F642 /* base64.c */; };
-		D90E32C0182F638800A6F642 /* base64.h in Headers */ = {isa = PBXBuildFile; fileRef = D90E32B3182F638800A6F642 /* base64.h */; };
-		D90E32C1182F638800A6F642 /* bplist.c in Sources */ = {isa = PBXBuildFile; fileRef = D90E32B4182F638800A6F642 /* bplist.c */; };
-		D90E32C2182F638800A6F642 /* bytearray.c in Sources */ = {isa = PBXBuildFile; fileRef = D90E32B5182F638800A6F642 /* bytearray.c */; };
-		D90E32C3182F638800A6F642 /* bytearray.h in Headers */ = {isa = PBXBuildFile; fileRef = D90E32B6182F638800A6F642 /* bytearray.h */; };
-		D90E32C4182F638800A6F642 /* common.h in Headers */ = {isa = PBXBuildFile; fileRef = D90E32B7182F638800A6F642 /* common.h */; };
-		D90E32C5182F638800A6F642 /* hashtable.c in Sources */ = {isa = PBXBuildFile; fileRef = D90E32B8182F638800A6F642 /* hashtable.c */; };
-		D90E32C6182F638800A6F642 /* hashtable.h in Headers */ = {isa = PBXBuildFile; fileRef = D90E32B9182F638800A6F642 /* hashtable.h */; };
-		D90E32C7182F638800A6F642 /* plist.c in Sources */ = {isa = PBXBuildFile; fileRef = D90E32BA182F638800A6F642 /* plist.c */; };
-		D90E32C8182F638800A6F642 /* plist.h in Headers */ = {isa = PBXBuildFile; fileRef = D90E32BB182F638800A6F642 /* plist.h */; };
-		D90E32C9182F638800A6F642 /* ptrarray.c in Sources */ = {isa = PBXBuildFile; fileRef = D90E32BC182F638800A6F642 /* ptrarray.c */; };
-		D90E32CA182F638800A6F642 /* ptrarray.h in Headers */ = {isa = PBXBuildFile; fileRef = D90E32BD182F638800A6F642 /* ptrarray.h */; };
-		D90E32CB182F638800A6F642 /* xplist.c in Sources */ = {isa = PBXBuildFile; fileRef = D90E32BE182F638800A6F642 /* xplist.c */; };
-		D90E32CE182F653300A6F642 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D90E32CD182F653300A6F642 /* libxml2.dylib */; };
-		D90E32DD182F663A00A6F642 /* iterator.c in Sources */ = {isa = PBXBuildFile; fileRef = D90E32D8182F663A00A6F642 /* iterator.c */; };
-		D90E32DE182F663A00A6F642 /* list.c in Sources */ = {isa = PBXBuildFile; fileRef = D90E32D9182F663A00A6F642 /* list.c */; };
-		D90E32DF182F663A00A6F642 /* node_iterator.c in Sources */ = {isa = PBXBuildFile; fileRef = D90E32DA182F663A00A6F642 /* node_iterator.c */; };
-		D90E32E0182F663A00A6F642 /* node_list.c in Sources */ = {isa = PBXBuildFile; fileRef = D90E32DB182F663A00A6F642 /* node_list.c */; };
-		D90E32E1182F663A00A6F642 /* node.c in Sources */ = {isa = PBXBuildFile; fileRef = D90E32DC182F663A00A6F642 /* node.c */; };
-		D931A60D1830126D00593FF9 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D931A60C1830126D00593FF9 /* GCDAsyncSocket.m */; };
 		D931A611183012D600593FF9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D931A610183012D600593FF9 /* Security.framework */; };
 		D931A61418304D1200593FF9 /* CBDeviceConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D931A61318304D1200593FF9 /* CBDeviceConnection.m */; };
+		D950871618F6836900EF884A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDD1E9FE263401C93089B68 /* libPods.a */; };
+		D95309DA18CBE31E00393DB4 /* CBTunDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = D95309D918CBE31E00393DB4 /* CBTunDevice.m */; };
 		D98FA7F7184CA00D006D9AC1 /* SOCKSProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = D98FA7F4184CA00D006D9AC1 /* SOCKSProxy.m */; };
 		D98FA7F8184CA00D006D9AC1 /* SOCKSProxySocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D98FA7F6184CA00D006D9AC1 /* SOCKSProxySocket.m */; };
 		D9B7679B184A8734000566D6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B7679A184A8734000566D6 /* Foundation.framework */; };
@@ -54,43 +37,14 @@
 		D9B767C9184A88BA000566D6 /* main-mac.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B767C8184A88BA000566D6 /* main-mac.m */; };
 		D9B767CC184A8991000566D6 /* CBRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B767CB184A8991000566D6 /* CBRootViewController.m */; };
 		D9B767D2184A8B32000566D6 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B767D1184A8B32000566D6 /* MobileCoreServices.framework */; };
-		D9B767D3184A8C22000566D6 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D931A60C1830126D00593FF9 /* GCDAsyncSocket.m */; };
 		D9B767D6184A9432000566D6 /* USBMuxDeviceConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B767D5184A9432000566D6 /* USBMuxDeviceConnection.m */; };
 		D9B767D9184A978A000566D6 /* USBMuxDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B767D8184A978A000566D6 /* USBMuxDevice.m */; };
-		D9D810FD182F6794003DCCBB /* collection.c in Sources */ = {isa = PBXBuildFile; fileRef = D9D810F8182F6794003DCCBB /* collection.c */; };
-		D9D810FE182F6794003DCCBB /* collection.h in Headers */ = {isa = PBXBuildFile; fileRef = D9D810F9182F6794003DCCBB /* collection.h */; };
-		D9D810FF182F6794003DCCBB /* libusbmuxd.c in Sources */ = {isa = PBXBuildFile; fileRef = D9D810FA182F6794003DCCBB /* libusbmuxd.c */; };
-		D9D81100182F6794003DCCBB /* sock_stuff.c in Sources */ = {isa = PBXBuildFile; fileRef = D9D810FB182F6794003DCCBB /* sock_stuff.c */; };
-		D9D81101182F6794003DCCBB /* sock_stuff.h in Headers */ = {isa = PBXBuildFile; fileRef = D9D810FC182F6794003DCCBB /* sock_stuff.h */; };
-		D9D81104182F8303003DCCBB /* libusbmuxd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D90E32AA182F629600A6F642 /* libusbmuxd.a */; };
-		D9D81105182F83CF003DCCBB /* libcnary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D90E32D3182F655600A6F642 /* libcnary.a */; };
-		D9D81106182F83D2003DCCBB /* libplist.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D90E32A0182F626000A6F642 /* libplist.a */; };
 		D9D81107182F83DD003DCCBB /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D90E32CD182F653300A6F642 /* libxml2.dylib */; };
 		D9D8110A182F8B80003DCCBB /* USBMuxClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D81109182F8B80003DCCBB /* USBMuxClient.m */; };
+		D9FEA98118EA6E6C00EA736D /* CBNetworkServiceEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FEA98018EA6E6C00EA736D /* CBNetworkServiceEditor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D90E32AE182F62A200A6F642 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D90E324D182F07DC00A6F642 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D90E329F182F626000A6F642;
-			remoteInfo = libplist;
-		};
-		D90E32B0182F62A700A6F642 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D90E324D182F07DC00A6F642 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D90E32A9182F629600A6F642;
-			remoteInfo = libusbmuxd;
-		};
-		D90E32E2182F665300A6F642 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D90E324D182F07DC00A6F642 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D90E32D2182F655500A6F642;
-			remoteInfo = libcnary;
-		};
 		D9B767B6184A8735000566D6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D90E324D182F07DC00A6F642 /* Project object */;
@@ -101,6 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2CDD1E9FE263401C93089B68 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3344A729C1604CC882D91F05 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		D90E3255182F07DC00A6F642 /* TetherMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TetherMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D90E3258182F07DC00A6F642 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D90E325B182F07DC00A6F642 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -119,34 +75,14 @@
 		D90E3294182F18CC00A6F642 /* CBDeviceWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDeviceWindowController.h; sourceTree = "<group>"; };
 		D90E3295182F18CC00A6F642 /* CBDeviceWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDeviceWindowController.m; sourceTree = "<group>"; };
 		D90E3296182F18CC00A6F642 /* CBDeviceWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBDeviceWindowController.xib; sourceTree = "<group>"; };
-		D90E32A0182F626000A6F642 /* libplist.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libplist.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D90E32AA182F629600A6F642 /* libusbmuxd.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libusbmuxd.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D90E32B2182F638800A6F642 /* base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = base64.c; path = Submodules/libplist/src/base64.c; sourceTree = "<group>"; };
-		D90E32B3182F638800A6F642 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = base64.h; path = Submodules/libplist/src/base64.h; sourceTree = "<group>"; };
-		D90E32B4182F638800A6F642 /* bplist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bplist.c; path = Submodules/libplist/src/bplist.c; sourceTree = "<group>"; };
-		D90E32B5182F638800A6F642 /* bytearray.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bytearray.c; path = Submodules/libplist/src/bytearray.c; sourceTree = "<group>"; };
-		D90E32B6182F638800A6F642 /* bytearray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bytearray.h; path = Submodules/libplist/src/bytearray.h; sourceTree = "<group>"; };
-		D90E32B7182F638800A6F642 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = common.h; path = Submodules/libplist/src/common.h; sourceTree = "<group>"; };
-		D90E32B8182F638800A6F642 /* hashtable.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hashtable.c; path = Submodules/libplist/src/hashtable.c; sourceTree = "<group>"; };
-		D90E32B9182F638800A6F642 /* hashtable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hashtable.h; path = Submodules/libplist/src/hashtable.h; sourceTree = "<group>"; };
-		D90E32BA182F638800A6F642 /* plist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = plist.c; path = Submodules/libplist/src/plist.c; sourceTree = "<group>"; };
-		D90E32BB182F638800A6F642 /* plist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = plist.h; path = Submodules/libplist/src/plist.h; sourceTree = "<group>"; };
-		D90E32BC182F638800A6F642 /* ptrarray.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ptrarray.c; path = Submodules/libplist/src/ptrarray.c; sourceTree = "<group>"; };
-		D90E32BD182F638800A6F642 /* ptrarray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ptrarray.h; path = Submodules/libplist/src/ptrarray.h; sourceTree = "<group>"; };
-		D90E32BE182F638800A6F642 /* xplist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = xplist.c; path = Submodules/libplist/src/xplist.c; sourceTree = "<group>"; };
 		D90E32CD182F653300A6F642 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		D90E32D3182F655600A6F642 /* libcnary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libcnary.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D90E32D8182F663A00A6F642 /* iterator.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = iterator.c; path = Submodules/libplist/libcnary/iterator.c; sourceTree = "<group>"; };
-		D90E32D9182F663A00A6F642 /* list.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = list.c; path = Submodules/libplist/libcnary/list.c; sourceTree = "<group>"; };
-		D90E32DA182F663A00A6F642 /* node_iterator.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = node_iterator.c; path = Submodules/libplist/libcnary/node_iterator.c; sourceTree = "<group>"; };
-		D90E32DB182F663A00A6F642 /* node_list.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = node_list.c; path = Submodules/libplist/libcnary/node_list.c; sourceTree = "<group>"; };
-		D90E32DC182F663A00A6F642 /* node.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = node.c; path = Submodules/libplist/libcnary/node.c; sourceTree = "<group>"; };
-		D931A60B1830126D00593FF9 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDAsyncSocket.h; path = Submodules/CocoaAsyncSocket/GCD/GCDAsyncSocket.h; sourceTree = "<group>"; };
-		D931A60C1830126D00593FF9 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncSocket.m; path = Submodules/CocoaAsyncSocket/GCD/GCDAsyncSocket.m; sourceTree = "<group>"; };
 		D931A610183012D600593FF9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D931A61218304D1200593FF9 /* CBDeviceConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDeviceConnection.h; sourceTree = "<group>"; };
 		D931A61318304D1200593FF9 /* CBDeviceConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDeviceConnection.m; sourceTree = "<group>"; };
-		D931A61518307B2900593FF9 /* iproxy.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = iproxy.c; path = Submodules/libusbmuxd/tools/iproxy.c; sourceTree = "<group>"; };
+		D940D2541855A2D200DBA886 /* UTUN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UTUN.h; sourceTree = "<group>"; };
+		D940D2551855A2D200DBA886 /* UTUN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UTUN.m; sourceTree = "<group>"; };
+		D95309D818CBE31E00393DB4 /* CBTunDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTunDevice.h; sourceTree = "<group>"; };
+		D95309D918CBE31E00393DB4 /* CBTunDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTunDevice.m; sourceTree = "<group>"; };
 		D98FA7F3184CA00D006D9AC1 /* SOCKSProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOCKSProxy.h; path = Submodules/ProxyKit/ProxyKit/SOCKSProxy.h; sourceTree = SOURCE_ROOT; };
 		D98FA7F4184CA00D006D9AC1 /* SOCKSProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOCKSProxy.m; path = Submodules/ProxyKit/ProxyKit/SOCKSProxy.m; sourceTree = SOURCE_ROOT; };
 		D98FA7F5184CA00D006D9AC1 /* SOCKSProxySocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOCKSProxySocket.h; path = Submodules/ProxyKit/ProxyKit/SOCKSProxySocket.h; sourceTree = SOURCE_ROOT; };
@@ -174,15 +110,11 @@
 		D9B767D5184A9432000566D6 /* USBMuxDeviceConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USBMuxDeviceConnection.m; sourceTree = "<group>"; };
 		D9B767D7184A978A000566D6 /* USBMuxDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USBMuxDevice.h; sourceTree = "<group>"; };
 		D9B767D8184A978A000566D6 /* USBMuxDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USBMuxDevice.m; sourceTree = "<group>"; };
-		D9D810F8182F6794003DCCBB /* collection.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = collection.c; path = Submodules/libusbmuxd/src/collection.c; sourceTree = "<group>"; };
-		D9D810F9182F6794003DCCBB /* collection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = collection.h; path = Submodules/libusbmuxd/src/collection.h; sourceTree = "<group>"; };
-		D9D810FA182F6794003DCCBB /* libusbmuxd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = libusbmuxd.c; path = Submodules/libusbmuxd/src/libusbmuxd.c; sourceTree = "<group>"; };
-		D9D810FB182F6794003DCCBB /* sock_stuff.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sock_stuff.c; path = Submodules/libusbmuxd/src/sock_stuff.c; sourceTree = "<group>"; };
-		D9D810FC182F6794003DCCBB /* sock_stuff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sock_stuff.h; path = Submodules/libusbmuxd/src/sock_stuff.h; sourceTree = "<group>"; };
-		D9D81102182F8044003DCCBB /* usbmuxd-proto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "usbmuxd-proto.h"; path = "Submodules/libusbmuxd/include/usbmuxd-proto.h"; sourceTree = "<group>"; };
-		D9D81103182F8044003DCCBB /* usbmuxd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = usbmuxd.h; path = Submodules/libusbmuxd/include/usbmuxd.h; sourceTree = "<group>"; };
+		D9C40B4718F67BF2005CD748 /* libPods-libplist.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-libplist.a"; path = "../../Library/Developer/Xcode/DerivedData/Tether-fesemxykvcaanucpsmrkosdeoujg/Build/Products/Debug/libPods-libplist.a"; sourceTree = "<group>"; };
 		D9D81108182F8B80003DCCBB /* USBMuxClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USBMuxClient.h; sourceTree = "<group>"; };
 		D9D81109182F8B80003DCCBB /* USBMuxClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USBMuxClient.m; sourceTree = "<group>"; };
+		D9FEA97F18EA6E6C00EA736D /* CBNetworkServiceEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBNetworkServiceEditor.h; sourceTree = "<group>"; };
+		D9FEA98018EA6E6C00EA736D /* CBNetworkServiceEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBNetworkServiceEditor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,32 +124,8 @@
 			files = (
 				D931A611183012D600593FF9 /* Security.framework in Frameworks */,
 				D9D81107182F83DD003DCCBB /* libxml2.dylib in Frameworks */,
-				D9D81106182F83D2003DCCBB /* libplist.a in Frameworks */,
-				D9D81105182F83CF003DCCBB /* libcnary.a in Frameworks */,
-				D9D81104182F8303003DCCBB /* libusbmuxd.a in Frameworks */,
 				D90E3259182F07DC00A6F642 /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D90E329D182F626000A6F642 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D90E32CE182F653300A6F642 /* libxml2.dylib in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D90E32A7182F629600A6F642 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D90E32D0182F655500A6F642 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				AD0BD7B13E2B4492A294840F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +133,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D950871618F6836900EF884A /* libPods.a in Frameworks */,
 				D9B767D2184A8B32000566D6 /* MobileCoreServices.framework in Frameworks */,
 				D9B7679D184A8734000566D6 /* CoreGraphics.framework in Frameworks */,
 				D9B7679F184A8734000566D6 /* UIKit.framework in Frameworks */,
@@ -250,12 +159,12 @@
 			children = (
 				D9B767C7184A877A000566D6 /* USBMuxClient */,
 				D9B767C6184A8763000566D6 /* ProxyKit */,
-				D931A60F1830128000593FF9 /* Submodules */,
 				D90E325E182F07DC00A6F642 /* TetherMac */,
 				D9B767A0184A8734000566D6 /* Tether */,
 				D9B767B8184A8735000566D6 /* TetherTests */,
 				D90E3257182F07DC00A6F642 /* Frameworks */,
 				D90E3256182F07DC00A6F642 /* Products */,
+				3344A729C1604CC882D91F05 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -263,9 +172,6 @@
 			isa = PBXGroup;
 			children = (
 				D90E3255182F07DC00A6F642 /* TetherMac.app */,
-				D90E32A0182F626000A6F642 /* libplist.a */,
-				D90E32AA182F629600A6F642 /* libusbmuxd.a */,
-				D90E32D3182F655600A6F642 /* libcnary.a */,
 				D9B76799184A8734000566D6 /* Tether.app */,
 				D9B767B2184A8734000566D6 /* TetherTests.xctest */,
 			);
@@ -275,6 +181,7 @@
 		D90E3257182F07DC00A6F642 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D9C40B4718F67BF2005CD748 /* libPods-libplist.a */,
 				D9B767D1184A8B32000566D6 /* MobileCoreServices.framework */,
 				D931A610183012D600593FF9 /* Security.framework */,
 				D90E32CD182F653300A6F642 /* libxml2.dylib */,
@@ -284,6 +191,7 @@
 				D9B7679C184A8734000566D6 /* CoreGraphics.framework */,
 				D9B7679E184A8734000566D6 /* UIKit.framework */,
 				D90E325A182F07DC00A6F642 /* Other Frameworks */,
+				2CDD1E9FE263401C93089B68 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -301,6 +209,10 @@
 		D90E325E182F07DC00A6F642 /* TetherMac */ = {
 			isa = PBXGroup;
 			children = (
+				D95309D818CBE31E00393DB4 /* CBTunDevice.h */,
+				D95309D918CBE31E00393DB4 /* CBTunDevice.m */,
+				D9FEA97F18EA6E6C00EA736D /* CBNetworkServiceEditor.h */,
+				D9FEA98018EA6E6C00EA736D /* CBNetworkServiceEditor.m */,
 				D90E326A182F07DC00A6F642 /* CBMacAppDelegate.h */,
 				D90E326B182F07DC00A6F642 /* CBMacAppDelegate.m */,
 				D931A61218304D1200593FF9 /* CBDeviceConnection.h */,
@@ -327,73 +239,6 @@
 				D90E3267182F07DC00A6F642 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		D90E32CC182F638D00A6F642 /* libplist */ = {
-			isa = PBXGroup;
-			children = (
-				D90E32D7182F65B100A6F642 /* libcnary */,
-				D90E32B2182F638800A6F642 /* base64.c */,
-				D90E32B3182F638800A6F642 /* base64.h */,
-				D90E32B4182F638800A6F642 /* bplist.c */,
-				D90E32B5182F638800A6F642 /* bytearray.c */,
-				D90E32B6182F638800A6F642 /* bytearray.h */,
-				D90E32B7182F638800A6F642 /* common.h */,
-				D90E32B8182F638800A6F642 /* hashtable.c */,
-				D90E32B9182F638800A6F642 /* hashtable.h */,
-				D90E32BA182F638800A6F642 /* plist.c */,
-				D90E32BB182F638800A6F642 /* plist.h */,
-				D90E32BC182F638800A6F642 /* ptrarray.c */,
-				D90E32BD182F638800A6F642 /* ptrarray.h */,
-				D90E32BE182F638800A6F642 /* xplist.c */,
-			);
-			name = libplist;
-			sourceTree = "<group>";
-		};
-		D90E32D7182F65B100A6F642 /* libcnary */ = {
-			isa = PBXGroup;
-			children = (
-				D90E32D8182F663A00A6F642 /* iterator.c */,
-				D90E32D9182F663A00A6F642 /* list.c */,
-				D90E32DA182F663A00A6F642 /* node_iterator.c */,
-				D90E32DB182F663A00A6F642 /* node_list.c */,
-				D90E32DC182F663A00A6F642 /* node.c */,
-			);
-			name = libcnary;
-			sourceTree = "<group>";
-		};
-		D90E32E4182F676200A6F642 /* libusbmuxd */ = {
-			isa = PBXGroup;
-			children = (
-				D931A61518307B2900593FF9 /* iproxy.c */,
-				D9D81102182F8044003DCCBB /* usbmuxd-proto.h */,
-				D9D81103182F8044003DCCBB /* usbmuxd.h */,
-				D9D810F8182F6794003DCCBB /* collection.c */,
-				D9D810F9182F6794003DCCBB /* collection.h */,
-				D9D810FA182F6794003DCCBB /* libusbmuxd.c */,
-				D9D810FB182F6794003DCCBB /* sock_stuff.c */,
-				D9D810FC182F6794003DCCBB /* sock_stuff.h */,
-			);
-			name = libusbmuxd;
-			sourceTree = "<group>";
-		};
-		D931A60E1830127400593FF9 /* CocoaAsyncSocket */ = {
-			isa = PBXGroup;
-			children = (
-				D931A60B1830126D00593FF9 /* GCDAsyncSocket.h */,
-				D931A60C1830126D00593FF9 /* GCDAsyncSocket.m */,
-			);
-			name = CocoaAsyncSocket;
-			sourceTree = "<group>";
-		};
-		D931A60F1830128000593FF9 /* Submodules */ = {
-			isa = PBXGroup;
-			children = (
-				D931A60E1830127400593FF9 /* CocoaAsyncSocket */,
-				D90E32E4182F676200A6F642 /* libusbmuxd */,
-				D90E32CC182F638D00A6F642 /* libplist */,
-			);
-			name = Submodules;
 			sourceTree = "<group>";
 		};
 		D9B767A0184A8734000566D6 /* Tether */ = {
@@ -453,6 +298,8 @@
 		D9B767C7184A877A000566D6 /* USBMuxClient */ = {
 			isa = PBXGroup;
 			children = (
+				D940D2541855A2D200DBA886 /* UTUN.h */,
+				D940D2551855A2D200DBA886 /* UTUN.m */,
 				D9B767D7184A978A000566D6 /* USBMuxDevice.h */,
 				D9B767D8184A978A000566D6 /* USBMuxDevice.m */,
 				D9B767D4184A9432000566D6 /* USBMuxDeviceConnection.h */,
@@ -466,109 +313,25 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		D90E329E182F626000A6F642 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D90E32C3182F638800A6F642 /* bytearray.h in Headers */,
-				D90E32CA182F638800A6F642 /* ptrarray.h in Headers */,
-				D90E32C8182F638800A6F642 /* plist.h in Headers */,
-				D90E32C6182F638800A6F642 /* hashtable.h in Headers */,
-				D90E32C4182F638800A6F642 /* common.h in Headers */,
-				D90E32C0182F638800A6F642 /* base64.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D90E32A8182F629600A6F642 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D9D810FE182F6794003DCCBB /* collection.h in Headers */,
-				D9D81101182F6794003DCCBB /* sock_stuff.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D90E32D1182F655500A6F642 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
 		D90E3254182F07DC00A6F642 /* TetherMac */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D90E3286182F07DC00A6F642 /* Build configuration list for PBXNativeTarget "TetherMac" */;
 			buildPhases = (
+				DEF537F12E604F69A35A5614 /* Check Pods Manifest.lock */,
 				D90E3251182F07DC00A6F642 /* Sources */,
 				D90E3252182F07DC00A6F642 /* Frameworks */,
 				D90E3253182F07DC00A6F642 /* Resources */,
+				551353FA86374048AD71A2B9 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				D90E32B1182F62A700A6F642 /* PBXTargetDependency */,
 			);
 			name = TetherMac;
 			productName = Tether;
 			productReference = D90E3255182F07DC00A6F642 /* TetherMac.app */;
 			productType = "com.apple.product-type.application";
-		};
-		D90E329F182F626000A6F642 /* libplist */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D90E32A1182F626000A6F642 /* Build configuration list for PBXNativeTarget "libplist" */;
-			buildPhases = (
-				D90E329C182F626000A6F642 /* Sources */,
-				D90E329D182F626000A6F642 /* Frameworks */,
-				D90E329E182F626000A6F642 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D90E32E3182F665300A6F642 /* PBXTargetDependency */,
-			);
-			name = libplist;
-			productName = libplist;
-			productReference = D90E32A0182F626000A6F642 /* libplist.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		D90E32A9182F629600A6F642 /* libusbmuxd */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D90E32AB182F629600A6F642 /* Build configuration list for PBXNativeTarget "libusbmuxd" */;
-			buildPhases = (
-				D90E32A6182F629600A6F642 /* Sources */,
-				D90E32A7182F629600A6F642 /* Frameworks */,
-				D90E32A8182F629600A6F642 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D90E32AF182F62A200A6F642 /* PBXTargetDependency */,
-			);
-			name = libusbmuxd;
-			productName = libusbmuxd;
-			productReference = D90E32AA182F629600A6F642 /* libusbmuxd.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		D90E32D2182F655500A6F642 /* libcnary */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D90E32D4182F655600A6F642 /* Build configuration list for PBXNativeTarget "libcnary" */;
-			buildPhases = (
-				D90E32CF182F655500A6F642 /* Sources */,
-				D90E32D0182F655500A6F642 /* Frameworks */,
-				D90E32D1182F655500A6F642 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = libcnary;
-			productName = libcnary;
-			productReference = D90E32D3182F655600A6F642 /* libcnary.a */;
-			productType = "com.apple.product-type.library.static";
 		};
 		D9B76798184A8734000566D6 /* Tether */ = {
 			isa = PBXNativeTarget;
@@ -612,7 +375,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = CB;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Christopher Ballinger";
 				TargetAttributes = {
 					D9B76798184A8734000566D6 = {
@@ -641,9 +404,6 @@
 			projectRoot = "";
 			targets = (
 				D90E3254182F07DC00A6F642 /* TetherMac */,
-				D90E329F182F626000A6F642 /* libplist */,
-				D90E32A9182F629600A6F642 /* libusbmuxd */,
-				D90E32D2182F655500A6F642 /* libcnary */,
 				D9B76798184A8734000566D6 /* Tether */,
 				D9B767B1184A8734000566D6 /* TetherTests */,
 			);
@@ -682,12 +442,44 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		551353FA86374048AD71A2B9 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DEF537F12E604F69A35A5614 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D90E3251182F07DC00A6F642 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D931A60D1830126D00593FF9 /* GCDAsyncSocket.m in Sources */,
 				D9B767D6184A9432000566D6 /* USBMuxDeviceConnection.m in Sources */,
 				D9B767C9184A88BA000566D6 /* main-mac.m in Sources */,
 				D9B767D9184A978A000566D6 /* USBMuxDevice.m in Sources */,
@@ -695,42 +487,8 @@
 				D90E3297182F18CC00A6F642 /* CBDeviceWindowController.m in Sources */,
 				D931A61418304D1200593FF9 /* CBDeviceConnection.m in Sources */,
 				D9D8110A182F8B80003DCCBB /* USBMuxClient.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D90E329C182F626000A6F642 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D90E32C9182F638800A6F642 /* ptrarray.c in Sources */,
-				D90E32C5182F638800A6F642 /* hashtable.c in Sources */,
-				D90E32C7182F638800A6F642 /* plist.c in Sources */,
-				D90E32BF182F638800A6F642 /* base64.c in Sources */,
-				D90E32CB182F638800A6F642 /* xplist.c in Sources */,
-				D90E32C1182F638800A6F642 /* bplist.c in Sources */,
-				D90E32C2182F638800A6F642 /* bytearray.c in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D90E32A6182F629600A6F642 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D9D810FF182F6794003DCCBB /* libusbmuxd.c in Sources */,
-				D9D810FD182F6794003DCCBB /* collection.c in Sources */,
-				D9D81100182F6794003DCCBB /* sock_stuff.c in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D90E32CF182F655500A6F642 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D90E32E1182F663A00A6F642 /* node.c in Sources */,
-				D90E32DF182F663A00A6F642 /* node_iterator.c in Sources */,
-				D90E32E0182F663A00A6F642 /* node_list.c in Sources */,
-				D90E32DD182F663A00A6F642 /* iterator.c in Sources */,
-				D90E32DE182F663A00A6F642 /* list.c in Sources */,
+				D9FEA98118EA6E6C00EA736D /* CBNetworkServiceEditor.m in Sources */,
+				D95309DA18CBE31E00393DB4 /* CBTunDevice.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -738,7 +496,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9B767D3184A8C22000566D6 /* GCDAsyncSocket.m in Sources */,
 				D98FA7F8184CA00D006D9AC1 /* SOCKSProxySocket.m in Sources */,
 				D9B767A7184A8734000566D6 /* main.m in Sources */,
 				D9B767AB184A8734000566D6 /* CBAppDelegate.m in Sources */,
@@ -758,21 +515,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D90E32AF182F62A200A6F642 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D90E329F182F626000A6F642 /* libplist */;
-			targetProxy = D90E32AE182F62A200A6F642 /* PBXContainerItemProxy */;
-		};
-		D90E32B1182F62A700A6F642 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D90E32A9182F629600A6F642 /* libusbmuxd */;
-			targetProxy = D90E32B0182F62A700A6F642 /* PBXContainerItemProxy */;
-		};
-		D90E32E3182F665300A6F642 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D90E32D2182F655500A6F642 /* libcnary */;
-			targetProxy = D90E32E2182F665300A6F642 /* PBXContainerItemProxy */;
-		};
 		D9B767B7184A8735000566D6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D9B76798184A8734000566D6 /* Tether */;
@@ -894,6 +636,7 @@
 		};
 		D90E3287182F07DC00A6F642 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3344A729C1604CC882D91F05 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -906,6 +649,10 @@
 					"$(SRCROOT)/Submodules/CocoaAsyncSocket/GCD",
 				);
 				INFOPLIST_FILE = "Tether/TetherMac-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Tether-fesemxykvcaanucpsmrkosdeoujg/Build/Products/Debug",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -913,6 +660,7 @@
 		};
 		D90E3288182F07DC00A6F642 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3344A729C1604CC882D91F05 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -925,109 +673,18 @@
 					"$(SRCROOT)/Submodules/CocoaAsyncSocket/GCD",
 				);
 				INFOPLIST_FILE = "Tether/TetherMac-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Tether-fesemxykvcaanucpsmrkosdeoujg/Build/Products/Debug",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		D90E32A2182F626000A6F642 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				EXECUTABLE_PREFIX = "";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/Submodules/libplist/include",
-					/usr/include/libxml2,
-					"$(SRCROOT)/Submodules/libplist/libcnary/include",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		D90E32A3182F626000A6F642 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				EXECUTABLE_PREFIX = "";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/Submodules/libplist/include",
-					/usr/include/libxml2,
-					"$(SRCROOT)/Submodules/libplist/libcnary/include",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		D90E32AC182F629600A6F642 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				EXECUTABLE_PREFIX = "";
-				GCC_PREPROCESSOR_DEFINITIONS = HAVE_PLIST;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/Submodules/libusbmuxd/include",
-					"$(SRCROOT)/Submodules/libplist/include",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		D90E32AD182F629600A6F642 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				EXECUTABLE_PREFIX = "";
-				GCC_PREPROCESSOR_DEFINITIONS = HAVE_PLIST;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/Submodules/libusbmuxd/include",
-					"$(SRCROOT)/Submodules/libplist/include",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		D90E32D5182F655600A6F642 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				EXECUTABLE_PREFIX = "";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/Submodules/libplist/libcnary/include",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		D90E32D6182F655600A6F642 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				EXECUTABLE_PREFIX = "";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/Submodules/libplist/libcnary/include",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
 		D9B767C1184A8735000566D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1054,7 +711,6 @@
 		D9B767C2184A8735000566D6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1078,7 +734,6 @@
 		D9B767C4184A8735000566D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TetherMac.app/Contents/MacOS/TetherMac";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1104,7 +759,6 @@
 		D9B767C5184A8735000566D6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TetherMac.app/Contents/MacOS/TetherMac";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1141,33 +795,6 @@
 			buildConfigurations = (
 				D90E3287182F07DC00A6F642 /* Debug */,
 				D90E3288182F07DC00A6F642 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D90E32A1182F626000A6F642 /* Build configuration list for PBXNativeTarget "libplist" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D90E32A2182F626000A6F642 /* Debug */,
-				D90E32A3182F626000A6F642 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D90E32AB182F629600A6F642 /* Build configuration list for PBXNativeTarget "libusbmuxd" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D90E32AC182F629600A6F642 /* Debug */,
-				D90E32AD182F629600A6F642 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D90E32D4182F655600A6F642 /* Build configuration list for PBXNativeTarget "libcnary" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D90E32D5182F655600A6F642 /* Debug */,
-				D90E32D6182F655600A6F642 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
