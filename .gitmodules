@@ -1,15 +1,3 @@
-[submodule "Submodules/libusbmuxd"]
-	path = Submodules/libusbmuxd
-	url = git@github.com:libimobiledevice/libusbmuxd.git
-[submodule "Submodules/libplist"]
-	path = Submodules/libplist
-	url = git@github.com:libimobiledevice/libplist.git
-[submodule "Submodules/CocoaAsyncSocket"]
-	path = Submodules/CocoaAsyncSocket
-	url = git@github.com:robbiehanson/CocoaAsyncSocket.git
-[submodule "Submodules/CocoaLumberjack"]
-	path = Submodules/CocoaLumberjack
-	url = git@github.com:robbiehanson/CocoaLumberjack.git
 [submodule "Submodules/ProxyKit"]
 	path = Submodules/ProxyKit
-	url = git@github.com:chrisballinger/ProxyKit.git
+	url = https://github.com/chrisballinger/ProxyKit.git

@@ -8,23 +8,28 @@ PODS:
   - libplist (1.11)
   - libusbmuxd (1.0.9):
     - libplist (~> 1.11)
+  - ProxyKit (1.0.0):
+    - CocoaAsyncSocket (~> 7.3)
+    - CocoaLumberjack (~> 1.8)
 
 DEPENDENCIES:
-  - CocoaAsyncSocket (~> 7.3)
-  - CocoaLumberjack (~> 1.8)
   - libplist (from `PodSpecs/libplist.podspec`)
   - libusbmuxd (from `PodSpecs/libusbmuxd.podspec`)
+  - ProxyKit (from `Submodules/ProxyKit/ProxyKit.podspec`)
 
 EXTERNAL SOURCES:
   libplist:
     :podspec: PodSpecs/libplist.podspec
   libusbmuxd:
     :podspec: PodSpecs/libusbmuxd.podspec
+  ProxyKit:
+    :podspec: Submodules/ProxyKit/ProxyKit.podspec
 
 SPEC CHECKSUMS:
   CocoaAsyncSocket: 534d09416f992fd51efb23f534742ce70b3a7999
   CocoaLumberjack: 020378ec400d658923bf5887178394f65f052c90
   libplist: 36d0286d0b8adc3f11006f9880a204deac67f017
   libusbmuxd: 28b1bfe677f556970487b644ce2d324f09e13121
+  ProxyKit: 1f503d80895dbcb8a974e654451fbc49d01b56bb
 
 COCOAPODS: 0.31.1
