@@ -1,3 +1,3 @@
-pod 'libplist', :podspec => 'PodSpecs/libplist.podspec'
-pod 'libusbmuxd', :podspec => 'PodSpecs/libusbmuxd.podspec'
-pod 'ProxyKit', :podspec => 'Submodules/ProxyKit/ProxyKit.podspec'
+pod 'libplist', '~> 1.11'
+pod 'libusbmuxd', '~> 1.0.9'
+pod 'ProxyKit', '~> 1.0'
