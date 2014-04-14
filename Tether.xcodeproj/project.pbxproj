@@ -19,7 +19,12 @@
 		D931A611183012D600593FF9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D931A610183012D600593FF9 /* Security.framework */; };
 		D931A61418304D1200593FF9 /* CBDeviceConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D931A61318304D1200593FF9 /* CBDeviceConnection.m */; };
 		D950871618F6836900EF884A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDD1E9FE263401C93089B68 /* libPods.a */; };
-		D95309DA18CBE31E00393DB4 /* CBTunDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = D95309D918CBE31E00393DB4 /* CBTunDevice.m */; };
+		D9792EE518FB563F002F2E28 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9792EE418FB563F002F2E28 /* ServiceManagement.framework */; };
+		D9792EF318FB58E2002F2E28 /* CBTunService.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9792EF218FB58E2002F2E28 /* CBTunService.1 */; };
+		D9792EF718FB593A002F2E28 /* PrivilegedAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = D9792EDE18FB4DCF002F2E28 /* PrivilegedAgent.m */; };
+		D9792EF818FB593A002F2E28 /* PrivilegedServiceDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9792EE018FB4DCF002F2E28 /* PrivilegedServiceDelegate.m */; };
+		D9792EF918FB593A002F2E28 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D9792ED618FB4CCE002F2E28 /* main.m */; };
+		D9792EFC18FB59CB002F2E28 /* com.chrisballinger.CBTunService in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9792EEE18FB58E2002F2E28 /* com.chrisballinger.CBTunService */; };
 		D9B7679B184A8734000566D6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B7679A184A8734000566D6 /* Foundation.framework */; };
 		D9B7679D184A8734000566D6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B7679C184A8734000566D6 /* CoreGraphics.framework */; };
 		D9B7679F184A8734000566D6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B7679E184A8734000566D6 /* UIKit.framework */; };
@@ -27,11 +32,6 @@
 		D9B767A7184A8734000566D6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B767A6184A8734000566D6 /* main.m */; };
 		D9B767AB184A8734000566D6 /* CBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B767AA184A8734000566D6 /* CBAppDelegate.m */; };
 		D9B767AD184A8734000566D6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9B767AC184A8734000566D6 /* Images.xcassets */; };
-		D9B767B3184A8734000566D6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90E3277182F07DC00A6F642 /* XCTest.framework */; };
-		D9B767B4184A8734000566D6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B7679A184A8734000566D6 /* Foundation.framework */; };
-		D9B767B5184A8735000566D6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B7679E184A8734000566D6 /* UIKit.framework */; };
-		D9B767BD184A8735000566D6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9B767BB184A8735000566D6 /* InfoPlist.strings */; };
-		D9B767BF184A8735000566D6 /* TetherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B767BE184A8735000566D6 /* TetherTests.m */; };
 		D9B767C9184A88BA000566D6 /* main-mac.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B767C8184A88BA000566D6 /* main-mac.m */; };
 		D9B767CC184A8991000566D6 /* CBRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B767CB184A8991000566D6 /* CBRootViewController.m */; };
 		D9B767D2184A8B32000566D6 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B767D1184A8B32000566D6 /* MobileCoreServices.framework */; };
@@ -43,14 +43,37 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D9B767B6184A8735000566D6 /* PBXContainerItemProxy */ = {
+		D9792EFA18FB59C4002F2E28 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D90E324D182F07DC00A6F642 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D9B76798184A8734000566D6;
-			remoteInfo = Tether;
+			remoteGlobalIDString = D9792EED18FB58E2002F2E28;
+			remoteInfo = com.chrisballinger.CBTunService;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D9792EE818FB5744002F2E28 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LaunchServices;
+			dstSubfolderSpec = 1;
+			files = (
+				D9792EFC18FB59CB002F2E28 /* com.chrisballinger.CBTunService in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9792EEC18FB58E2002F2E28 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				D9792EF318FB58E2002F2E28 /* CBTunService.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2CDD1E9FE263401C93089B68 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,10 +100,18 @@
 		D931A610183012D600593FF9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D931A61218304D1200593FF9 /* CBDeviceConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDeviceConnection.h; sourceTree = "<group>"; };
 		D931A61318304D1200593FF9 /* CBDeviceConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDeviceConnection.m; sourceTree = "<group>"; };
-		D940D2541855A2D200DBA886 /* UTUN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UTUN.h; sourceTree = "<group>"; };
-		D940D2551855A2D200DBA886 /* UTUN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UTUN.m; sourceTree = "<group>"; };
-		D95309D818CBE31E00393DB4 /* CBTunDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTunDevice.h; sourceTree = "<group>"; };
-		D95309D918CBE31E00393DB4 /* CBTunDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTunDevice.m; sourceTree = "<group>"; };
+		D9792ED118FB4CCE002F2E28 /* CBTunService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CBTunService-Info.plist"; sourceTree = "<group>"; };
+		D9792ED618FB4CCE002F2E28 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D9792EDB18FB4DCF002F2E28 /* Actions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Actions.h; sourceTree = "<group>"; };
+		D9792EDC18FB4DCF002F2E28 /* CBTunService-Launchd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CBTunService-Launchd.plist"; sourceTree = "<group>"; };
+		D9792EDD18FB4DCF002F2E28 /* PrivilegedAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivilegedAgent.h; sourceTree = "<group>"; };
+		D9792EDE18FB4DCF002F2E28 /* PrivilegedAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivilegedAgent.m; sourceTree = "<group>"; };
+		D9792EDF18FB4DCF002F2E28 /* PrivilegedServiceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivilegedServiceDelegate.h; sourceTree = "<group>"; };
+		D9792EE018FB4DCF002F2E28 /* PrivilegedServiceDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivilegedServiceDelegate.m; sourceTree = "<group>"; };
+		D9792EE418FB563F002F2E28 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		D9792EEE18FB58E2002F2E28 /* com.chrisballinger.CBTunService */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = com.chrisballinger.CBTunService; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9792EF018FB58E2002F2E28 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		D9792EF218FB58E2002F2E28 /* CBTunService.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = CBTunService.1; sourceTree = "<group>"; };
 		D9B76799184A8734000566D6 /* Tether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9B7679A184A8734000566D6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D9B7679C184A8734000566D6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -92,7 +123,6 @@
 		D9B767A9184A8734000566D6 /* CBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBAppDelegate.h; sourceTree = "<group>"; };
 		D9B767AA184A8734000566D6 /* CBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBAppDelegate.m; sourceTree = "<group>"; };
 		D9B767AC184A8734000566D6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		D9B767B2184A8734000566D6 /* TetherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TetherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9B767BA184A8735000566D6 /* TetherTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TetherTests-Info.plist"; sourceTree = "<group>"; };
 		D9B767BC184A8735000566D6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9B767BE184A8735000566D6 /* TetherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TetherTests.m; sourceTree = "<group>"; };
@@ -116,10 +146,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9792EE518FB563F002F2E28 /* ServiceManagement.framework in Frameworks */,
 				D931A611183012D600593FF9 /* Security.framework in Frameworks */,
 				D9D81107182F83DD003DCCBB /* libxml2.dylib in Frameworks */,
 				D90E3259182F07DC00A6F642 /* Cocoa.framework in Frameworks */,
 				AD0BD7B13E2B4492A294840F /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9792EEB18FB58E2002F2E28 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,16 +173,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D9B767AF184A8734000566D6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D9B767B3184A8734000566D6 /* XCTest.framework in Frameworks */,
-				D9B767B5184A8735000566D6 /* UIKit.framework in Frameworks */,
-				D9B767B4184A8734000566D6 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -153,8 +181,10 @@
 			children = (
 				D9B767C7184A877A000566D6 /* USBMuxClient */,
 				D90E325E182F07DC00A6F642 /* TetherMac */,
-				D9B767A0184A8734000566D6 /* Tether */,
+				D9B767A0184A8734000566D6 /* Tether-iOS */,
 				D9B767B8184A8735000566D6 /* TetherTests */,
+				D9792ECF18FB4CCE002F2E28 /* CBTunService */,
+				D9792EEF18FB58E2002F2E28 /* CBTunService */,
 				D90E3257182F07DC00A6F642 /* Frameworks */,
 				D90E3256182F07DC00A6F642 /* Products */,
 				3344A729C1604CC882D91F05 /* Pods.xcconfig */,
@@ -166,7 +196,7 @@
 			children = (
 				D90E3255182F07DC00A6F642 /* TetherMac.app */,
 				D9B76799184A8734000566D6 /* Tether.app */,
-				D9B767B2184A8734000566D6 /* TetherTests.xctest */,
+				D9792EEE18FB58E2002F2E28 /* com.chrisballinger.CBTunService */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -174,6 +204,7 @@
 		D90E3257182F07DC00A6F642 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D9792EE418FB563F002F2E28 /* ServiceManagement.framework */,
 				D9C40B4718F67BF2005CD748 /* libPods-libplist.a */,
 				D9B767D1184A8B32000566D6 /* MobileCoreServices.framework */,
 				D931A610183012D600593FF9 /* Security.framework */,
@@ -202,8 +233,6 @@
 		D90E325E182F07DC00A6F642 /* TetherMac */ = {
 			isa = PBXGroup;
 			children = (
-				D95309D818CBE31E00393DB4 /* CBTunDevice.h */,
-				D95309D918CBE31E00393DB4 /* CBTunDevice.m */,
 				D9FEA97F18EA6E6C00EA736D /* CBNetworkServiceEditor.h */,
 				D9FEA98018EA6E6C00EA736D /* CBNetworkServiceEditor.m */,
 				D90E326A182F07DC00A6F642 /* CBMacAppDelegate.h */,
@@ -234,7 +263,39 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D9B767A0184A8734000566D6 /* Tether */ = {
+		D9792ECF18FB4CCE002F2E28 /* CBTunService */ = {
+			isa = PBXGroup;
+			children = (
+				D9792EDB18FB4DCF002F2E28 /* Actions.h */,
+				D9792EDD18FB4DCF002F2E28 /* PrivilegedAgent.h */,
+				D9792EDE18FB4DCF002F2E28 /* PrivilegedAgent.m */,
+				D9792EDF18FB4DCF002F2E28 /* PrivilegedServiceDelegate.h */,
+				D9792EE018FB4DCF002F2E28 /* PrivilegedServiceDelegate.m */,
+				D9792ED618FB4CCE002F2E28 /* main.m */,
+				D9792ED018FB4CCE002F2E28 /* Supporting Files */,
+			);
+			path = CBTunService;
+			sourceTree = "<group>";
+		};
+		D9792ED018FB4CCE002F2E28 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D9792EDC18FB4DCF002F2E28 /* CBTunService-Launchd.plist */,
+				D9792ED118FB4CCE002F2E28 /* CBTunService-Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D9792EEF18FB58E2002F2E28 /* CBTunService */ = {
+			isa = PBXGroup;
+			children = (
+				D9792EF018FB58E2002F2E28 /* main.c */,
+				D9792EF218FB58E2002F2E28 /* CBTunService.1 */,
+			);
+			path = CBTunService;
+			sourceTree = "<group>";
+		};
+		D9B767A0184A8734000566D6 /* Tether-iOS */ = {
 			isa = PBXGroup;
 			children = (
 				D9B767CA184A8991000566D6 /* CBRootViewController.h */,
@@ -244,6 +305,7 @@
 				D9B767AC184A8734000566D6 /* Images.xcassets */,
 				D9B767A1184A8734000566D6 /* Supporting Files */,
 			);
+			name = "Tether-iOS";
 			path = Tether;
 			sourceTree = "<group>";
 		};
@@ -279,8 +341,6 @@
 		D9B767C7184A877A000566D6 /* USBMuxClient */ = {
 			isa = PBXGroup;
 			children = (
-				D940D2541855A2D200DBA886 /* UTUN.h */,
-				D940D2551855A2D200DBA886 /* UTUN.m */,
 				D9B767D7184A978A000566D6 /* USBMuxDevice.h */,
 				D9B767D8184A978A000566D6 /* USBMuxDevice.m */,
 				D9B767D4184A9432000566D6 /* USBMuxDeviceConnection.h */,
@@ -304,15 +364,34 @@
 				D90E3252182F07DC00A6F642 /* Frameworks */,
 				D90E3253182F07DC00A6F642 /* Resources */,
 				551353FA86374048AD71A2B9 /* Copy Pods Resources */,
+				D9792EE818FB5744002F2E28 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D9792EFB18FB59C4002F2E28 /* PBXTargetDependency */,
 			);
 			name = TetherMac;
 			productName = Tether;
 			productReference = D90E3255182F07DC00A6F642 /* TetherMac.app */;
 			productType = "com.apple.product-type.application";
+		};
+		D9792EED18FB58E2002F2E28 /* com.chrisballinger.CBTunService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9792EF418FB58E2002F2E28 /* Build configuration list for PBXNativeTarget "com.chrisballinger.CBTunService" */;
+			buildPhases = (
+				D9792EEA18FB58E2002F2E28 /* Sources */,
+				D9792EEB18FB58E2002F2E28 /* Frameworks */,
+				D9792EEC18FB58E2002F2E28 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = com.chrisballinger.CBTunService;
+			productName = CBTunService;
+			productReference = D9792EEE18FB58E2002F2E28 /* com.chrisballinger.CBTunService */;
+			productType = "com.apple.product-type.tool";
 		};
 		D9B76798184A8734000566D6 /* Tether */ = {
 			isa = PBXNativeTarget;
@@ -331,24 +410,6 @@
 			productReference = D9B76799184A8734000566D6 /* Tether.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D9B767B1184A8734000566D6 /* TetherTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D9B767C3184A8735000566D6 /* Build configuration list for PBXNativeTarget "TetherTests" */;
-			buildPhases = (
-				D9B767AE184A8734000566D6 /* Sources */,
-				D9B767AF184A8734000566D6 /* Frameworks */,
-				D9B767B0184A8734000566D6 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D9B767B7184A8735000566D6 /* PBXTargetDependency */,
-			);
-			name = TetherTests;
-			productName = TetherTests;
-			productReference = D9B767B2184A8734000566D6 /* TetherTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -365,9 +426,6 @@
 								enabled = 1;
 							};
 						};
-					};
-					D9B767B1184A8734000566D6 = {
-						TestTargetID = D90E3254182F07DC00A6F642;
 					};
 				};
 			};
@@ -386,7 +444,7 @@
 			targets = (
 				D90E3254182F07DC00A6F642 /* TetherMac */,
 				D9B76798184A8734000566D6 /* Tether */,
-				D9B767B1184A8734000566D6 /* TetherTests */,
+				D9792EED18FB58E2002F2E28 /* com.chrisballinger.CBTunService */,
 			);
 		};
 /* End PBXProject section */
@@ -410,14 +468,6 @@
 			files = (
 				D9B767A5184A8734000566D6 /* InfoPlist.strings in Resources */,
 				D9B767AD184A8734000566D6 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D9B767B0184A8734000566D6 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D9B767BD184A8735000566D6 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,7 +519,16 @@
 				D931A61418304D1200593FF9 /* CBDeviceConnection.m in Sources */,
 				D9D8110A182F8B80003DCCBB /* USBMuxClient.m in Sources */,
 				D9FEA98118EA6E6C00EA736D /* CBNetworkServiceEditor.m in Sources */,
-				D95309DA18CBE31E00393DB4 /* CBTunDevice.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9792EEA18FB58E2002F2E28 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9792EF718FB593A002F2E28 /* PrivilegedAgent.m in Sources */,
+				D9792EF818FB593A002F2E28 /* PrivilegedServiceDelegate.m in Sources */,
+				D9792EF918FB593A002F2E28 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,21 +542,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D9B767AE184A8734000566D6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D9B767BF184A8735000566D6 /* TetherTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D9B767B7184A8735000566D6 /* PBXTargetDependency */ = {
+		D9792EFB18FB59C4002F2E28 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D9B76798184A8734000566D6 /* Tether */;
-			targetProxy = D9B767B6184A8735000566D6 /* PBXContainerItemProxy */;
+			target = D9792EED18FB58E2002F2E28 /* com.chrisballinger.CBTunService */;
+			targetProxy = D9792EFA18FB59C4002F2E28 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -618,6 +669,7 @@
 			baseConfigurationReference = 3344A729C1604CC882D91F05 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tether/TetherMac-Prefix.pch";
@@ -642,6 +694,7 @@
 			baseConfigurationReference = 3344A729C1604CC882D91F05 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tether/TetherMac-Prefix.pch";
@@ -658,6 +711,50 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		D9792EF518FB58E2002F2E28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				OTHER_LDFLAGS = (
+					"-sectcreate",
+					__TEXT,
+					__info_plist,
+					"CBTunService/CBTunService-Info.plist",
+					"-sectcreate",
+					__TEXT,
+					__launchd_plist,
+					"CBTunService/CBTunService-Launchd.plist",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D9792EF618FB58E2002F2E28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				OTHER_LDFLAGS = (
+					"-sectcreate",
+					__TEXT,
+					__info_plist,
+					"CBTunService/CBTunService-Info.plist",
+					"-sectcreate",
+					__TEXT,
+					__launchd_plist,
+					"CBTunService/CBTunService-Launchd.plist",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -710,53 +807,6 @@
 			};
 			name = Release;
 		};
-		D9B767C4184A8735000566D6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TetherMac.app/Contents/MacOS/TetherMac";
-				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Tether/Tether-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "TetherTests/TetherTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		D9B767C5184A8735000566D6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TetherMac.app/Contents/MacOS/TetherMac";
-				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Tether/Tether-Prefix.pch";
-				INFOPLIST_FILE = "TetherTests/TetherTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				VALIDATE_PRODUCT = YES;
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -778,20 +828,19 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		D9792EF418FB58E2002F2E28 /* Build configuration list for PBXNativeTarget "com.chrisballinger.CBTunService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9792EF518FB58E2002F2E28 /* Debug */,
+				D9792EF618FB58E2002F2E28 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		D9B767C0184A8735000566D6 /* Build configuration list for PBXNativeTarget "Tether" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D9B767C1184A8735000566D6 /* Debug */,
 				D9B767C2184A8735000566D6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D9B767C3184A8735000566D6 /* Build configuration list for PBXNativeTarget "TetherTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D9B767C4184A8735000566D6 /* Debug */,
-				D9B767C5184A8735000566D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

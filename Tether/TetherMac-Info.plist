@@ -28,6 +28,11 @@
 	<string>Copyright © 2013 Christopher Ballinger. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
+	<key>SMPrivilegedExecutables</key>
+	<dict>
+		<key>com.chrisballinger.CBTunService</key>
+		<string>identifier com.chrisballinger.CBTunService and certificate leaf[subject.CN] = &quot;3rd Party Mac Developer Application&quot;</string>
+	</dict>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>

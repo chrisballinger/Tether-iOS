@@ -18,4 +18,8 @@
     [self.deviceWindowController.window makeKeyAndOrderFront:self];
 }
 
+- (void) applicationWillTerminate:(NSNotification *)notification {
+    NSLog(@"Application will terminate");
+}
+
 @end

@@ -10,7 +10,9 @@
 #import "USBMuxClient.h"
 #import "USBMuxDevice.h"
 #import "CBDeviceConnection.h"
-#import "CBTunDevice.h"
+#import <ServiceManagement/ServiceManagement.h>
+#import <Security/Authorization.h>
+#import "Actions.h"
 
 const static uint16_t kDefaultLocalPortNumber = 8000;
 const static uint16_t kDefaultRemotePortNumber = 8123;
@@ -95,7 +97,94 @@ const static uint16_t kDefaultRemotePortNumber = 8123;
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     [USBMuxClient sharedClient].delegate = self;
     [self performSelector:@selector(refreshButtonPressed:) withObject:nil afterDelay:0.1]; // for whatever reason
+    
+    NSString *helperLabel = @"com.chrisballinger.CBTunService";
+    
+    NSError *error = nil;
+	if (![self blessHelperWithLabel:helperLabel error:&error]) {
+        NSLog(@"Failed to bless helper. Error: %@", error);
+    }
+    
+    NSXPCConnection *connection = [[NSXPCConnection alloc] initWithMachServiceName:helperLabel options:NSXPCConnectionPrivileged];
+    connection.remoteObjectInterface = [NSXPCInterface interfaceWithProtocol:@protocol(TunHandler)];
+    [connection resume];
+    
+    [[connection remoteObjectProxyWithErrorHandler:^(NSError *error) {
+        NSLog(@"Something bad happened, %@", [error description]);
+    }] openTun:^(NSFileHandle *tun, NSError *error) {
+        if (tun) {
+            NSLog(@"Got handle: %@\nfd: %d", tun, tun.fileDescriptor);
+        } else {
+            NSLog(@"Couldn't get handle: %@", error);
+        }
+    }];
 }
+
+- (BOOL)blessHelperWithLabel:(NSString *)label
+                       error:(NSError **)error {
+    
+	BOOL result = NO;
+    
+    /* Always remove the job if we've previously submitted it. This is to help with versioning (we always install the latest tool). It also avoids conflicts where the installed tool was signed with a different key (i.e. someone building Hex Fiend while also having run the signed distribution). A potentially negative consequence is that we have to authenticate every launch, but that is actually a benefit, because it serves as a sort of notification that user's action requires elevated privileges, instead of just (potentially silently) doing it. */
+    BOOL helperIsAlreadyInstalled = NO;
+    CFDictionaryRef existingJob = SMJobCopyDictionary(kSMDomainSystemLaunchd, (__bridge CFStringRef)(label));
+    if (existingJob) {
+        helperIsAlreadyInstalled = YES;
+        CFRelease(existingJob);
+    }
+    
+	AuthorizationItem authItems[2] = {{ kSMRightBlessPrivilegedHelper, 0, NULL, 0 }, { kSMRightModifySystemDaemons, 0, NULL, 0 }};
+	AuthorizationRights authRights = { (helperIsAlreadyInstalled ? 2 : 1), authItems };
+	AuthorizationFlags flags		=	kAuthorizationFlagDefaults				|
+    kAuthorizationFlagInteractionAllowed	|
+    kAuthorizationFlagPreAuthorize			|
+    kAuthorizationFlagExtendRights;
+    
+	AuthorizationRef authRef = NULL;
+	
+	/* Obtain the right to install privileged helper tools (kSMRightBlessPrivilegedHelper). */
+	OSStatus status = AuthorizationCreate(&authRights, kAuthorizationEmptyEnvironment, flags, &authRef);
+	if (status != errAuthorizationSuccess) {
+        if (error) {
+            if (status == errAuthorizationCanceled) {
+                *error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSUserCancelledError userInfo:nil];
+            } else {
+                NSString *description = [NSString stringWithFormat:@"Failed to create AuthorizationRef (error code %ld).", (long)status];
+                *error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadNoPermissionError userInfo:[NSDictionary dictionaryWithObjectsAndKeys:description, NSLocalizedDescriptionKey, nil]];
+            }
+        }
+        return NO;
+    }
+    
+    /* This does all the work of verifying the helper tool against the application
+     * and vice-versa. Once verification has passed, the embedded launchd.plist
+     * is extracted and placed in /Library/LaunchDaemons and then loaded. The
+     * executable is placed in /Library/PrivilegedHelperTools.
+     */
+    
+    /* Remove the existing helper. If this fails it's not a fatal error (SMJobBless can handle the case when a job is already installed). */
+    if (helperIsAlreadyInstalled) {
+        CFErrorRef localError = NULL;
+        SMJobRemove(kSMDomainSystemLaunchd, (__bridge CFStringRef)(label), authRef, true /* wait */, &localError);
+        if (localError) {
+            NSLog(@"SMJobRemove() failed with error %@", localError);
+            CFRelease(localError);
+        }
+    }
+    
+    
+    CFErrorRef localError = NULL;
+    result = SMJobBless(kSMDomainSystemLaunchd, (__bridge CFStringRef)label, authRef, (CFErrorRef *)&localError);
+    if (localError) {
+        if (error) {
+            *error = (__bridge NSError*)localError;
+        }
+        CFRelease(localError);
+    }
+	
+	return result;
+}
+
 
 
 // The only essential/required tableview dataSource method
@@ -131,9 +220,6 @@ const static uint16_t kDefaultRemotePortNumber = 8123;
 }
 
 - (IBAction)refreshButtonPressed:(id)sender {
-    CBTunDevice *tunDevice = [[CBTunDevice alloc] init];
-    [tunDevice openTun];
-    
     if (self.listeningSocket) {
         NSLog(@"Disconnecting local socket");
         [self.listeningSocket disconnect];
