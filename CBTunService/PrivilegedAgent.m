@@ -24,6 +24,54 @@
 
 #include <stdlib.h> // exit, etc.
 
+#include <netinet/ip.h>
+#include <sys/uio.h>
+
+static inline int
+header_modify_read_write_return (int len)
+{
+    if (len > 0)
+        return len > sizeof (u_int32_t) ? len - sizeof (u_int32_t) : 0;
+    else
+        return len;
+}
+
+int
+write_tun (int fd, BOOL ipv6, uint8_t *buf, int len)
+{
+    u_int32_t type;
+    struct iovec iv[2];
+    struct ip *iph;
+    
+    iph = (struct ip *) buf;
+    
+    if (ipv6 && iph->ip_v == 6)
+        type = htonl (AF_INET6);
+    else
+        type = htonl (AF_INET);
+    
+    iv[0].iov_base = &type;
+    iv[0].iov_len = sizeof (type);
+    iv[1].iov_base = buf;
+    iv[1].iov_len = len;
+    
+    return header_modify_read_write_return (writev (fd, iv, 2));
+}
+
+int
+read_tun (int fd, uint8_t *buf, int len)
+{
+    u_int32_t type;
+    struct iovec iv[2];
+    
+    iv[0].iov_base = &type;
+    iv[0].iov_len = sizeof (type);
+    iv[1].iov_base = buf;
+    iv[1].iov_len = len;
+    
+    return header_modify_read_write_return (readv (fd, iv, 2));
+}
+
 
 // the below C functions have been adapted from OpenVPN's tun.c
 
@@ -79,6 +127,56 @@ int utun_open_helper (struct ctl_info ctlInfo, int utunnum)
     
     return fd;
 }
+
+NSData *
+read_incoming_tun (int fd)
+{
+    int bufferLength = 1500;
+    uint8_t *buffer = malloc(sizeof(uint8_t) * bufferLength);
+ 
+    int readLength = read_tun (fd, buffer, bufferLength);
+    NSData *incomingData = nil;
+    
+    if (readLength >= 0) {
+        incomingData = [NSData dataWithBytesNoCopy:buffer length:bufferLength freeWhenDone:YES];
+    } else {
+        free(buffer);
+    }
+    return incomingData;
+}
+
+void
+process_outgoing_tun (int fd, NSData *data)
+{
+    /*
+     * Write to TUN/TAP device.
+     */
+    int size = write_tun(fd, NO, data.bytes, data.length);
+
+    //if (size > 0)
+    //    c->c2.tun_write_bytes += size;
+
+    /* check written packet size */
+    if (size > 0)
+    {
+        /* Did we write a different size packet than we intended? */
+        if (size != data.length)
+            NSLog(@"TUN/TAP packet was destructively fragmented on write to tun (tried=%lu,actual=%d)",
+                 (unsigned long)data.length,
+                 size);
+    }
+    else
+    {
+        /*
+         * This should never happen, probably indicates some kind
+         * of MTU mismatch.
+         */
+        NSLog(@"tun packet too large on write (tried=%d,max=%d)",
+             data.length,
+             1500);
+    }
+}
+
 
 @implementation PrivilegedAgent
 
@@ -145,6 +243,23 @@ int utun_open_helper (struct ctl_info ctlInfo, int utunnum)
     }
     if (reply) {
         reply(self.tunHandle, error);
+    }
+}
+
+- (void) writeData:(NSData*)data {
+    process_outgoing_tun(self.tunHandle.fileDescriptor, data);
+}
+
+- (void) readData:(void (^)(NSData * data, NSError *error))reply {
+    NSData *incomingData = read_incoming_tun(self.tunHandle.fileDescriptor);
+    if (!reply) {
+        return;
+    }
+    if (incomingData) {
+        reply(incomingData, nil);
+    } else {
+        NSError * error = [NSError errorWithDomain:@"com.chrisballinger.CBTunService" code:101 userInfo:@{NSLocalizedDescriptionKey: @"Error reading TUN fd"}];
+        reply(nil, error);
     }
 }
 

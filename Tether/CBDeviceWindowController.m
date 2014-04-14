@@ -109,15 +109,24 @@ const static uint16_t kDefaultRemotePortNumber = 8123;
     connection.remoteObjectInterface = [NSXPCInterface interfaceWithProtocol:@protocol(TunHandler)];
     [connection resume];
     
-    [[connection remoteObjectProxyWithErrorHandler:^(NSError *error) {
+    id<TunHandler> tunHandler = [connection remoteObjectProxyWithErrorHandler:^(NSError *error) {
         NSLog(@"Something bad happened, %@", [error description]);
-    }] openTun:^(NSFileHandle *tun, NSError *error) {
+    }];
+    [tunHandler openTun:^(NSFileHandle *tun, NSError *error) {
         if (tun) {
+            [tunHandler readData:^(NSData *data, NSError *error) {
+                if (data) {
+                    NSLog(@"read data: %@", data);
+                } else {
+                    NSLog(@"dataread err: %@", error);
+                }
+            }];
             NSLog(@"Got handle: %@\nfd: %d", tun, tun.fileDescriptor);
         } else {
             NSLog(@"Couldn't get handle: %@", error);
         }
     }];
+
 }
 
 // HexFiend has a great example how to do this properly
