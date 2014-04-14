@@ -120,6 +120,7 @@ const static uint16_t kDefaultRemotePortNumber = 8123;
     }];
 }
 
+// HexFiend has a great example how to do this properly
 - (BOOL)blessHelperWithLabel:(NSString *)label
                        error:(NSError **)error {
     

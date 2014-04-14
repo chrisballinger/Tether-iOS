@@ -20,7 +20,6 @@
 		D931A61418304D1200593FF9 /* CBDeviceConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D931A61318304D1200593FF9 /* CBDeviceConnection.m */; };
 		D950871618F6836900EF884A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDD1E9FE263401C93089B68 /* libPods.a */; };
 		D9792EE518FB563F002F2E28 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9792EE418FB563F002F2E28 /* ServiceManagement.framework */; };
-		D9792EF318FB58E2002F2E28 /* CBTunService.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9792EF218FB58E2002F2E28 /* CBTunService.1 */; };
 		D9792EF718FB593A002F2E28 /* PrivilegedAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = D9792EDE18FB4DCF002F2E28 /* PrivilegedAgent.m */; };
 		D9792EF818FB593A002F2E28 /* PrivilegedServiceDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9792EE018FB4DCF002F2E28 /* PrivilegedServiceDelegate.m */; };
 		D9792EF918FB593A002F2E28 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D9792ED618FB4CCE002F2E28 /* main.m */; };
@@ -69,7 +68,6 @@
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
-				D9792EF318FB58E2002F2E28 /* CBTunService.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -110,8 +108,6 @@
 		D9792EE018FB4DCF002F2E28 /* PrivilegedServiceDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivilegedServiceDelegate.m; sourceTree = "<group>"; };
 		D9792EE418FB563F002F2E28 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		D9792EEE18FB58E2002F2E28 /* com.chrisballinger.CBTunService */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = com.chrisballinger.CBTunService; sourceTree = BUILT_PRODUCTS_DIR; };
-		D9792EF018FB58E2002F2E28 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
-		D9792EF218FB58E2002F2E28 /* CBTunService.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = CBTunService.1; sourceTree = "<group>"; };
 		D9B76799184A8734000566D6 /* Tether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9B7679A184A8734000566D6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D9B7679C184A8734000566D6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -123,9 +119,6 @@
 		D9B767A9184A8734000566D6 /* CBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBAppDelegate.h; sourceTree = "<group>"; };
 		D9B767AA184A8734000566D6 /* CBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBAppDelegate.m; sourceTree = "<group>"; };
 		D9B767AC184A8734000566D6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		D9B767BA184A8735000566D6 /* TetherTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TetherTests-Info.plist"; sourceTree = "<group>"; };
-		D9B767BC184A8735000566D6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D9B767BE184A8735000566D6 /* TetherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TetherTests.m; sourceTree = "<group>"; };
 		D9B767C8184A88BA000566D6 /* main-mac.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "main-mac.m"; sourceTree = "<group>"; };
 		D9B767CA184A8991000566D6 /* CBRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBRootViewController.h; sourceTree = "<group>"; };
 		D9B767CB184A8991000566D6 /* CBRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBRootViewController.m; sourceTree = "<group>"; };
@@ -182,9 +175,7 @@
 				D9B767C7184A877A000566D6 /* USBMuxClient */,
 				D90E325E182F07DC00A6F642 /* TetherMac */,
 				D9B767A0184A8734000566D6 /* Tether-iOS */,
-				D9B767B8184A8735000566D6 /* TetherTests */,
 				D9792ECF18FB4CCE002F2E28 /* CBTunService */,
-				D9792EEF18FB58E2002F2E28 /* CBTunService */,
 				D90E3257182F07DC00A6F642 /* Frameworks */,
 				D90E3256182F07DC00A6F642 /* Products */,
 				3344A729C1604CC882D91F05 /* Pods.xcconfig */,
@@ -286,15 +277,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D9792EEF18FB58E2002F2E28 /* CBTunService */ = {
-			isa = PBXGroup;
-			children = (
-				D9792EF018FB58E2002F2E28 /* main.c */,
-				D9792EF218FB58E2002F2E28 /* CBTunService.1 */,
-			);
-			path = CBTunService;
-			sourceTree = "<group>";
-		};
 		D9B767A0184A8734000566D6 /* Tether-iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,24 +298,6 @@
 				D9B767A3184A8734000566D6 /* InfoPlist.strings */,
 				D9B767A6184A8734000566D6 /* main.m */,
 				D9B767A8184A8734000566D6 /* Tether-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		D9B767B8184A8735000566D6 /* TetherTests */ = {
-			isa = PBXGroup;
-			children = (
-				D9B767BE184A8735000566D6 /* TetherTests.m */,
-				D9B767B9184A8735000566D6 /* Supporting Files */,
-			);
-			path = TetherTests;
-			sourceTree = "<group>";
-		};
-		D9B767B9184A8735000566D6 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				D9B767BA184A8735000566D6 /* TetherTests-Info.plist */,
-				D9B767BB184A8735000566D6 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -585,14 +549,6 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		D9B767BB184A8735000566D6 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D9B767BC184A8735000566D6 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -835,6 +791,7 @@
 				D9792EF618FB58E2002F2E28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D9B767C0184A8735000566D6 /* Build configuration list for PBXNativeTarget "Tether" */ = {
 			isa = XCConfigurationList;
