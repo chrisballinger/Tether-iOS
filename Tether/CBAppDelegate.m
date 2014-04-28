@@ -19,8 +19,6 @@
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = [[CBRootViewController alloc] init];
     [self.window makeKeyAndVisible];
-    self.socksProxy = [[SOCKSProxy alloc] init];
-    [_socksProxy startProxyOnPort:8123];
     
     return YES;
 }

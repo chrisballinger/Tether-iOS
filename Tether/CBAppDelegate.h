@@ -8,11 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@class SOCKSProxy;
-
 @interface CBAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (nonatomic, strong) SOCKSProxy *socksProxy;
 
 @end

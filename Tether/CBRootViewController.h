@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SOCKSProxy.h"
 
 @interface CBRootViewController : UIViewController
+
+@property (nonatomic, strong) UILabel *connectionCountLabel;
+@property (nonatomic, strong) UILabel *totalBytesWrittenLabel;
+@property (nonatomic, strong) UILabel *totalBytesReadLabel;
+@property (nonatomic, strong) SOCKSProxy *socksProxy;
+
 
 @end

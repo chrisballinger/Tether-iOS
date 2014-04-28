@@ -16,6 +16,8 @@
 		<string>ssh://github.com/chrisballinger/ProxyKit.git</string>
 		<key>72CEDF93-3DC8-4ED5-8D90-D887BCE9A1C6</key>
 		<string>ssh://github.com/robbiehanson/CocoaAsyncSocket.git</string>
+		<key>7BC55E3C-50A9-4F6E-BE4C-D4B5F011EC6B</key>
+		<string>ssh://github.com/chrisballinger/badvpn.git</string>
 		<key>B1DFC0A1-0D57-426D-AE3F-E8DABD0942E5</key>
 		<string>ssh://github.com/libimobiledevice/libplist.git</string>
 		<key>C72E8FC4-C6BC-42E4-A89B-F36567CFEAE4</key>
@@ -31,6 +33,8 @@
 		<string>../Submodules/ProxyKit</string>
 		<key>72CEDF93-3DC8-4ED5-8D90-D887BCE9A1C6</key>
 		<string>../Submodules/CocoaAsyncSocket</string>
+		<key>7BC55E3C-50A9-4F6E-BE4C-D4B5F011EC6B</key>
+		<string>../Submodules/badvpn</string>
 		<key>B1DFC0A1-0D57-426D-AE3F-E8DABD0942E5</key>
 		<string>../Submodules/libplist</string>
 		<key>C72E8FC4-C6BC-42E4-A89B-F36567CFEAE4</key>
@@ -44,6 +48,14 @@
 	<string>0ED34DCF-5560-47B6-B675-5A8237DA9A1A</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7BC55E3C-50A9-4F6E-BE4C-D4B5F011EC6B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>badvpn</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

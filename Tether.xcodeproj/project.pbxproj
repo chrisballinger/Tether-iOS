@@ -38,6 +38,7 @@
 		D9B767D9184A978A000566D6 /* USBMuxDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B767D8184A978A000566D6 /* USBMuxDevice.m */; };
 		D9D81107182F83DD003DCCBB /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D90E32CD182F653300A6F642 /* libxml2.dylib */; };
 		D9D8110A182F8B80003DCCBB /* USBMuxClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D81109182F8B80003DCCBB /* USBMuxClient.m */; };
+		D9FA3189190DBA5F003CA4E0 /* tun2socks in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9FA3186190DB9A0003CA4E0 /* tun2socks */; };
 		D9FEA98118EA6E6C00EA736D /* CBNetworkServiceEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FEA98018EA6E6C00EA736D /* CBNetworkServiceEditor.m */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,20 @@
 			remoteGlobalIDString = D9792EED18FB58E2002F2E28;
 			remoteInfo = com.chrisballinger.CBTunService;
 		};
+		D9FA3185190DB9A0003CA4E0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9FA3181190DB9A0003CA4E0 /* badvpn.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D9420A3218FF1AA2003E8F30;
+			remoteInfo = tun2socks;
+		};
+		D9FA3187190DBA1B003CA4E0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9FA3181190DB9A0003CA4E0 /* badvpn.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D9420A3118FF1AA2003E8F30;
+			remoteInfo = tun2socks;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -58,6 +73,7 @@
 			dstPath = Contents/Library/LaunchServices;
 			dstSubfolderSpec = 1;
 			files = (
+				D9FA3189190DBA5F003CA4E0 /* tun2socks in CopyFiles */,
 				D9792EFC18FB59CB002F2E28 /* com.chrisballinger.CBTunService in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -133,6 +149,7 @@
 		D9C40B4718F67BF2005CD748 /* libPods-libplist.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-libplist.a"; path = "../../Library/Developer/Xcode/DerivedData/Tether-fesemxykvcaanucpsmrkosdeoujg/Build/Products/Debug/libPods-libplist.a"; sourceTree = "<group>"; };
 		D9D81108182F8B80003DCCBB /* USBMuxClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USBMuxClient.h; sourceTree = "<group>"; };
 		D9D81109182F8B80003DCCBB /* USBMuxClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USBMuxClient.m; sourceTree = "<group>"; };
+		D9FA3181190DB9A0003CA4E0 /* badvpn.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = badvpn.xcodeproj; path = Submodules/badvpn/badvpn.xcodeproj; sourceTree = "<group>"; };
 		D9FEA97F18EA6E6C00EA736D /* CBNetworkServiceEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBNetworkServiceEditor.h; sourceTree = "<group>"; };
 		D9FEA98018EA6E6C00EA736D /* CBNetworkServiceEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBNetworkServiceEditor.m; sourceTree = "<group>"; };
 		DF17F6ED75F54FB5ADE9E7C5 /* libPods-TetherMac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TetherMac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,6 +198,7 @@
 				D9B767A0184A8734000566D6 /* Tether-iOS */,
 				D9792ECF18FB4CCE002F2E28 /* CBTunService */,
 				D90E3257182F07DC00A6F642 /* Frameworks */,
+				D9FA3181190DB9A0003CA4E0 /* badvpn.xcodeproj */,
 				D90E3256182F07DC00A6F642 /* Products */,
 				3344A729C1604CC882D91F05 /* Pods.xcconfig */,
 				3AD9B7FDD45A42F390016C26 /* Pods-Tether.xcconfig */,
@@ -324,6 +342,14 @@
 			path = Tether;
 			sourceTree = "<group>";
 		};
+		D9FA3182190DB9A0003CA4E0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D9FA3186190DB9A0003CA4E0 /* tun2socks */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -341,6 +367,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D9FA3188190DBA1B003CA4E0 /* PBXTargetDependency */,
 				D9792EFB18FB59C4002F2E28 /* PBXTargetDependency */,
 			);
 			name = TetherMac;
@@ -414,6 +441,12 @@
 			mainGroup = D90E324C182F07DC00A6F642;
 			productRefGroup = D90E3256182F07DC00A6F642 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D9FA3182190DB9A0003CA4E0 /* Products */;
+					ProjectRef = D9FA3181190DB9A0003CA4E0 /* badvpn.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D90E3254182F07DC00A6F642 /* TetherMac */,
@@ -422,6 +455,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D9FA3186190DB9A0003CA4E0 /* tun2socks */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = tun2socks;
+			remoteRef = D9FA3185190DB9A0003CA4E0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D90E3253182F07DC00A6F642 /* Resources */ = {
@@ -553,6 +596,11 @@
 			isa = PBXTargetDependency;
 			target = D9792EED18FB58E2002F2E28 /* com.chrisballinger.CBTunService */;
 			targetProxy = D9792EFA18FB59C4002F2E28 /* PBXContainerItemProxy */;
+		};
+		D9FA3188190DBA1B003CA4E0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = tun2socks;
+			targetProxy = D9FA3187190DBA1B003CA4E0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

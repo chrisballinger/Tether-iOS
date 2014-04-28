@@ -1,0 +1,6 @@
+[submodule "Submodules/badvpn"]
+	path = Submodules/badvpn
+	url = git@github.com:chrisballinger/badvpn.git
+[submodule "Submodules/ProxyKit"]
+	path = Submodules/ProxyKit
+	url = git@github.com:chrisballinger/ProxyKit.git
